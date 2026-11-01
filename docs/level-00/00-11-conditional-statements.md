@@ -38,7 +38,7 @@ flowchart TD
 
 ### `if`, `else`, dan `elseif`
 
-```php
+```php-inline
 if ($nilai >= 70) {
     echo "Lulus";
 } else {
@@ -54,7 +54,7 @@ if ($nilai >= 70) {
 Untuk lebih dari dua kemungkinan, gunakan `elseif`. Kondisi diperiksa dari atas ke bawah,
 dan **hanya blok pertama yang cocok** yang dijalankan:
 
-```php
+```php-inline
 if ($nilai >= 85) {
     echo "A";
 } elseif ($nilai >= 70) {
@@ -71,7 +71,7 @@ paling atas, nilai 90 akan berhenti di sana dan menghasilkan `C`.
 
 Kondisi dapat digabung dengan operator logika:
 
-```php
+```php-inline
 if ($umur >= 17 && $punyaKtp) {
     echo "Boleh mendaftar";
 }
@@ -88,7 +88,7 @@ bug saat baris ditambah.
 
 `switch` membandingkan satu nilai dengan beberapa `case`:
 
-```php
+```php-inline
 switch ($hari) {
     case "Sabtu":
     case "Minggu":
@@ -113,7 +113,7 @@ switch ($hari) {
 `match` adalah ekspresi yang **mengembalikan nilai** dan membandingkan secara **ketat**
 (seperti `===`):
 
-```php
+```php-inline
 $pesan = match ($kode) {
     200 => "OK",
     301, 302 => "Redirect",
@@ -132,7 +132,7 @@ $pesan = match ($kode) {
 
 Satu `match` dapat dipakai untuk rentang dengan `match (true)`:
 
-```php
+```php-inline
 $grade = match (true) {
     $nilai >= 85 => "A",
     $nilai >= 70 => "B",
@@ -317,7 +317,7 @@ bisa berbeda antar versi PHP). Tambahkan `default => "lainnya",` untuk memperbai
 
 ### Langkah 6: sintaks alternatif di HTML
 
-```php title="belajar-php/tampil.php"
+```html+php title="belajar-php/tampil.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>

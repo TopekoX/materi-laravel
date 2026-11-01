@@ -28,7 +28,7 @@ Setelah menyelesaikan sub bab ini, kamu dapat:
 
 Perhatikan potongan dari proyek siswa:
 
-```php
+```php-inline
 $repository = new SiswaRepository($config["berkas_data"]);
 $validator = new SiswaValidator($repository, $config["jurusan"]);
 ```
@@ -48,7 +48,7 @@ berubah, semua halaman ikut diubah. Container mengambil alih pekerjaan itu.
 Menurut dokumentasi, *dependency injection* pada dasarnya berarti ketergantungan class "disuntikkan" ke dalam class lewat
 constructor atau, dalam beberapa kasus, metode "setter".
 
-```php
+```php-inline
 class Penyapa
 {
     public function __construct(private Salam $salam) {}   // Salam disuntikkan dari luar
@@ -79,7 +79,7 @@ sebagai fitur yang membuatmu bisa memakai DI tanpa berkas konfigurasi yang bengk
 
 Contoh dari dokumentasi: class `Service` bisa langsung dipakai sebagai parameter route tanpa pendaftaran apa pun.
 
-```php
+```php-inline
 Route::get('/', function (Service $service) {
     // $service sudah berisi objek Service
 });
@@ -114,7 +114,7 @@ reflection.
 
 Di luar provider, ada dua cara umum:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\App;
 
 $a = App::make(Penyapa::class);   // lewat facade
@@ -193,7 +193,7 @@ class Penyapa
 
 File: `routes/web.php`
 
-```php
+```php-inline
 use App\Services\Penyapa;
 
 Route::get('/sapa/{nama}', function (Penyapa $penyapa, string $nama) {
@@ -243,7 +243,7 @@ class PenyimpanSementara implements PenyimpanSiswa
 
 File: `app/Providers/AppServiceProvider.php` (metode `register`)
 
-```php
+```php-inline
 use App\Contracts\PenyimpanSiswa;
 use App\Services\ObjekTunggal;
 use App\Services\PenyimpanSementara;
@@ -257,7 +257,7 @@ public function register(): void
 
 File: `routes/web.php`
 
-```php
+```php-inline
 use App\Contracts\PenyimpanSiswa;
 use App\Services\ObjekBiasa;
 use App\Services\ObjekTunggal;

@@ -60,7 +60,7 @@ class Buku
 
 Ada dua cara merujuk class di namespace lain:
 
-```php
+```php-inline
 $a = new \Latihan\Model\Buku("PHP");   // nama lengkap, diawali \
 
 use Latihan\Model\Buku;                // impor di atas berkas
@@ -81,7 +81,7 @@ Di dalam namespace, nama tanpa awalan dianggap ada di namespace itu. Class bawaa
 seperti `Exception`, `DateTime`, atau `InvalidArgumentException` berada di namespace
 **global**, sehingga harus ditulis dengan `\` di depan atau diimpor:
 
-```php
+```php-inline
 namespace Latihan\Model;
 
 throw new \InvalidArgumentException("Salah");   // dengan \
@@ -307,7 +307,7 @@ karena nama `Buku` sudah dipakai.
 
 Tambahkan method berikut ke `src/Model/Buku.php`:
 
-```php
+```php-inline
 public function validasi(): void
 {
     if ($this->judul === "") {
@@ -318,7 +318,7 @@ public function validasi(): void
 
 Lalu panggil dari `index.php`:
 
-```php
+```php-inline
 (new Buku(""))->validasi();
 ```
 

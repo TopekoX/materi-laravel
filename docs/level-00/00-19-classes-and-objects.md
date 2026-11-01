@@ -26,7 +26,7 @@ Setelah menyelesaikan bab ini, kamu dapat:
 
 ### Mendefinisikan class
 
-```php
+```php-inline
 class Buku
 {
     public string $judul;
@@ -58,7 +58,7 @@ class Buku
 
 ### Membuat dan memakai objek
 
-```php
+```php-inline
 $buku = new Buku("Belajar PHP", "Budi");
 
 echo $buku->judul;   // Belajar PHP
@@ -73,7 +73,7 @@ $buku->pinjam();
 
 PHP 8 menyingkat pola "terima parameter lalu isikan ke property":
 
-```php
+```php-inline
 class Anggota
 {
     public function __construct(
@@ -101,7 +101,7 @@ mengaksesnya. Ini inti dari enkapsulasi, yang dibahas lebih lanjut di bab beriku
 
 ### Konstanta, static, dan readonly
 
-```php
+```php-inline
 class Matematika
 {
     public const PI = 3.14159;
@@ -134,7 +134,7 @@ Tanda `::` (*scope resolution*) inilah yang kamu lihat pada `Route::get(...)`,
 Berbeda dengan array, menugaskan objek ke variabel lain **tidak menyalin objeknya**; kedua
 variabel menunjuk ke objek yang sama:
 
-```php
+```php-inline
 $a = new Buku("A", "X");
 $c = $a;          // $c dan $a menunjuk objek yang sama
 $d = clone $a;    // $d adalah salinan terpisah
@@ -151,7 +151,7 @@ $d = clone $a;    // $d adalah salinan terpisah
 Jika method mengembalikan `$this`, pemanggilan bisa dirangkai. Pola ini dipakai pada query
 Eloquent, `Materi::where(...)->orderBy(...)->get()`:
 
-```php
+```php-inline
 public function tambah(string $nama): static
 {
     $this->item[] = $nama;
@@ -449,7 +449,7 @@ echo (new Keranjang())->tambah("apel")->tambah("jeruk")->tambah("mangga")->dafta
 
 ??? success "Petunjuk nomor 2 dan 5"
     **Nomor 2:**
-    ```php
+    ```php-inline
     public function tarik(int $jumlah): bool
     {
         if ($jumlah <= 0 || $jumlah > $this->saldo) {

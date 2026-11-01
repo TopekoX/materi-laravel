@@ -155,7 +155,7 @@ Satu-satunya kode aplikasi yang kamu tulis adalah route kecil:
 
 File: `routes/web.php`
 
-```php
+```php-inline
 Route::get('/halo', function () {
     return 'Halo dari Laravel!';
 });
@@ -202,7 +202,7 @@ curl -i http://127.0.0.1:8000/up
 
 Buka `routes/web.php` dan tambahkan di bawah route yang ada:
 
-```php
+```php-inline
 Route::get('/halo', function () {
     return 'Halo dari Laravel!';
 });

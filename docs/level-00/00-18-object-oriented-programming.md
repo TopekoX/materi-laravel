@@ -32,7 +32,7 @@ satuan bernama *objek*.
 
 Bayangkan data seorang siswa dan hitungan rata-rata nilainya:
 
-```php
+```php-inline
 // Prosedural: data dan fungsi terpisah
 $siswa = ["nama" => "Budi", "nilai" => [80, 90, 70]];
 
@@ -44,7 +44,7 @@ function rataRata(array $siswa): float
 echo rataRata($siswa);
 ```
 
-```php
+```php-inline
 // Berorientasi objek: data dan perilaku dikemas dalam satu class
 class Siswa
 {
@@ -112,7 +112,7 @@ Kamu tidak bisa membaca kode Laravel tanpa memahami class dan objek.
 
 ### Mengenali OOP pada kode Laravel
 
-```php
+```php-inline
 Route::get('/materi/{slug}', [MateriController::class, 'show']);
 
 $materi = Materi::where('slug', $slug)->first();
@@ -219,7 +219,7 @@ benda ini?" (property) dan "Apa yang *dilakukan* benda ini?" (method).
 
 Baca potongan berikut, lalu tuliskan semua class, objek, dan method yang kamu temukan:
 
-```php
+```php-inline
 class MateriController extends Controller
 {
     public function index(Request $request)

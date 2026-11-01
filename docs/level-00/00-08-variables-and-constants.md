@@ -33,7 +33,7 @@ Setelah menyelesaikan bab ini, kamu dapat:
 Di PHP, nama variabel selalu diawali tanda dolar `$`. Variabel dibuat saat pertama kali
 diberi nilai, tanpa perlu dideklarasikan lebih dulu:
 
-```php
+```php-inline
 $nama = "Budi";
 $umur = 20;
 ```
@@ -55,14 +55,14 @@ Gaya penulisan yang dipakai di kode Laravel adalah **camelCase** untuk variabel:
 
 ### Mengubah nilai
 
-```php
+```php-inline
 $kota = "Bandung";
 $kota = "Surabaya";   // nilai lama digantikan
 ```
 
 Variabel bisa diisi ulang. Variabel juga bisa diisi dengan nilai variabel lain:
 
-```php
+```php-inline
 $a = "Halo";
 $b = $a;
 ```
@@ -73,7 +73,7 @@ Jenis-jenis nilai (teks, angka, dan sebagainya) dibahas di bab berikutnya, Tipe 
 
 Pada teks berkutip **ganda**, nama variabel diganti dengan isinya:
 
-```php
+```php-inline
 $nama = "Budi";
 echo "Halo, $nama!\n";       // Halo, Budi!
 echo "Halo, {$nama}!\n";     // bentuk dengan kurung kurawal, lebih jelas
@@ -83,7 +83,7 @@ Pada kutip **tunggal**, variabel tidak diganti: `'Halo, $nama'` tercetak apa ada
 
 Teks juga bisa digabung dengan operator titik `.` (*concatenation*):
 
-```php
+```php-inline
 echo "Halo, " . $nama . "!\n";
 ```
 
@@ -109,7 +109,7 @@ Cocok untuk nilai tetap seperti nama aplikasi atau batas maksimum.
 
 Dua cara membuatnya:
 
-```php
+```php-inline
 const NAMA_APLIKASI = "Pustaka Materi";     // cara disarankan di tingkat atas berkas
 define('VERSI', '1.0');                     // fungsi; nama berupa teks
 ```
@@ -121,7 +121,7 @@ Aturan dan kebiasaan:
 - Setelah dibuat, nilainya tidak bisa diganti.
 - Bisa dipakai di bagian mana pun dari kode setelah dibuat.
 
-```php
+```php-inline
 echo NAMA_APLIKASI;
 ```
 
@@ -242,7 +242,7 @@ echo "PHP versi " . PHP_VERSION . "\n";
 
 Tambahkan di akhir `konstanta.php`:
 
-```php
+```php-inline
 const NAMA_APLIKASI = "Nama Lain";
 ```
 

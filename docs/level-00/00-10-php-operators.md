@@ -65,7 +65,7 @@ lama":
 
 Titik (`.`) menggabungkan dua teks menjadi satu:
 
-```php
+```php-inline
 echo "Halo, " . "dunia";
 ```
 
@@ -110,7 +110,7 @@ Pakai `&&` dan `||`.
 `$a ?? $b` berarti: pakai `$a` jika ada **dan** tidak `null`, selain itu pakai `$b`.
 Tidak menimbulkan peringatan jika `$a` belum dibuat.
 
-```php
+```php-inline
 $nama = $inputNama ?? "Tamu";
 ```
 
@@ -118,7 +118,7 @@ $nama = $inputNama ?? "Tamu";
 
 `kondisi ? nilaiJikaBenar : nilaiJikaSalah` adalah `if`-`else` ringkas:
 
-```php
+```php-inline
 $status = $umur >= 17 ? "Dewasa" : "Anak";
 ```
 
@@ -131,7 +131,7 @@ menganggap `null` (atau belum ada) sebagai "kosong".
 Seperti matematika, perkalian lebih dulu daripada penjumlahan. Tanda kurung `( )`
 mengubah urutan dan membuat maksud kodemu jelas.
 
-```php
+```php-inline
 2 + 3 * 4     // 14
 (2 + 3) * 4   // 20
 ```

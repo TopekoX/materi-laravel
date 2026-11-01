@@ -80,7 +80,7 @@ yang dipakai di seluruh kode Laravel.
 
 Berkas PHP boleh mencampur HTML dan PHP. Teks di luar tag PHP dikirim apa adanya:
 
-```php title="sambutan.php"
+```html+php title="sambutan.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>

@@ -85,7 +85,7 @@ di bab utama *Routing, Controller, and Request Handling*).
 
 File: `routes/web.php`
 
-```php
+```php-inline
 use App\Http\Controllers\SiswaController;
 
 Route::resource('siswa', SiswaController::class);

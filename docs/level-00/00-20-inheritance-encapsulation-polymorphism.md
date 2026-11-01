@@ -50,7 +50,7 @@ classDiagram
     kalimat **"X adalah sejenis Y"**: kucing adalah sejenis hewan (wajar); mobil adalah
     sejenis mesin (kurang tepat, lebih cocok "mobil *memiliki* mesin").
 
-```php
+```php-inline
 class Hewan
 {
     public function __construct(protected string $nama) {}
@@ -91,7 +91,7 @@ membuat kode sulit dipahami; pakai seperlunya.
 Enkapsulasi berarti **menyembunyikan data** (`private`) dan menyediakan **pintu resmi**
 (method `public`) untuk membaca atau mengubahnya. Dengan begitu aturan bisnis terjaga:
 
-```php
+```php-inline
 class Produk
 {
     public function __construct(
@@ -126,7 +126,7 @@ pemeriksaan di `ubahHarga()`.
 Class abstrak adalah kerangka yang **tidak bisa dibuat objeknya** langsung. Ia boleh
 berisi method abstrak (tanpa isi) yang **wajib** diisi oleh class turunan:
 
-```php
+```php-inline
 abstract class Bentuk
 {
     abstract public function luas(): float;
@@ -146,7 +146,7 @@ bukan `Bentuk`.
 Interface adalah **kontrak**: daftar method yang harus dimiliki sebuah class, tanpa
 isinya. Sebuah class bisa `implements` banyak interface sekaligus:
 
-```php
+```php-inline
 interface MetodePembayaran
 {
     public function bayar(int $jumlah): string;
@@ -172,7 +172,7 @@ class Tunai implements MetodePembayaran
 Kode yang menerima **tipe induk atau interface** dapat bekerja dengan semua turunannya,
 masing-masing dengan perilakunya sendiri:
 
-```php
+```php-inline
 function proses(MetodePembayaran $metode, int $jumlah): void
 {
     echo $metode->bayar($jumlah), "\n";
@@ -416,7 +416,7 @@ Fungsi `proses()` tidak berubah ketika kamu menambah metode pembayaran baru.
 
 Tambahkan di akhir `pembayaran.php`:
 
-```php
+```php-inline
 $metode = new Tunai();
 
 var_dump($metode instanceof MetodePembayaran);
@@ -459,7 +459,7 @@ bool(false)
 
 ??? success "Petunjuk nomor 5 dan 6"
     **Nomor 5:**
-    ```php
+    ```php-inline
     class Manajer extends Karyawan
     {
         public function gaji(): int

@@ -39,7 +39,7 @@ alur normal** dan "melempar" masalah ke atas sampai ada kode yang menanganinya.
 
 ### `try`, `catch`, dan `finally`
 
-```php
+```php-inline
 try {
     // kode yang mungkin gagal
 } catch (JenisException $e) {
@@ -58,7 +58,7 @@ try {
 
 Blok `catch` boleh lebih dari satu, atau menggabungkan beberapa jenis dengan `|`:
 
-```php
+```php-inline
 catch (TypeError | DivisionByZeroError $e)
 ```
 
@@ -106,7 +106,7 @@ Beberapa exception bawaan yang berguna:
 
 Dengan `extends Exception`, kamu membuat jenis masalah yang bermakna bagi domain aplikasi:
 
-```php
+```php-inline
 class SaldoTidakCukupException extends Exception
 {
 }
@@ -120,7 +120,7 @@ siapkan penanganannya.
 Saat menangkap exception tingkat rendah lalu melempar yang lebih bermakna, sertakan yang
 asli sebagai `previous` agar jejak penyebab tidak hilang:
 
-```php
+```php-inline
 throw new RuntimeException("Gagal memuat konfigurasi", 0, $e);
 ```
 
@@ -412,7 +412,7 @@ jejak pemanggilan (bunyi persis tergantung versi dan pengaturan PHP). Baris
 
 ??? success "Petunjuk nomor 2 dan 6"
     **Nomor 2:**
-    ```php
+    ```php-inline
     class UsiaTidakValidException extends InvalidArgumentException {}
 
     function daftar(int $usia): void

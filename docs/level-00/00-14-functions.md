@@ -31,7 +31,7 @@ Setelah menyelesaikan bab ini, kamu dapat:
 
 ### Mendefinisikan dan memanggil fungsi
 
-```php
+```php-inline
 function sapa(string $nama): string
 {
     return "Halo, $nama!";
@@ -60,7 +60,7 @@ definisinya, karena PHP membaca definisinya lebih dulu.
 **Nilai default** dipakai bila argumen tidak diberikan. Parameter dengan default harus
 ditulis setelah parameter wajib:
 
-```php
+```php-inline
 function sapa(string $nama, string $sapaan = "Halo"): string
 {
     return "$sapaan, $nama!";
@@ -73,13 +73,13 @@ echo sapa("Budi", "Selamat pagi");
 **Named arguments** (PHP 8) memanggil argumen berdasarkan nama, sehingga urutan bebas dan
 maksudnya jelas:
 
-```php
+```php-inline
 echo sapa(sapaan: "Selamat malam", nama: "Sari");
 ```
 
 **Variadic** (`...`) menerima sejumlah argumen sebagai satu array:
 
-```php
+```php-inline
 function jumlah(int ...$angka): int
 {
     return array_sum($angka);
@@ -112,7 +112,7 @@ semua tempat.
 Variabel yang dibuat **di dalam** fungsi bersifat lokal. Variabel di luar fungsi tidak
 terlihat dari dalam fungsi:
 
-```php
+```php-inline
 $pesan = "luar";
 
 function tes()
@@ -131,7 +131,7 @@ mengambil hasilnya lewat **return**. Hindari variabel global.
 Fungsi tanpa nama bisa disimpan dalam variabel atau dikirim ke fungsi lain. Disebut juga
 **closure**:
 
-```php
+```php-inline
 $kali2 = function (int $x): int {
     return $x * 2;
 };
@@ -145,7 +145,7 @@ echo $kali3(4);   // 12
   yang dipakainya (berdasarkan nilai).
 - Fungsi anonim biasa memakai `use` untuk mengambil variabel luar:
 
-```php
+```php-inline
 $faktor = 10;
 $tambah = function (int $x) use ($faktor): int {
     return $x + $faktor;
@@ -162,7 +162,7 @@ Closure inilah yang kamu lihat di route Laravel: `Route::get('/tentang', functio
 | `array_filter($array, $fungsi)` | Menyaring elemen yang membuat fungsi bernilai `true` |
 | `usort($array, $fungsi)` | Mengurutkan dengan aturan sendiri |
 
-```php
+```php-inline
 $ganda = array_map(fn ($n) => $n * 2, [1, 2, 3]);       // [2, 4, 6]
 $genap = array_filter([1, 2, 3, 4], fn ($n) => $n % 2 === 0);   // [1 => 2, 3 => 4]
 ```
@@ -174,7 +174,7 @@ dinomori ulang.
 
 Fungsi boleh memanggil dirinya sendiri, selama ada **kondisi berhenti**:
 
-```php
+```php-inline
 function faktorial(int $n): int
 {
     return $n <= 1 ? 1 : $n * faktorial($n - 1);
@@ -418,7 +418,7 @@ echo faktorial(1), "\n";
 
 ??? success "Petunjuk nomor 3 dan 6"
     **Nomor 3:**
-    ```php
+    ```php-inline
     function ratarata(float ...$angka): float
     {
         return count($angka) === 0 ? 0.0 : array_sum($angka) / count($angka);

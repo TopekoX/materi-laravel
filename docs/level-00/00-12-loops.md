@@ -46,7 +46,7 @@ flowchart TD
 
 Cocok bila jumlah pengulangan diketahui:
 
-```php
+```php-inline
 for ($i = 1; $i <= 5; $i++) {
     echo $i, "\n";
 }
@@ -59,7 +59,7 @@ Tiga bagian dalam kurung, dipisah titik koma: **awal**; **kondisi**; **perubahan
 Cocok bila jumlah pengulangan tidak diketahui di awal; kondisi diperiksa **sebelum** setiap
 putaran:
 
-```php
+```php-inline
 $hitung = 3;
 while ($hitung > 0) {
     echo $hitung, "\n";
@@ -72,7 +72,7 @@ while ($hitung > 0) {
 Mirip `while`, tetapi kondisi diperiksa **sesudah** blok dijalankan, sehingga blok
 dijalankan **minimal sekali**:
 
-```php
+```php-inline
 do {
     echo "Dijalankan sekali\n";
 } while (false);
@@ -84,7 +84,7 @@ Dipakai untuk menelusuri setiap elemen sebuah *array* (kumpulan nilai). Array di
 lengkap pada bab berikutnya; di sini cukup tahu bahwa array ditulis dengan tanda kurung
 siku:
 
-```php
+```php-inline
 $buah = ["apel", "jeruk", "mangga"];
 
 foreach ($buah as $item) {
@@ -122,7 +122,7 @@ menampilkan daftar data. Padanannya di template Blade adalah `@foreach`.
 
 Perulangan di dalam perulangan. Putaran dalam selesai penuh untuk setiap satu putaran luar:
 
-```php
+```php-inline
 for ($baris = 1; $baris <= 3; $baris++) {
     for ($kolom = 1; $kolom <= $baris; $kolom++) {
         echo "*";
@@ -136,7 +136,7 @@ for ($baris = 1; $baris <= 3; $baris++) {
 Bila kondisi tidak pernah menjadi salah (misalnya lupa mengubah penghitung), program
 berputar selamanya:
 
-```php
+```php-inline
 $i = 1;
 while ($i <= 5) {
     echo $i, "\n";
@@ -153,7 +153,7 @@ menghentikannya.
 
 ### Sintaks alternatif untuk HTML
 
-```php
+```html+php
 <ul>
 <?php for ($i = 1; $i <= 3; $i++): ?>
     <li>Item <?= $i ?></li>
@@ -311,7 +311,7 @@ for ($baris = 1; $baris <= 3; $baris++) {
 
 ### Langkah 6: perulangan di dalam HTML
 
-```php title="belajar-php/daftar.php"
+```html+php title="belajar-php/daftar.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -368,7 +368,7 @@ server dengan ++ctrl+c++.
 
 ??? success "Petunjuk nomor 2 dan 5"
     **Nomor 2:**
-    ```php
+    ```php-inline
     $hasil = 1;
     for ($i = 1; $i <= 5; $i++) {
         $hasil *= $i;

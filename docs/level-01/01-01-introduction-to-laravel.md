@@ -173,7 +173,7 @@ dibaca**, belum dijalankan karena Laravel baru dipasang beberapa sub bab ke depa
 
 **Proyek siswa (PHP native)**, berkas `public/tambah.php`:
 
-```php
+```php-inline
 $errors = $validator->validasi($data);
 
 if ($errors === []) {
@@ -185,7 +185,7 @@ if ($errors === []) {
 
 **Laravel (ilustrasi)**, berkas `app/Http/Controllers/SiswaController.php`:
 
-```php
+```php-inline
 public function store(Request $request): RedirectResponse
 {
     $validated = $request->validate([
@@ -202,7 +202,7 @@ public function store(Request $request): RedirectResponse
 
 Dan satu baris pemetaan URL, berkas `routes/web.php`:
 
-```php
+```php-inline
 Route::post('/siswa', [SiswaController::class, 'store']);
 ```
 

@@ -73,7 +73,7 @@ Semuanya berupa array asosiatif yang sudah kamu kenal. Isinya **selalu string** 
 untuk input berulang), apa pun yang diketik pengguna. Bacalah dengan `??` agar tidak
 memicu peringatan bila kunci tidak ada:
 
-```php
+```php-inline
 $nama = $_POST["nama"] ?? "";
 ```
 
@@ -113,7 +113,7 @@ menekan muat ulang, browser bertanya apakah akan **mengirim ulang** data, dan is
 tersimpan dua kali. Pola PRG mencegahnya: setelah memproses `POST`, server menjawab dengan
 **redirect** ke halaman `GET`:
 
-```php
+```php-inline
 header("Location: terima-kasih.php");
 exit;
 ```
@@ -292,7 +292,7 @@ berbeda dari Laravel yang akan kamu temui nanti.
 
 Tambahkan sementara tepat di bawah `<h1>` pada `daftar.php`:
 
-```php
+```html+php
 <pre><?php print_r($_POST); ?></pre>
 ```
 
@@ -304,7 +304,7 @@ bertipe string. Hapus baris debugging itu setelah selesai.
 Ubah `daftar.php` agar berhasil mengalihkan ke halaman lain. Tambahkan blok ini
 **di dalam** `if ($_SERVER["REQUEST_METHOD"] === "POST")`, setelah semua validasi:
 
-```php
+```php-inline
     if ($errors === []) {
         header("Location: terima-kasih.php?nama=" . urlencode($data["nama"]));
         exit;
@@ -378,7 +378,7 @@ Hentikan server dengan ++ctrl+c++ setelah selesai.
 
 ??? success "Petunjuk nomor 2 dan 6"
     **Nomor 2:**
-    ```php
+    ```php-inline
     $pilihan = ["informatika", "sistem-informasi", "teknik-komputer"];
     if (!in_array($data["jurusan"], $pilihan, true)) {
         $errors["jurusan"] = "Jurusan tidak valid.";

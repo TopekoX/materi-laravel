@@ -317,7 +317,7 @@ Route::get('/status', function () {
 
 File: `routes/console.php` (tambahkan di bawah perintah `inspire`)
 
-```php
+```php-inline
 use App\Contracts\PenyimpanSiswa;
 
 Artisan::command('siswa:ringkas', function (PenyimpanSiswa $penyimpan) {

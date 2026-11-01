@@ -42,7 +42,7 @@ konfigurasi), sedangkan pada template Blade kamu akan memakai sintaks sendiri.
 Satu **pernyataan** (*statement*) adalah satu perintah lengkap. Pernyataan diakhiri
 titik koma:
 
-```php
+```php-inline
 echo "Satu";
 echo "Dua";
 ```
@@ -59,7 +59,7 @@ koma, tetapi sebaiknya tetap ditulis agar seragam.
 Komentar diabaikan interpreter. Gunakan untuk menjelaskan *mengapa* kode ditulis begitu,
 atau menonaktifkan kode sementara.
 
-```php
+```php-inline
 // Komentar satu baris gaya C++
 # Komentar satu baris gaya shell (jarang dipakai)
 
@@ -75,7 +75,7 @@ atau menonaktifkan kode sementara.
 
 ### Mencetak: `echo` dan `print`
 
-```php
+```php-inline
 echo "Halo";
 print "Halo";
 ```
@@ -93,7 +93,7 @@ Teks (*string*) ditulis dengan tanda kutip. Dua jenis kutip berbeda perilaku:
 - `"..."` (kutip ganda) memahami karakter khusus seperti `\n` (baris baru).
 - `'...'` (kutip tunggal) mencetak apa adanya.
 
-```php
+```php-inline
 echo "Baris 1\nBaris 2";   // tercetak dua baris
 echo 'Baris 1\nBaris 2';   // tercetak persis: Baris 1\nBaris 2
 ```
@@ -184,7 +184,7 @@ Echo "Campur\n";
 
 ### Langkah 4: PHP di dalam HTML dengan `<?=`
 
-```php title="belajar-php/tag.php"
+```html+php title="belajar-php/tag.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>

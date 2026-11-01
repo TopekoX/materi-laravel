@@ -115,7 +115,7 @@ Perintah bawaan `inspire` ditulis begini:
 
 File: `routes/console.php`
 
-```php
+```php-inline
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -161,7 +161,7 @@ perintah closure `sapa`.
 
 File: `routes/console.php` (tambahkan di bawah perintah `inspire`)
 
-```php
+```php-inline
 Artisan::command('sapa {nama}', function (string $nama) {
     $this->info("Halo, {$nama}! Selamat belajar Laravel.");
 })->purpose('Menyapa seseorang dengan namanya');
@@ -231,7 +231,7 @@ php artisan tinker
 
 Di dalam Tinker ketik satu per satu:
 
-```php
+```php-inline
 config('app.name')
 app()->version()
 \Illuminate\Support\Str::slug('Belajar Laravel Itu Menyenangkan')

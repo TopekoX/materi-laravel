@@ -58,7 +58,7 @@ Setiap berkas `config/*.php` adalah berkas PHP yang `return` sebuah array, persi
 
 File: `config/app.php`
 
-```php
+```php-inline
 return [
     'name' => env('APP_NAME', 'Laravel'),
     'env' => env('APP_ENV', 'production'),
@@ -82,7 +82,7 @@ tahu: berkas konfigurasi boleh memakai `env()` untuk nilai yang berbeda antar li
 
 Nilai dibaca dengan sintaks "dot": **nama berkas + titik + nama opsi** (opsi bersarang dipisah titik berikutnya).
 
-```php
+```php-inline
 $zona = config('app.timezone');                 // dari config/app.php
 $default = config('database.default');          // dari config/database.php
 $cadangan = config('app.tidak_ada', 'cadangan'); // nilai cadangan jika opsi tidak ada
@@ -96,7 +96,7 @@ Dokumentasi juga menyebut metode bertipe pada facade `Config` (`string`, `intege
 
 ### Mengubah konfigurasi saat runtime
 
-```php
+```php-inline
 config(['app.timezone' => 'America/Chicago']);
 ```
 
@@ -202,7 +202,7 @@ return [
 
 File: `routes/web.php`
 
-```php
+```php-inline
 Route::get('/konfigurasi', function () {
     return [
         'nama_aplikasi' => config('app.name'),
@@ -252,7 +252,7 @@ curl -i http://127.0.0.1:8000/konfigurasi
 
 Tambahkan route berikut:
 
-```php
+```php-inline
 Route::get('/konfigurasi-sementara', function () {
     config(['sekolah.nama' => 'Nama Sementara']);
 

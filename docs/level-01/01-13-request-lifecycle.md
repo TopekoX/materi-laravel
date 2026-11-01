@@ -98,7 +98,7 @@ $app->handleRequest(Request::capture());
 
 File: `bootstrap/app.php`
 
-```php
+```php-inline
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -224,7 +224,7 @@ di dalam aplikasimu.
 
 File: `app/Providers/AppServiceProvider.php` (ubah sementara)
 
-```php
+```php-inline
 public function register(): void
 {
     logger('1. register: provider didaftarkan');
@@ -238,7 +238,7 @@ public function boot(): void
 
 File: `routes/web.php` (tambahkan sementara)
 
-```php
+```php-inline
 Route::get('/jejak', function () {
     logger('3. route: closure dijalankan');
 

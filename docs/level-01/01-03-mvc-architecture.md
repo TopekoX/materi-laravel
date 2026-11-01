@@ -101,7 +101,7 @@ dipasang beberapa sub bab lagi.
 
 File: `routes/web.php`
 
-```php
+```php-inline
 use App\Http\Controllers\SiswaController;
 
 Route::get('/siswa', [SiswaController::class, 'index']);
@@ -109,7 +109,7 @@ Route::get('/siswa', [SiswaController::class, 'index']);
 
 File: `app/Http/Controllers/SiswaController.php`
 
-```php
+```php-inline
 public function index(): View
 {
     $daftar = Siswa::orderBy('nama')->get();
@@ -120,7 +120,7 @@ public function index(): View
 
 File: `resources/views/siswa/index.blade.php`
 
-```blade
+```html
 <ul>
     @foreach ($daftar as $siswa)
         <li>{{ $siswa->nama }}</li>

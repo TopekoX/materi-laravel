@@ -42,7 +42,7 @@ objek. Array dibahas penuh di sub bab *Arrays*.
 PHP adalah bahasa **berketik dinamis**: kamu tidak menulis tipe saat membuat variabel,
 PHP menentukannya dari nilai yang diberikan.
 
-```php
+```php-inline
 $nilai = 10;       // int
 $nilai = "sepuluh"; // sekarang string
 ```
@@ -90,7 +90,7 @@ Catatan: `gettype()` menyebut float sebagai `double` karena alasan historis.
 
 Tulis tipe tujuan dalam kurung di depan nilai:
 
-```php
+```php-inline
 (int) 3.9        // 3 (bagian desimal dibuang, bukan dibulatkan)
 (int) "123abc"   // 123 (dibaca dari depan sampai karakter yang bukan angka)
 (int) "abc"      // 0

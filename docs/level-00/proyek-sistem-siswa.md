@@ -537,7 +537,7 @@ ini disebut *dependency injection*, dibahas pada bab Laravel nanti.
 
 ### Langkah 6: tampilan
 
-```php title="belajar-php/sistem-siswa/views/layout/header.php"
+```html+php title="belajar-php/sistem-siswa/views/layout/header.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -555,7 +555,7 @@ ini disebut *dependency injection*, dibahas pada bab Laravel nanti.
     <main>
 ```
 
-```php title="belajar-php/sistem-siswa/views/layout/footer.php"
+```html title="belajar-php/sistem-siswa/views/layout/footer.php"
     </main>
     <hr>
     <footer>
@@ -565,7 +565,7 @@ ini disebut *dependency injection*, dibahas pada bab Laravel nanti.
 </html>
 ```
 
-```php title="belajar-php/sistem-siswa/views/daftar.php"
+```html+php title="belajar-php/sistem-siswa/views/daftar.php"
 <h1>Daftar Siswa</h1>
 
 <?php if ($pesan !== null): ?>
@@ -611,7 +611,7 @@ ini disebut *dependency injection*, dibahas pada bab Laravel nanti.
 <?php endif; ?>
 ```
 
-```php title="belajar-php/sistem-siswa/views/form.php"
+```html+php title="belajar-php/sistem-siswa/views/form.php"
 <h1><?= e($judul) ?></h1>
 
 <form action="<?= e($aksi) ?>" method="post">

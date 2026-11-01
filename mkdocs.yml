@@ -129,6 +129,12 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+      # PHP fragments without "<?php": highlight them as inline PHP.
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark

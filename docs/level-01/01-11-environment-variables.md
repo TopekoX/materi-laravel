@@ -112,7 +112,7 @@ ubah tipenya di berkas konfigurasi bila perlu: `(int) env('BATAS_PESERTA', 50)`.
 
 Lingkungan ditentukan oleh `APP_ENV`. Kode dapat memeriksanya lewat facade `App`:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\App;
 
 App::environment();                       // mis. "local"
@@ -202,7 +202,7 @@ return [
 
 File: `routes/web.php` (tambahkan)
 
-```php
+```php-inline
 use Illuminate\Support\Facades\App;
 
 Route::get('/env-tipe', function () {

@@ -31,7 +31,7 @@ Setelah menyelesaikan bab ini, kamu dapat:
 
 Elemen diberi nomor otomatis mulai dari `0`:
 
-```php
+```php-inline
 $buah = ["apel", "jeruk", "mangga"];
 
 echo $buah[0];   // apel
@@ -46,7 +46,7 @@ echo $buah[2];   // mangga
 
 Kunci berupa **teks** yang kamu tentukan sendiri, ditulis dengan `=>`:
 
-```php
+```php-inline
 $siswa = [
     "nama" => "Budi",
     "umur" => 20,
@@ -63,7 +63,7 @@ data di database.
 
 Elemen array boleh berupa array lagi:
 
-```php
+```php-inline
 $daftarSiswa = [
     ["nama" => "Budi", "nilai" => 80],
     ["nama" => "Sari", "nilai" => 90],
@@ -119,7 +119,7 @@ Fungsi urut **mengubah array aslinya** dan mengembalikan `true`/`false`, bukan a
 
 ### Menggabung dan mengubah menjadi teks
 
-```php
+```php-inline
 $gabungan = array_merge($a, $b);   // atau [...$a, ...$b]
 echo implode(", ", $buah);         // apel, jeruk, mangga
 ```
@@ -130,7 +130,7 @@ echo implode(", ", $buah);         // apel, jeruk, mangga
 
 Menugaskan array ke variabel lain membuat **salinan**:
 
-```php
+```php-inline
 $a = [1, 2, 3];
 $b = $a;
 $b[] = 4;
@@ -359,7 +359,7 @@ echo implode(", ", $c), "\n";
 
 ### Langkah 7: array di halaman web
 
-```php title="belajar-php/tabel.php"
+```html+php title="belajar-php/tabel.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>

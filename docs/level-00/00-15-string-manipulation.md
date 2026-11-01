@@ -34,7 +34,7 @@ Setelah menyelesaikan bab ini, kamu dapat:
 Hampir semua fungsi string **mengembalikan string baru** dan tidak mengubah aslinya. Hasilnya
 perlu ditampung:
 
-```php
+```php-inline
 $judul = "belajar php";
 ucfirst($judul);              // hasil terbuang
 $judul = ucfirst($judul);     // benar: ditampung kembali
@@ -91,7 +91,7 @@ pakai `mb_strtoupper` dan `mb_strtolower`.
 
 ### Memecah dan menggabung
 
-```php
+```php-inline
 $daftar = explode(",", "apel,jeruk,mangga");   // ["apel", "jeruk", "mangga"]
 $teks = implode(" | ", $daftar);               // "apel | jeruk | mangga"
 ```
@@ -110,7 +110,7 @@ melakukan sebaliknya.
 | `%.2f` | Desimal dengan 2 angka di belakang titik |
 | `%05d` | Bilangan bulat, lebar 5, diisi `0` di kiri |
 
-```php
+```php-inline
 sprintf("Nama: %s, Umur: %d", "Budi", 20);   // Nama: Budi, Umur: 20
 sprintf("%.2f", 3.14159);                    // 3.14
 sprintf("%05d", 42);                         // 00042
@@ -119,7 +119,7 @@ sprintf("%05d", 42);                         // 00042
 `number_format($angka, $desimal, $pemisahDesimal, $pemisahRibuan)` memformat angka.
 Format Indonesia memakai koma untuk desimal dan titik untuk ribuan:
 
-```php
+```php-inline
 number_format(1234567.891, 2, ",", ".");   // 1.234.567,89
 ```
 
@@ -127,7 +127,7 @@ number_format(1234567.891, 2, ",", ".");   // 1.234.567,89
 
 Untuk teks banyak baris:
 
-```php
+```php-inline
 $nama = "Budi";
 
 echo <<<TEKS
@@ -146,7 +146,7 @@ Teks dari pengguna tidak boleh langsung dicetak ke halaman HTML. Pengguna jahat 
 menyisipkan `<script>` (serangan **XSS**). `htmlspecialchars` mengubah karakter khusus
 HTML menjadi padanan aman:
 
-```php
+```php-inline
 echo htmlspecialchars("<script>alert('x')</script>");
 // &lt;script&gt;alert(&#039;x&#039;)&lt;/script&gt;
 ```
@@ -366,7 +366,7 @@ sebagai teks biasa.
 
 ??? success "Petunjuk nomor 2 dan 4"
     **Nomor 2:**
-    ```php
+    ```php-inline
     function buatSlug(string $judul): string
     {
         return str_replace(" ", "-", strtolower(trim($judul)));

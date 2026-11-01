@@ -139,7 +139,7 @@ kunci tanpa mengubah `.env`.
 
 File: `routes/web.php` (route percobaan sementara)
 
-```php
+```php-inline
 use Illuminate\Support\Facades\App;
 
 Route::get('/pengaturan', function () {

@@ -35,7 +35,7 @@ mana saja.
 
 ### Empat perintah pemuatan
 
-```php
+```php-inline
 include "berkas.php";
 require "berkas.php";
 include_once "berkas.php";
@@ -64,7 +64,7 @@ pada folder tempat perintah dijalankan, sehingga berperilaku berbeda bila skrip
 dijalankan dari folder lain. Gunakan konstanta ajaib **`__DIR__`**, yaitu folder tempat
 berkas yang sedang berjalan berada:
 
-```php
+```php-inline
 require __DIR__ . "/layout/header.php";
 ```
 
@@ -81,7 +81,7 @@ dipakai sesudahnya. (Jika `include` dipanggil di dalam fungsi, scope-nya adalah 
 Sebuah berkas boleh `return` nilai, dan `include`/`require` mengembalikan nilai itu.
 Pola ini dipakai untuk berkas konfigurasi:
 
-```php
+```php-inline
 // config.php
 return [
     'nama_aplikasi' => 'Situs Latihan',
@@ -95,14 +95,14 @@ Seluruh berkas di folder `config/` pada proyek Laravel memakai pola ini.
 
 ### Keamanan: jangan memuat jalur dari pengguna
 
-```php
+```php-inline
 include $_GET["halaman"] . ".php";   // BERBAHAYA
 ```
 
 Penyerang dapat memanipulasi nilai itu agar memuat berkas lain di server (*Local File
 Inclusion*). Jika harus memilih berkas berdasarkan input, cocokkan dengan **daftar putih**:
 
-```php
+```php-inline
 $boleh = ["beranda", "tentang"];
 $halaman = $_GET["halaman"] ?? "beranda";
 
@@ -119,7 +119,7 @@ Semua berkas dibuat di folder `belajar-php`.
 
 Buat folder `layout` dan dua berkas di dalamnya:
 
-```php title="belajar-php/layout/header.php"
+```html+php title="belajar-php/layout/header.php"
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -134,7 +134,7 @@ Buat folder `layout` dan dua berkas di dalamnya:
     <main>
 ```
 
-```php title="belajar-php/layout/footer.php"
+```html+php title="belajar-php/layout/footer.php"
     </main>
     <footer>
         <p>&copy; <?= date("Y") ?> Situs Latihan</p>
