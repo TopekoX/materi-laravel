@@ -5,7 +5,8 @@ berurutan, dari dasar web dan PHP sampai arsitektur profesional. Versi framework
 
 !!! info "Status"
     Bab utama pertama sudah memiliki draf untuk seluruh 24 sub bab beserta proyek praktiknya,
-    dan bab utama kedua juga sudah memiliki 15 sub bab beserta proyek praktiknya. Belum ada sub bab yang berstatus VERIFIED.
+    dan bab utama kedua juga sudah memiliki 15 sub bab beserta proyek praktiknya,
+    dan bab utama ketiga memiliki 20 sub bab (lengkap, beserta proyek praktik). Belum ada sub bab yang berstatus VERIFIED.
     Bab utama lain masih **NOT_STARTED**. Status diperbarui hanya setelah file benar-benar ada dan memenuhi
     kriteria penyelesaiannya. Judul mengikuti dokumen kurikulum.
 
@@ -15,7 +16,7 @@ berurutan, dari dasar web dan PHP sampai arsitektur profesional. Versi framework
 |---|---|---|---|
 | Web Development and PHP Fundamentals | Beginner | 24 | DRAFT (24 dari 24 sub bab) |
 | Introduction to Laravel | Beginner | 15 | DRAFT (15 dari 15 sub bab) |
-| Routing, Controller, and Request Handling | Beginner | 20 | NOT_STARTED |
+| Routing, Controller, and Request Handling | Beginner | 20 | DRAFT (20 dari 20 sub bab) |
 | Blade Template and Frontend Integration | Beginner | 18 | NOT_STARTED |
 | Database and Eloquent ORM | Beginner–Intermediate | 28 | NOT_STARTED |
 | Form Validation, Authentication, and Security | Intermediate | 25 | NOT_STARTED |

@@ -96,6 +96,29 @@ nav:
       - Gambaran Service Container: level-01/01-14-service-container-overview.md
       - Konfigurasi Aplikasi: level-01/01-15-application-configuration.md
       - Proyek Aplikasi Laravel Pertama: level-01/proyek-aplikasi-pertama.md
+  - Routing, Controller, dan Request Handling:
+      - level-02/index.md
+      - Pengantar Routing: level-02/02-01-introduction-to-routing.md
+      - Routing Dasar: level-02/02-02-basic-routing.md
+      - Parameter Route: level-02/02-03-route-parameters.md
+      - Parameter Route Opsional: level-02/02-04-optional-route-parameters.md
+      - Named Route: level-02/02-05-named-routes.md
+      - Grup Route: level-02/02-06-route-groups.md
+      - Prefix Route: level-02/02-07-route-prefix.md
+      - Middleware Route: level-02/02-08-route-middleware.md
+      - Batasan Route: level-02/02-09-route-constraints.md
+      - Route Model Binding: level-02/02-10-route-model-binding.md
+      - Pengantar Controller: level-02/02-11-introduction-to-controllers.md
+      - Membuat Controller: level-02/02-12-creating-controllers.md
+      - Resource Controller: level-02/02-13-resource-controllers.md
+      - Single Action Controller: level-02/02-14-single-action-controllers.md
+      - Objek Request: level-02/02-15-request-object.md
+      - Objek Response: level-02/02-16-response-object.md
+      - Redirect Response: level-02/02-17-redirect-response.md
+      - JSON Response: level-02/02-18-json-response.md
+      - Response Unduh Berkas: level-02/02-19-file-download-response.md
+      - Penanganan Error dan HTTP Status Code: level-02/02-20-error-handling-and-http-status-codes.md
+      - Proyek Routing dan Controller Artikel: level-02/proyek-routing-controller-artikel.md
 
 # Halaman template yang disimpan tetapi disembunyikan dari navigasi.
 not_in_nav: |
