@@ -78,6 +78,24 @@ nav:
       - Composer dan Manajemen Paket: level-00/00-23-composer-and-package-management.md
       - Dasar Git dan GitHub: level-00/00-24-git-and-github-fundamentals.md
       - Proyek Sistem Manajemen Siswa: level-00/proyek-sistem-siswa.md
+  - Pengantar Laravel:
+      - level-01/index.md
+      - Mengenal Laravel: level-01/01-01-introduction-to-laravel.md
+      - Mengapa Menggunakan Laravel?: level-01/01-02-why-use-laravel.md
+      - Arsitektur MVC: level-01/01-03-mvc-architecture.md
+      - Laravel dibanding PHP Native: level-01/01-04-laravel-vs-php-native.md
+      - Persyaratan Sistem Laravel: level-01/01-05-laravel-system-requirements.md
+      - Memasang Laravel: level-01/01-06-installing-laravel.md
+      - Membuat Proyek Laravel: level-01/01-07-creating-laravel-project.md
+      - Menjalankan Development Server: level-01/01-08-running-development-server.md
+      - Struktur Direktori Laravel: level-01/01-09-laravel-directory-structure.md
+      - Konfigurasi Laravel: level-01/01-10-laravel-configuration.md
+      - Environment Variables: level-01/01-11-environment-variables.md
+      - Artisan CLI: level-01/01-12-artisan-cli.md
+      - Request Lifecycle: level-01/01-13-request-lifecycle.md
+      - Gambaran Service Container: level-01/01-14-service-container-overview.md
+      - Konfigurasi Aplikasi: level-01/01-15-application-configuration.md
+      - Proyek Aplikasi Laravel Pertama: level-01/proyek-aplikasi-pertama.md
 
 # Halaman template yang disimpan tetapi disembunyikan dari navigasi.
 not_in_nav: |

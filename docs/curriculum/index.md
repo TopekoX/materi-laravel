@@ -4,9 +4,9 @@ Kurikulum ini mengikuti `CURRICULUM.md`: **12 bab utama** dan **235 sub bab** ya
 berurutan, dari dasar web dan PHP sampai arsitektur profesional. Versi framework: **Laravel 13.x**.
 
 !!! info "Status"
-    Bab utama pertama sudah memiliki draf untuk seluruh 24 sub bab; proyek praktiknya
-    belum dikerjakan, dan belum ada sub bab yang berstatus VERIFIED. Bab utama lain masih
-    **NOT_STARTED**. Status diperbarui hanya setelah file benar-benar ada dan memenuhi
+    Bab utama pertama sudah memiliki draf untuk seluruh 24 sub bab beserta proyek praktiknya,
+    dan bab utama kedua juga sudah memiliki 15 sub bab beserta proyek praktiknya. Belum ada sub bab yang berstatus VERIFIED.
+    Bab utama lain masih **NOT_STARTED**. Status diperbarui hanya setelah file benar-benar ada dan memenuhi
     kriteria penyelesaiannya. Judul mengikuti dokumen kurikulum.
 
 ## Ringkasan
@@ -14,7 +14,7 @@ berurutan, dari dasar web dan PHP sampai arsitektur profesional. Versi framework
 | Bab utama | Tingkat | Sub bab | Status |
 |---|---|---|---|
 | Web Development and PHP Fundamentals | Beginner | 24 | DRAFT (24 dari 24 sub bab) |
-| Introduction to Laravel | Beginner | 15 | NOT_STARTED |
+| Introduction to Laravel | Beginner | 15 | DRAFT (15 dari 15 sub bab) |
 | Routing, Controller, and Request Handling | Beginner | 20 | NOT_STARTED |
 | Blade Template and Frontend Integration | Beginner | 18 | NOT_STARTED |
 | Database and Eloquent ORM | Beginner–Intermediate | 28 | NOT_STARTED |
