@@ -88,9 +88,9 @@ Form HTML hanya mengenal `GET` dan `POST`, jadi butuh `_method`. Klien API dapat
 
 ```mermaid
 flowchart LR
-    C["curl -X PATCH /articles/5 -d '{\"title\":\"Baru\"}'"] --> R["Route PATCH → update()"]
+    C["curl -X PATCH /articles/5 dengan body JSON title Baru"] --> R["Route PATCH ke update"]
     R --> V["Validasi: sometimes"]
-    V --> U["Model::update(['title'=>'Baru'])"]
+    V --> U["Model update title menjadi Baru"]
     U --> S["200 + JSON artikel"]
 ```
 
