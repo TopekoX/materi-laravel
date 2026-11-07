@@ -119,6 +119,209 @@ nav:
       - Response Unduh Berkas: level-02/02-19-file-download-response.md
       - Penanganan Error dan HTTP Status Code: level-02/02-20-error-handling-and-http-status-codes.md
       - Proyek Routing dan Controller Artikel: level-02/proyek-routing-controller-artikel.md
+  - Blade dan Integrasi Frontend:
+      - level-03/index.md
+      - Pengantar Blade: level-03/03-01-introduction-to-blade.md
+      - Sintaks Blade: level-03/03-02-blade-syntax.md
+      - Menampilkan Data: level-03/03-03-displaying-data.md
+      - Direktif Kondisional: level-03/03-04-conditional-directives.md
+      - Direktif Perulangan: level-03/03-05-loop-directives.md
+      - Layout Blade: level-03/03-06-blade-layouts.md
+      - Pewarisan Template: level-03/03-07-template-inheritance.md
+      - Komponen Blade: level-03/03-08-blade-components.md
+      - Komponen Anonim: level-03/03-09-anonymous-components.md
+      - Mengirim Data ke Komponen: level-03/03-10-passing-data-to-components.md
+      - Blade Include: level-03/03-11-blade-include.md
+      - Form Blade: level-03/03-12-blade-forms.md
+      - Method Spoofing Form: level-03/03-13-form-method-spoofing.md
+      - Proteksi CSRF: level-03/03-14-csrf-protection.md
+      - Pesan Error Form: level-03/03-15-form-error-messages.md
+      - Manajemen Aset: level-03/03-16-asset-management.md
+      - Integrasi Vite: level-03/03-17-vite-integration.md
+      - Integrasi CSS dan JavaScript: level-03/03-18-css-javascript-integration.md
+      - Proyek Admin Dashboard dengan Blade: level-03/proyek-admin-dashboard.md
+  - Database dan Eloquent ORM:
+      - level-04/index.md
+      - Pengantar Database: level-04/04-01-introduction-to-databases.md
+      - Dasar Database Relasional: level-04/04-02-relational-database-fundamentals.md
+      - Instalasi dan Konfigurasi MySQL: level-04/04-03-mysql-installation-and-configuration.md
+      - Koneksi Database: level-04/04-04-database-connection.md
+      - Migration Database: level-04/04-05-database-migration.md
+      - Membuat Migration: level-04/04-06-creating-migrations.md
+      - Tipe Kolom Database: level-04/04-07-database-column-types.md
+      - Mengubah Tabel Database: level-04/04-08-modifying-database-tables.md
+      - Rollback dan Refresh Migration: level-04/04-09-migration-rollback-and-refresh.md
+      - Seeder Database: level-04/04-10-database-seeder.md
+      - Model Factory: level-04/04-11-model-factories.md
+      - Pengantar Eloquent ORM: level-04/04-12-introduction-to-eloquent-orm.md
+      - Membuat Model: level-04/04-13-creating-models.md
+      - Operasi CRUD: level-04/04-14-crud-operations.md
+      - Query Builder: level-04/04-15-query-builder.md
+      - Query Eloquent: level-04/04-16-eloquent-queries.md
+      - Kunci Utama dan Kunci Asing: level-04/04-17-primary-keys-and-foreign-keys.md
+      - Relasi Satu-ke-Satu: level-04/04-18-one-to-one-relationships.md
+      - Relasi Satu-ke-Banyak: level-04/04-19-one-to-many-relationships.md
+      - Relasi Banyak-ke-Banyak: level-04/04-20-many-to-many-relationships.md
+      - Has One Through dan Has Many Through: level-04/04-21-has-one-through-and-has-many-through.md
+      - Relasi Polimorfik: level-04/04-22-polymorphic-relationships.md
+      - Eager Loading: level-04/04-23-eager-loading.md
+      - Masalah N+1 Query: level-04/04-24-n-plus-one-query-problem.md
+      - Paginasi: level-04/04-25-pagination.md
+      - Transaksi Database: level-04/04-26-database-transactions.md
+      - Soft Delete: level-04/04-27-soft-deletes.md
+      - Event Model dan Observer: level-04/04-28-model-events-and-observers.md
+      - Proyek Sistem Manajemen Artikel: level-04/proyek-sistem-manajemen-artikel.md
+  - Validasi, Autentikasi, dan Keamanan:
+      - level-05/index.md
+      - Pengantar Validasi Form: level-05/05-01-introduction-to-form-validation.md
+      - Validasi Dasar: level-05/05-02-basic-validation.md
+      - Aturan Validasi: level-05/05-03-validation-rules.md
+      - Pesan Validasi Kustom: level-05/05-04-custom-validation-messages.md
+      - Validasi dengan Form Request: level-05/05-05-form-request-validation.md
+      - Validasi Bersyarat: level-05/05-06-conditional-validation.md
+      - Validasi Unggah Berkas: level-05/05-07-file-upload-validation.md
+      - Pengantar Autentikasi: level-05/05-08-introduction-to-authentication.md
+      - Autentikasi Laravel: level-05/05-09-laravel-authentication.md
+      - Login dan Logout: level-05/05-10-login-and-logout.md
+      - Registrasi Pengguna: level-05/05-11-user-registration.md
+      - Hashing Kata Sandi: level-05/05-12-password-hashing.md
+      - Reset Kata Sandi: level-05/05-13-password-reset.md
+      - Verifikasi Email: level-05/05-14-email-verification.md
+      - Middleware Autentikasi: level-05/05-15-authentication-middleware.md
+      - Otorisasi: level-05/05-16-authorization.md
+      - Gate: level-05/05-17-gates.md
+      - Policy: level-05/05-18-policies.md
+      - Role-Based Access Control: level-05/05-19-role-based-access-control.md
+      - Perlindungan CSRF: level-05/05-20-csrf-protection.md
+      - Pencegahan XSS: level-05/05-21-xss-prevention.md
+      - Pencegahan SQL Injection: level-05/05-22-sql-injection-prevention.md
+      - Perlindungan Mass Assignment: level-05/05-23-mass-assignment-protection.md
+      - Pembatasan Laju (Rate Limiting): level-05/05-24-rate-limiting.md
+      - Unggah Berkas yang Aman: level-05/05-25-secure-file-upload.md
+      - Proyek Dashboard Manajemen Artikel Berbasis Peran: level-05/proyek-dashboard-artikel-berbasis-peran.md
+  - Pengembangan REST API:
+      - level-06/index.md
+      - Pengantar REST API: level-06/06-01-introduction-to-rest-api.md
+      - Arsitektur REST: level-06/06-02-rest-architecture.md
+      - Metode HTTP: level-06/06-03-http-methods.md
+      - Kode Status HTTP: level-06/06-04-http-status-codes.md
+      - Format Data JSON: level-06/06-05-json-data-format.md
+      - Routing API: level-06/06-06-api-routing.md
+      - Controller API: level-06/06-07-api-controllers.md
+      - Controller Resource API: level-06/06-08-api-resource-controllers.md
+      - Transformasi API Resource: level-06/06-09-api-resource-transformation.md
+      - Validasi Request API: level-06/06-10-api-request-validation.md
+      - Penanganan Error API: level-06/06-11-api-error-handling.md
+      - Paginasi API: level-06/06-12-api-pagination.md
+      - Penyaringan dan Pencarian API: level-06/06-13-api-filtering-and-searching.md
+      - Autentikasi API: level-06/06-14-api-authentication.md
+      - Laravel Sanctum: level-06/06-15-laravel-sanctum.md
+      - Autentikasi Berbasis Token: level-06/06-16-token-based-authentication.md
+      - Otorisasi API: level-06/06-17-api-authorization.md
+      - Pembatasan Laju API: level-06/06-18-api-rate-limiting.md
+      - Konsep Versi API: level-06/06-19-api-versioning-concepts.md
+      - Dokumentasi API: level-06/06-20-api-documentation.md
+      - Pengujian API dengan Postman: level-06/06-21-api-testing-with-postman.md
+      - Integrasi API dengan Frontend: level-06/06-22-frontend-api-integration.md
+      - Proyek REST API Artikel: level-06/proyek-rest-api-artikel.md
+  - Fitur Laravel Lanjutan:
+      - level-07/index.md
+      - Service Container: level-07/07-01-service-container.md
+      - Service Providers: level-07/07-02-service-providers.md
+      - Dependency Injection: level-07/07-03-dependency-injection.md
+      - Contracts dan Interface: level-07/07-04-contracts-and-interfaces.md
+      - Facades: level-07/07-05-facades.md
+      - Repository Pattern: level-07/07-06-repository-pattern.md
+      - Service Layer Pattern: level-07/07-07-service-layer-pattern.md
+      - Events dan Listeners: level-07/07-08-events-and-listeners.md
+      - Jobs dan Queues: level-07/07-09-jobs-and-queues.md
+      - Queue Workers: level-07/07-10-queue-workers.md
+      - Task Scheduling: level-07/07-11-task-scheduling.md
+      - Cache Management: level-07/07-12-cache-management.md
+      - Redis Integration: level-07/07-13-redis-integration.md
+      - Mail Configuration: level-07/07-14-mail-configuration.md
+      - Notifications: level-07/07-15-notifications.md
+      - File Storage: level-07/07-16-file-storage.md
+      - Laravel Filesystem: level-07/07-17-laravel-filesystem.md
+      - Logging: level-07/07-18-logging.md
+      - Broadcasting: level-07/07-19-broadcasting.md
+      - Real-Time Events: level-07/07-20-real-time-events.md
+      - Localization dan Translation: level-07/07-21-localization-and-translation.md
+      - Proyek Email dan Notifikasi Latar Belakang: level-07/proyek-email-notifikasi-latar-belakang.md
+  - Pengujian Laravel:
+      - level-08/index.md
+      - Pengantar Software Testing: level-08/08-01-introduction-to-software-testing.md
+      - Dasar Pengujian: level-08/08-02-testing-fundamentals.md
+      - PHPUnit dan Pest: level-08/08-03-phpunit-and-pest.md
+      - Unit Testing: level-08/08-04-unit-testing.md
+      - Feature Testing: level-08/08-05-feature-testing.md
+      - HTTP Testing: level-08/08-06-http-testing.md
+      - Database Testing: level-08/08-07-database-testing.md
+      - Authentication Testing: level-08/08-08-authentication-testing.md
+      - Authorization Testing: level-08/08-09-authorization-testing.md
+      - API Testing: level-08/08-10-api-testing.md
+      - Mocking: level-08/08-11-mocking.md
+      - Factories in Testing: level-08/08-12-factories-in-testing.md
+      - Test Coverage: level-08/08-13-test-coverage.md
+      - Debugging dan Diagnosis Error: level-08/08-14-debugging-and-error-diagnosis.md
+      - Proyek Pengujian Otomatis Artikel: level-08/proyek-pengujian-otomatis-artikel.md
+  - Performa dan Skalabilitas:
+      - level-09/index.md
+      - Dasar-dasar Performa: level-09/09-01-performance-fundamentals.md
+      - Optimasi Performa Laravel: level-09/09-02-laravel-performance-optimization.md
+      - Optimasi Query Database: level-09/09-03-database-query-optimization.md
+      - Database Indexing: level-09/09-04-database-indexing.md
+      - Eloquent Optimization: level-09/09-05-eloquent-optimization.md
+      - Lazy Loading vs Eager Loading: level-09/09-06-lazy-loading-vs-eager-loading.md
+      - Redis Cache: level-09/09-07-redis-cache.md
+      - HTTP Caching: level-09/09-08-http-caching.md
+      - Queue Optimization: level-09/09-09-queue-optimization.md
+      - Session Management: level-09/09-10-session-management.md
+      - Laravel Octane: level-09/09-11-laravel-octane.md
+      - Profiling dan Monitoring: level-09/09-12-profiling-and-monitoring.md
+      - Application Scalability: level-09/09-13-application-scalability.md
+      - Proyek Optimasi Performa Artikel: level-09/proyek-optimasi-performa-artikel.md
+  - Deployment dan DevOps:
+      - level-10/index.md
+      - Production Environment: level-10/10-01-production-environment.md
+      - Linux Server Fundamentals: level-10/10-02-linux-server-fundamentals.md
+      - VPS Preparation: level-10/10-03-vps-preparation.md
+      - Nginx Configuration: level-10/10-04-nginx-configuration.md
+      - PHP-FPM: level-10/10-05-php-fpm.md
+      - MySQL Production Configuration: level-10/10-06-mysql-production-configuration.md
+      - Environment Configuration: level-10/10-07-environment-configuration.md
+      - Laravel Deployment: level-10/10-08-laravel-deployment.md
+      - File Permissions: level-10/10-09-file-permissions.md
+      - Queue Workers with Supervisor: level-10/10-10-queue-workers-with-supervisor.md
+      - Scheduler Configuration: level-10/10-11-scheduler-configuration.md
+      - SSL dan HTTPS: level-10/10-12-ssl-and-https.md
+      - Docker Fundamentals: level-10/10-13-docker-fundamentals.md
+      - Dockerfile for Laravel: level-10/10-14-dockerfile-for-laravel.md
+      - Docker Compose: level-10/10-15-docker-compose.md
+      - CI/CD Fundamentals: level-10/10-16-ci-cd-fundamentals.md
+      - GitHub Actions: level-10/10-17-github-actions.md
+      - Application Backup: level-10/10-18-application-backup.md
+      - Production Monitoring: level-10/10-19-production-monitoring.md
+      - Deployment Troubleshooting: level-10/10-20-deployment-troubleshooting.md
+      - Proyek Deploy ke VPS: level-10/proyek-deploy-vps-nginx-php-fpm-mysql-docker.md
+  - Arsitektur Laravel Profesional:
+      - level-11/index.md
+      - Dasar Arsitektur Perangkat Lunak: level-11/11-01-software-architecture-fundamentals.md
+      - Clean Code: level-11/11-02-clean-code.md
+      - SOLID Principles: level-11/11-03-solid-principles.md
+      - Design Patterns: level-11/11-04-design-patterns.md
+      - Modular Application Architecture: level-11/11-05-modular-application-architecture.md
+      - Domain-Driven Design Fundamentals: level-11/11-06-domain-driven-design-fundamentals.md
+      - Laravel Package Development: level-11/11-07-laravel-package-development.md
+      - Custom Artisan Commands: level-11/11-08-custom-artisan-commands.md
+      - Custom Middleware: level-11/11-09-custom-middleware.md
+      - Multi-Tenancy Concepts: level-11/11-10-multi-tenancy-concepts.md
+      - Event-Driven Architecture: level-11/11-11-event-driven-architecture.md
+      - Microservices Fundamentals: level-11/11-12-microservices-fundamentals.md
+      - Integration with External Services: level-11/11-13-integration-with-external-services.md
+      - API Gateway Concepts: level-11/11-14-api-gateway-concepts.md
+      - Laravel Application Architecture Review: level-11/11-15-laravel-application-architecture-review.md
+      - Proyek Modular Enterprise: level-11/proyek-modular-enterprise.md
 
 # Halaman template yang disimpan tetapi disembunyikan dari navigasi.
 not_in_nav: |

@@ -653,18 +653,20 @@ Use these statuses:
 
 | Level | Status |
 |---|---|
-| Level 00 | NOT_STARTED |
-| Level 01 | NOT_STARTED |
-| Level 02 | NOT_STARTED |
-| Level 03 | NOT_STARTED |
-| Level 04 | NOT_STARTED |
-| Level 05 | NOT_STARTED |
-| Level 06 | NOT_STARTED |
-| Level 07 | NOT_STARTED |
-| Level 08 | NOT_STARTED |
-| Level 09 | NOT_STARTED |
-| Level 10 | NOT_STARTED |
-| Level 11 | NOT_STARTED |
+| Level 00 | VERIFIED |
+| Level 01 | VERIFIED |
+| Level 02 | VERIFIED |
+| Level 03 | VERIFIED |
+| Level 04 | VERIFIED |
+| Level 05 | VERIFIED |
+| Level 06 | VERIFIED |
+| Level 07 | VERIFIED |
+| Level 08 | VERIFIED |
+| Level 09 | VERIFIED |
+| Level 10 | VERIFIED |
+| Level 11 | VERIFIED |
+
+Catatan: semua level berstatus VERIFIED atas persetujuan pemilik (belum PUBLISHED). Level 10 belum diuji pada server nyata; kode PHP pada Level 03–11 belum dijalankan oleh penulis.
 
 Update progress only after checking the actual files and their completion criteria.
 
