@@ -89,7 +89,7 @@ Menurut dokumentasi, Laravel secara otomatis menemukan listener dengan memindai 
 
 Di `ArticlePublisher`, setelah penyimpanan berhasil:
 
-```php
+```php-inline
 ArticlePublished::dispatch($article);
 ```
 
@@ -99,7 +99,7 @@ ArticlePublished::dispatch($article);
 
 Menambahkan `implements ShouldQueue` pada listener membuatnya dijalankan oleh queue worker, bukan di request (dibahas di bab Jobs dan Queues):
 
-```php
+```php-inline
 class KirimNotifikasiArtikel implements ShouldQueue
 ```
 

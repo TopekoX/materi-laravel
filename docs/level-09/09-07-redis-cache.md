@@ -35,7 +35,7 @@ Beranda menampilkan "10 artikel terpopuler minggu ini". Query-nya menggabungkan 
 
 ### Pola cache-aside
 
-```php
+```php-inline
 $populer = Cache::remember('articles:popular:week', now()->plus(minutes: 5), function () {
     return Article::published()
         ->select(['id', 'title', 'slug'])
@@ -51,7 +51,7 @@ Aplikasi memeriksa cache, bila miss menghitung dan menyimpan. Simpan data minima
 
 Cache tags (`Cache::tags(['articles'])->remember(...)`, lalu `Cache::tags('articles')->flush()`) memudahkan invalidasi kelompok. Menurut dokumentasi, tags **tidak** didukung driver `file`, `dynamodb`, atau `database`; Redis mendukungnya. Alternatif tanpa tags: **kunci berversi**:
 
-```php
+```php-inline
 $versi = Cache::get('articles:version', 1);
 $kunci = "articles:list:v{$versi}:page:{$halaman}";
 // saat artikel berubah: Cache::increment('articles:version');
@@ -63,7 +63,7 @@ Kunci lama kedaluwarsa sendiri lewat TTL. Pola ini mencegah `flush()` yang mengh
 
 Saat cache populer kedaluwarsa, ratusan permintaan menghitung ulang serentak. Solusi:
 
-```php
+```php-inline
 // 1) Lock
 $data = Cache::lock('lock:popular', 10)->block(5, function () {
     return Cache::remember('articles:popular:week', 300, fn () => hitungPopuler());

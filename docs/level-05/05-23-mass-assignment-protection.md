@@ -41,7 +41,7 @@ diam-diam (kecuali kamu mengaktifkan pengecualian).
 
 ### Allow-list sempit
 
-```php
+```php-inline
 #[Fillable(['name', 'email', 'password'])]
 class User extends Authenticatable { /* ... */ }
 ```
@@ -77,7 +77,7 @@ $user->save();
 
 4. **Deteksi dini**: di `AppServiceProvider::boot()`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Model;
 
 Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());

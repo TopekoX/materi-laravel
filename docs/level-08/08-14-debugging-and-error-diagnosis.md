@@ -47,7 +47,7 @@ Halaman galat Laravel (saat `APP_DEBUG=true` di lokal) menampilkan: kelas pengec
 
 ### Alat investigasi
 
-```php
+```php-inline
 dump($variabel);          // cetak lalu lanjut
 dd($variabel);            // cetak lalu berhenti
 logger()->debug('titik A', ['id' => $id]);   // ke log
@@ -64,7 +64,7 @@ Log (`storage/logs/laravel.log`) menyimpan jejak galat 500. Hapus semua `dump`/`
 
 ### Dalam uji
 
-```php
+```php-inline
 $this->withoutExceptionHandling();   // melihat pengecualian asli, bukan halaman 500
 $response->dump();                    // isi respons
 $response->dumpSession();
@@ -76,7 +76,7 @@ Jika uji gagal, pertanyaan pertama: *apakah uji salah atau kode salah?* Periksa 
 
 Bug "menerbitkan artikel tanpa kategori memicu 500":
 
-```php
+```php-inline
 public function test_can_publish_article_without_category(): void
 {
     $penulis = User::factory()->create();
@@ -142,7 +142,7 @@ Temukan frame pertama di `resources/views/...` dan baris tepatnya.
 
 ### Langkah 4: tulis uji regresi
 
-```php
+```php-inline
 public function test_article_without_category_renders(): void
 {
     $artikel = Article::factory()->published()->create(['category_id' => null]);

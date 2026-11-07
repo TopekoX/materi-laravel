@@ -18,7 +18,7 @@
 
 Perhatikan dua gaya berikut.
 
-```php
+```php-inline
 // Tanpa DI: terikat pada implementasi tertentu
 class LaporanController
 {
@@ -36,7 +36,7 @@ Untuk menguji tanpa mengirim email sungguhan, kamu harus mengubah kode. Dengan D
 
 ### Injeksi constructor
 
-```php
+```php-inline
 class LaporanController
 {
     public function __construct(private PengirimPesan $pengirim) {}
@@ -56,7 +56,7 @@ Container melihat type-hint `PengirimPesan`, mencari binding-nya (bab sebelumnya
 
 Parameter method controller (selain parameter route) juga disuntik:
 
-```php
+```php-inline
 public function store(StoreArticleRequest $request, PengirimPesan $pengirim)
 ```
 
@@ -75,7 +75,7 @@ Gunakan injeksi method bila ketergantungan hanya dipakai satu method.
 
 Bila dua class membutuhkan implementasi berbeda untuk interface yang sama:
 
-```php
+```php-inline
 $this->app->when(LaporanController::class)
     ->needs(PengirimPesan::class)
     ->give(PengirimLog::class);

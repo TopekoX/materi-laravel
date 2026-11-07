@@ -41,7 +41,7 @@ Format `throttle:maks,menit`. Batas dihitung per pengguna (bila masuk) atau per 
 
 Definisikan di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -89,7 +89,7 @@ Hitung hanya kegagalan dan reset saat sukses:
 
 File: `app/Http/Controllers/Auth/AuthenticatedSessionController.php` (ubah `store`)
 
-```php
+```php-inline
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 

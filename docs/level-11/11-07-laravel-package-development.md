@@ -147,7 +147,7 @@ Composer membuat symlink ke folder package sehingga perubahan langsung terlihat.
 
 ### Pemakaian
 
-```php
+```php-inline
 use Acme\ReadingTime\ReadingTime;
 
 $menit = app(ReadingTime::class)->minutes($article->body);

@@ -79,7 +79,7 @@ Pilih `assertSame` secara bawaan agar perbedaan tipe (`"1"` vs `1`) tidak lolos.
 
 ### Banyak kasus: data provider
 
-```php
+```php-inline
 use PHPUnit\Framework\Attributes\DataProvider;
 
 #[DataProvider('contohJudul')]

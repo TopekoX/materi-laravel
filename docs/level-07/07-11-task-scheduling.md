@@ -53,7 +53,7 @@ Schedule::call(function () {
 
 ### Pembatasan
 
-```php
+```php-inline
 Schedule::command('laporan:buat')
     ->daily()
     ->withoutOverlapping()   // jangan jalan bila run sebelumnya belum selesai

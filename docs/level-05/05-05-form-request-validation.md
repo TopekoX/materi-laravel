@@ -138,7 +138,7 @@ Dokumentasi 13.x menyediakan atribut pada kelas Form Request:
 
 Untuk form ubah, aturan `unique` perlu mengabaikan data sendiri. Ambil model dari route:
 
-```php
+```php-inline
 public function rules(): array
 {
     $article = $this->route('article');

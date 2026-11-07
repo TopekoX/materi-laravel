@@ -71,7 +71,7 @@ Pisahkan berkas rute per versi agar mudah dibaca. Gunakan kembali logika bersama
 
 ### Contoh `v2`
 
-```php
+```php-inline
 // app/Http/Resources/V2/ArticleResource.php
 public function toArray(Request $request): array
 {
@@ -94,7 +94,7 @@ public function toArray(Request $request): array
 
 Tambahkan header pada respons `v1` setelah `v2` rilis:
 
-```php
+```php-inline
 $response->headers->set('Deprecation', 'true');
 $response->headers->set('Sunset', 'Sat, 31 Oct 2027 00:00:00 GMT');
 $response->headers->set('Link', '</api/v2/articles>; rel="successor-version"');

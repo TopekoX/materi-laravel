@@ -28,7 +28,7 @@ Misalkan `ArticleController` membutuhkan `ArticleStatsService`, dan service itu 
 
 Container adalah "pabrik" objek yang tahu cara membuat class beserta ketergantungannya. Menurut dokumentasi, jika sebuah class tidak punya ketergantungan atau hanya bergantung pada class konkret lain, container dapat meresolusinya **tanpa konfigurasi** lewat refleksi type-hint di constructor.
 
-```php
+```php-inline
 class ArticleStatsService
 {
     public function __construct(private ArticleRepositoryContoh $repo) {}
@@ -50,13 +50,13 @@ Binding diperlukan bila container tidak bisa menebak, misalnya untuk **interface
 
 Binding biasanya didaftarkan di `register()` pada service provider (bab berikutnya):
 
-```php
+```php-inline
 $this->app->singleton(Penghitung::class, fn () => new Penghitung());
 ```
 
 ### Mengikat interface
 
-```php
+```php-inline
 $this->app->bind(PengirimPesan::class, PengirimEmail::class);
 ```
 
@@ -145,7 +145,7 @@ Tanpa binding, `$a` dan `$b` adalah dua objek berbeda.
 
 Di `AppServiceProvider::register()`:
 
-```php
+```php-inline
 $this->app->singleton(\App\Services\Penghitung::class);
 ```
 

@@ -31,7 +31,7 @@ punya nilai. Skenario ini mewakili masalah nyata di produksi, tempat tabel beris
 
 Nama migration `add_..._to_articles_table` membuat kerangka `Schema::table`:
 
-```php
+```php-inline
 public function up(): void
 {
     Schema::table('articles', function (Blueprint $table) {
@@ -61,7 +61,7 @@ public function down(): void
 `change()` mengubah tipe atau atribut kolom yang sudah ada. Dokumentasi menekankan: saat mengubah kolom, kamu harus **menulis ulang semua pengubah** yang ingin dipertahankan;
 pengubah yang tidak ditulis akan hilang.
 
-```php
+```php-inline
 // Memperpanjang judul dari 255 ke 200? Contoh ini mempersempit; lihat peringatan data di bawah.
 $table->string('title', 200)->change();
 
@@ -73,7 +73,7 @@ $table->string('summary', 300)->nullable()->change();
 
 ### Mengganti nama dan menghapus kolom
 
-```php
+```php-inline
 $table->renameColumn('summary', 'excerpt');   // ganti nama
 $table->dropColumn('excerpt');                // hapus satu kolom
 $table->dropColumn(['views', 'rating']);      // hapus beberapa kolom
@@ -83,7 +83,7 @@ Dokumentasi juga menyediakan jalan pintas seperti `dropTimestamps()`, `dropSoftD
 
 ### Mengganti nama dan menghapus tabel
 
-```php
+```php-inline
 Schema::rename('articles', 'posts');
 Schema::dropIfExists('type_demos');
 ```

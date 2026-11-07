@@ -138,7 +138,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Pembatas login (di `AppServiceProvider::boot()`):
 
-```php
+```php-inline
 RateLimiter::for('api-login', function (Request $request) {
     return [
         Limit::perMinute(20)->by($request->ip()),
@@ -151,7 +151,7 @@ RateLimiter::for('api-login', function (Request $request) {
 
 Pada `StoreArticleRequest` hapus aturan `user_id`. Pada controller:
 
-```php
+```php-inline
 $article->user()->associate($request->user());
 ```
 

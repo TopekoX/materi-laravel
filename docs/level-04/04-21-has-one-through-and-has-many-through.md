@@ -42,7 +42,7 @@ erDiagram
 
 File: `app/Models/Category.php` (tambahkan)
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 public function comments(): HasManyThrough
@@ -77,7 +77,7 @@ Category::withCount('comments')->get();    // jumlah komentar per kategori
 `hasOneThrough` serupa tetapi mengembalikan **satu** model. Contoh dari dokumentasi: `Mechanic` → `Car` → `Owner`, yaitu setiap mekanik menangani satu mobil dan setiap
 mobil memiliki satu pemilik, sehingga pemilik mobil yang ditangani seorang mekanik dapat diambil langsung:
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 // Di model Mechanic
@@ -94,7 +94,7 @@ untuk proyek ini adalah `hasManyThrough`.
 
 Dokumentasi 13.x memperlihatkan alternatif ketika relasi perantara sudah didefinisikan:
 
-```php
+```php-inline
 // Category sudah punya articles(); Article sudah punya comments()
 public function comments(): HasManyThrough
 {

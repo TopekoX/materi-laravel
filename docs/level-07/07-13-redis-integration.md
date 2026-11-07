@@ -67,7 +67,7 @@ Konfigurasi koneksi ada di `config/database.php` bagian `redis` (koneksi `defaul
 
 ### Facade `Redis`
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Redis;
 
 Redis::set('nama', 'Ani');

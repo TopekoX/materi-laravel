@@ -41,7 +41,7 @@ Konvensi ini mengikuti gaya yang umum pada API JSON. Kunci utamanya: **setiap pa
 
 ### Validasi parameter
 
-```php
+```php-inline
 // IndexArticleRequest::rules()
 return [
     'page' => ['sometimes', 'integer', 'min:1'],
@@ -59,7 +59,7 @@ return [
 
 ### Menerapkan di controller
 
-```php
+```php-inline
 public function index(IndexArticleRequest $request): AnonymousResourceCollection
 {
     $filter = $request->input('filter', []);

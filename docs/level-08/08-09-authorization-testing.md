@@ -35,7 +35,7 @@ Penulis A mengubah URL dari `/admin/artikel/3/ubah` menjadi `/admin/artikel/4/ub
 
 Karena Policy adalah class biasa, ia mudah diuji tanpa HTTP:
 
-```php
+```php-inline
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -61,7 +61,7 @@ class ArticlePolicyTest extends TestCase
 
 ### Menguji lewat HTTP
 
-```php
+```php-inline
 public function test_other_author_cannot_edit_article(): void
 {
     $pemilik = User::factory()->create();
@@ -84,7 +84,7 @@ Pernyataan terakhir penting: bukan hanya status 403, tetapi **data tidak berubah
 
 ### Matriks dengan data provider
 
-```php
+```php-inline
 use App\Enums\UserRole;
 use PHPUnit\Framework\Attributes\DataProvider;
 

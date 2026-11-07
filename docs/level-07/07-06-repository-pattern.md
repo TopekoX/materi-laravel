@@ -83,7 +83,7 @@ class EloquentArticleRepository implements ArticleRepository
 
 ### Binding
 
-```php
+```php-inline
 // app/Providers/RepositoryServiceProvider.php, di register()
 $this->app->bind(ArticleRepository::class, EloquentArticleRepository::class);
 ```
@@ -92,7 +92,7 @@ Daftarkan provider dengan `make:provider RepositoryServiceProvider`.
 
 ### Pemakaian
 
-```php
+```php-inline
 public function __construct(private ArticleRepository $articles) {}
 
 public function index()

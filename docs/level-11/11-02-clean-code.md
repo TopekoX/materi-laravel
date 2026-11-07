@@ -32,7 +32,7 @@ Metode `process()` sepanjang 120 baris dengan lima tingkat `if`. Tidak ada yang 
 
 ### Fungsi kecil, satu tujuan
 
-```php
+```php-inline
 // Sebelum
 public function publish(Article $a, User $u)
 {
@@ -48,7 +48,7 @@ public function publish(Article $a, User $u)
 }
 ```
 
-```php
+```php-inline
 // Sesudah
 public function publish(Article $article, User $actor): void
 {
@@ -75,7 +75,7 @@ private function ensurePublishable(Article $article): void
 
 ### Angka ajaib dan enum
 
-```php
+```php-inline
 private const MIN_BODY_LENGTH = 100;
 
 enum ArticleStatus: string
@@ -87,7 +87,7 @@ enum ArticleStatus: string
 
 `match` menggantikan `if/elseif` panjang dan memaksa semua kasus tertangani:
 
-```php
+```php-inline
 return match ($status) {
     ArticleStatus::Draft => 'Draf',
     ArticleStatus::Published => 'Terbit',
@@ -96,7 +96,7 @@ return match ($status) {
 
 ### Tipe, `readonly`, DTO
 
-```php
+```php-inline
 final readonly class PublishArticleData
 {
     public function __construct(

@@ -77,7 +77,7 @@ Menurut dokumentasi, trait `RefreshDatabase` tidak memigrasi ulang bila skema su
 
 Setiap fitur memiliki minimal tiga uji: jalur bahagia, validasi gagal, dan akses tak berhak. Contoh pembuatan komentar publik:
 
-```php
+```php-inline
 public function test_guest_can_post_comment(): void
 {
     $artikel = Article::factory()->published()->create();

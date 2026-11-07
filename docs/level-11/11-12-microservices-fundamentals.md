@@ -62,7 +62,7 @@ Tim mengusulkan memecah `cms-artikel` menjadi layanan Artikel, Komentar, Notifik
 
 Laravel menyediakan klien HTTP dengan timeout dan retry:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Http;
 
 $respons = Http::timeout(3)

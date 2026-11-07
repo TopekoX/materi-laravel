@@ -70,7 +70,7 @@ Tentukan target terukur, contoh: "halaman beranda p95 < 300 ms pada 50 permintaa
 
 Aplikasi dengan 10 baris data terasa cepat. Masalah muncul di 100.000 baris. Isi data uji besar dengan factory (di lingkungan lokal, bukan produksi).
 
-```php
+```php-inline
 // database/seeders/PerfSeeder.php (lokal saja)
 \App\Models\User::factory()->count(50)->create()->each(function ($u) {
     \App\Models\Article::factory()->for($u)->count(200)->published()->create();

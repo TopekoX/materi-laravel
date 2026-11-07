@@ -41,7 +41,7 @@ Atur lewat `SESSION_DRIVER` di `.env`. Skeleton Laravel terbaru memakai `databas
 
 ### Simpan seperlunya
 
-```php
+```php-inline
 // Buruk
 session(['keranjang' => $semuaProdukLengkap]);
 

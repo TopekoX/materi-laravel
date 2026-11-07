@@ -40,7 +40,7 @@ Buat glosarium: istilah, arti, konteks.
 
 ### Value Object
 
-```php
+```php-inline
 final readonly class Slug
 {
     private function __construct(public string $value) {}
@@ -63,7 +63,7 @@ Nilai selalu valid sejak dibuat (invarian terjaga); tidak ada string slug liar.
 
 Akar aggregate menjaga aturan: perubahan hanya lewat metode akar.
 
-```php
+```php-inline
 class Article extends Model
 {
     public function schedule(\DateTimeImmutable $at): void
@@ -92,7 +92,7 @@ Aturan "tidak boleh dijadwalkan di masa lalu" hidup **di satu tempat**, bukan di
 
 Use case mengorkestrasi: muat aggregate, panggil metode domain, simpan, publikasikan event.
 
-```php
+```php-inline
 class SchedulePublication
 {
     public function __construct(private ArticleRepository $articles) {}

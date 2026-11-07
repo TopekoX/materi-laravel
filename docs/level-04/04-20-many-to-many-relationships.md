@@ -51,7 +51,7 @@ php artisan make:migration create_article_tag_table
 
 File: `database/migrations/xxxx_create_tags_table.php` (isi `up()`)
 
-```php
+```php-inline
 Schema::create('tags', function (Blueprint $table) {
     $table->id();
     $table->string('name')->unique();
@@ -61,7 +61,7 @@ Schema::create('tags', function (Blueprint $table) {
 
 File: `database/migrations/xxxx_create_article_tag_table.php`
 
-```php
+```php-inline
 Schema::create('article_tag', function (Blueprint $table) {
     $table->foreignId('article_id')->constrained()->cascadeOnDelete();
     $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
@@ -80,7 +80,7 @@ Schema::create('article_tag', function (Blueprint $table) {
 
 File: `app/Models/Tag.php`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -98,7 +98,7 @@ class Tag extends Model
 
 File: `app/Models/Article.php` (tambahkan)
 
-```php
+```php-inline
 public function tags(): BelongsToMany
 {
     return $this->belongsToMany(Tag::class)->withTimestamps();
@@ -139,7 +139,7 @@ $article->tags()->toggle([2, 5]);
 
 ### Kolom tambahan pada pivot
 
-```php
+```php-inline
 return $this->belongsToMany(Tag::class)->withPivot('added_by')->withTimestamps();
 ```
 

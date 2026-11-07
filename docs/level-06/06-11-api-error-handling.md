@@ -32,7 +32,7 @@ Menurut dokumentasi, Laravel memilih HTML atau JSON dari header `Accept`. Ubah p
 
 File: `bootstrap/app.php`
 
-```php
+```php-inline
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -64,7 +64,7 @@ Konvensi materi ini:
 
 Closure diberi tipe pengecualian yang ditangani dan mengembalikan respons; bila tidak mengembalikan apa pun, bentuk bawaan dipakai.
 
-```php
+```php-inline
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -127,7 +127,7 @@ Catatan:
 Dengan `APP_DEBUG=false`, galat tak terduga menghasilkan JSON umum `{"message":"Server Error"}`. Dengan `APP_DEBUG=true`, jejak tumpukan dan path ikut tampil; **jangan pernah** di produksi.
 Kamu dapat menyeragamkan 500:
 
-```php
+```php-inline
 $exceptions->render(function (Throwable $e, Request $request) use ($galat) {
     if ($request->is('api/*') && ! config('app.debug')
         && ! $e instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
@@ -141,7 +141,7 @@ $exceptions->render(function (Throwable $e, Request $request) use ($galat) {
 
 Middleware sederhana menambahkan `X-Request-Id` ke permintaan dan respons serta ke konteks log sehingga galat yang dilaporkan klien dapat ditelusuri:
 
-```php
+```php-inline
 public function handle(Request $request, Closure $next): Response
 {
     $id = $request->header('X-Request-Id') ?: (string) \Illuminate\Support\Str::uuid();

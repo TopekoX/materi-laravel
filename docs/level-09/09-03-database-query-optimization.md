@@ -23,7 +23,7 @@ Halaman daftar artikel menjalankan 211 query dan memuat seluruh isi artikel (tek
 
 ### Melihat query
 
-```php
+```php-inline
 use Illuminate\Support\Facades\DB;
 
 DB::listen(function ($query) {
@@ -40,7 +40,7 @@ Cara lain: `Article::query()->where(...)->toSql()`, `->dump()`, `->dd()` pada qu
 
 ### Hitung query per halaman
 
-```php
+```php-inline
 DB::enableQueryLog();
 // ... proses
 $jumlah = count(DB::getQueryLog());
@@ -58,7 +58,7 @@ Atau aktifkan `DB::listen` yang menambah penghitung. Targetkan jumlah query kons
 | `pluck('title','id')` | Hanya kolom yang dibutuhkan |
 | Agregasi di SQL (`sum`, `count`, `groupBy`) | Jangan hitung di PHP dari koleksi besar |
 
-```php
+```php-inline
 // Buruk: memuat semua artikel lengkap hanya untuk menghitung
 $jumlah = Article::all()->where('published_at', '!=', null)->count();
 
@@ -75,7 +75,7 @@ $jumlah = Article::published()->count();
 | `lazy()` | Aliran koleksi malas, memori rendah |
 | `cursor()` | Satu query, satu model dalam memori; hati-hati dengan relasi |
 
-```php
+```php-inline
 Article::query()->published()->chunkById(500, function ($artikel) {
     foreach ($artikel as $a) {
         // proses
@@ -87,7 +87,7 @@ Article::query()->published()->chunkById(500, function ($artikel) {
 
 ### Query dalam perulangan
 
-```php
+```php-inline
 // Buruk: N query
 foreach ($ids as $id) {
     $judul[] = Article::find($id)->title;
@@ -131,7 +131,7 @@ Kamu mengaktifkan penghitung query pada halaman daftar, memperbaiki pengambilan 
 
 Perbaikan controller daftar:
 
-```php
+```php-inline
 $articles = Article::query()
     ->published()
     ->select(['id', 'title', 'slug', 'excerpt', 'user_id', 'published_at'])

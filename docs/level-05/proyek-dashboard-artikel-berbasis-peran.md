@@ -129,7 +129,7 @@ class StoreArticleRequest extends FormRequest
 
 `UpdateArticleRequest` mewarisi `StoreArticleRequest` dan menimpa `authorize()`:
 
-```php
+```php-inline
 class UpdateArticleRequest extends StoreArticleRequest
 {
     public function authorize(): bool
@@ -146,7 +146,7 @@ barunya; admin tetap dapat memindahkan pemilik lewat fitur tersendiri jika diper
 
 File: `app/Http/Controllers/Admin/ArticleController.php`
 
-```php
+```php-inline
 public function index(Request $request): View
 {
     Gate::authorize('viewAny', Article::class);
@@ -195,7 +195,7 @@ Daftar sudah dibatasi sehingga penulis hanya melihat artikelnya; `Gate::authoriz
 
 File: `app/Policies/CommentPolicy.php`
 
-```php
+```php-inline
 public function delete(User $user, Comment $comment): bool
 {
     return $user->hasRole(UserRole::Admin, UserRole::Editor)

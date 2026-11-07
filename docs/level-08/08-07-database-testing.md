@@ -33,7 +33,7 @@ Pakai `RefreshDatabase` kecuali ada alasan lain. Menurut dokumentasi, trait ini 
 
 ### Mengisi data
 
-```php
+```php-inline
 $user = User::factory()->create();
 $artikel = Article::factory()->for($user)->count(3)->published()->create();
 
@@ -45,7 +45,7 @@ Buat data **minimal** per uji dengan factory. Seeder lengkap membuat uji lambat 
 
 ### Asersi database
 
-```php
+```php-inline
 $this->assertDatabaseHas('articles', ['title' => 'Halo']);
 $this->assertDatabaseMissing('articles', ['title' => 'Terhapus']);
 $this->assertDatabaseCount('comments', 2);
@@ -92,7 +92,7 @@ class ArticleDeleteTest extends TestCase
 
 ### Menguji relasi dan integritas
 
-```php
+```php-inline
 public function test_deleting_user_removes_their_comments(): void
 {
     $komentar = Comment::factory()->create();
@@ -131,7 +131,7 @@ Kamu menulis uji soft delete, uji unik slug, dan uji sandi tersimpan sebagai has
 
 Uji sandi:
 
-```php
+```php-inline
 public function test_password_is_stored_hashed(): void
 {
     $user = User::factory()->create(['password' => 'rahasia-123']);
@@ -155,7 +155,7 @@ Buat `ArticleDeleteTest` seperti di atas.
 
 Coba membuat dua artikel dengan slug sama; harapkan `UniqueConstraintViolationException`:
 
-```php
+```php-inline
 $this->expectException(\Illuminate\Database\UniqueConstraintViolationException::class);
 Article::factory()->create(['slug' => 'sama']);
 Article::factory()->create(['slug' => 'sama']);

@@ -30,7 +30,7 @@ Aplikasi seluler yang bug-nya mengulang permintaan tanpa henti akan membanjiri s
 
 Di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;

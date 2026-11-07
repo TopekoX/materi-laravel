@@ -69,7 +69,7 @@ class StoreArticleRequest extends FormRequest
 
 `UpdateArticleRequest` memakai `sometimes` dan `Rule::unique('articles','slug')->ignore($this->route('article'))`; karena binding memakai slug, `$this->route('article')` adalah model dan `ignore($model)` dipakai:
 
-```php
+```php-inline
 public function rules(): array
 {
     return [
@@ -122,7 +122,7 @@ mass assignment.
 
 Parameter query (paginasi, filter) juga masukan tidak tepercaya:
 
-```php
+```php-inline
 // Api\V1\IndexArticleRequest
 public function rules(): array
 {

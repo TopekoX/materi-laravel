@@ -76,7 +76,7 @@ Daftarkan di `bootstrap/providers.php`. `loadMigrationsFrom` membuat `php artisa
 
 Modul lain **hanya** boleh memakai isi `Contracts/` dan DTO publik:
 
-```php
+```php-inline
 namespace App\Modules\Articles\Contracts;
 
 interface ArticleLookup
@@ -101,7 +101,7 @@ Modul Komentar bergantung pada `ArticleLookup`, bukan model `Article`. Relasi li
 
 Uji yang memindai impor terlarang:
 
-```php
+```php-inline
 public function test_comments_module_does_not_import_article_internals(): void
 {
     $files = \Illuminate\Support\Facades\File::allFiles(app_path('Modules/Comments'));

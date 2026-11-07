@@ -29,7 +29,7 @@ Uji "hanya admin dapat membuka manajemen pengguna" tidak peduli nama atau tangga
 | `create()` | Objek tersimpan di database |
 | `raw()` | Array atribut (berguna untuk payload permintaan) |
 
-```php
+```php-inline
 $data = Article::factory()->raw(['title' => 'Dari factory']);
 $this->postJson('/api/v1/articles', $data)->assertCreated();
 ```
@@ -38,7 +38,7 @@ $this->postJson('/api/v1/articles', $data)->assertCreated();
 
 ### Override eksplisit
 
-```php
+```php-inline
 $admin = User::factory()->create(['role' => UserRole::Admin]);
 $artikel = Article::factory()->create(['title' => 'Judul Tetap', 'slug' => 'judul-tetap']);
 ```
@@ -49,7 +49,7 @@ Tuliskan hanya nilai yang menjadi syarat uji. Ini membuat membaca uji menjadi mu
 
 File: `database/factories/UserFactory.php` (tambahan)
 
-```php
+```php-inline
 public function admin(): static
 {
     return $this->state(fn () => ['role' => \App\Enums\UserRole::Admin]);
@@ -65,7 +65,7 @@ Pemakaian: `User::factory()->admin()->create()`. Dibanding `['role' => ...]` ber
 
 ### Relasi
 
-```php
+```php-inline
 Article::factory()->for($penulis)->create();                         // belongsTo
 User::factory()->has(Article::factory()->count(3))->create();        // hasMany
 Article::factory()->hasComments(5)->create();                        // magic has{Relasi}
@@ -82,7 +82,7 @@ Nilai acak Faker bisa membuat uji kadang gagal (mis. dua judul kebetulan sama pa
 - Gunakan `unique()` Faker hanya jika perlu, atau urutan (`Sequence`).
 - Untuk data tak terlihat, acak boleh.
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 User::factory()->count(3)->state(new Sequence(
@@ -121,7 +121,7 @@ Kamu menambah state `admin()` dan `editor()`, merapikan uji lama memakai state, 
 
 Contoh uji dengan state dan `raw()`:
 
-```php
+```php-inline
 public function test_admin_can_open_user_management(): void
 {
     $admin = User::factory()->admin()->create();

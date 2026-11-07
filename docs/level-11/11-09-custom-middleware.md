@@ -63,7 +63,7 @@ Parameter setelah `$next` berasal dari penggunaan `role:admin,editor`. Pemeriksa
 
 Di `bootstrap/app.php`, menurut dokumentasi middleware:
 
-```php
+```php-inline
 ->withMiddleware(function (Middleware $middleware): void {
     $middleware->alias([
         'role' => \App\Http\Middleware\EnsureUserHasRole::class,
@@ -82,7 +82,7 @@ Di `bootstrap/app.php`, menurut dokumentasi middleware:
 
 ### Sebelum dan sesudah
 
-```php
+```php-inline
 public function handle(Request $request, Closure $next): Response
 {
     // SEBELUM controller
@@ -99,7 +99,7 @@ public function handle(Request $request, Closure $next): Response
 
 ### Contoh: memaksa JSON untuk API
 
-```php
+```php-inline
 class ForceJsonResponse
 {
     public function handle(Request $request, Closure $next): Response
@@ -117,7 +117,7 @@ Membuat galat selalu berformat JSON bagi klien yang lupa header `Accept`.
 
 Dijalankan **setelah** respons dikirim ke klien; cocok untuk logging berat atau metrik tanpa memperlambat pengguna:
 
-```php
+```php-inline
 public function terminate(Request $request, Response $response): void
 {
     logger()->info('selesai', ['path' => $request->path(), 'status' => $response->getStatusCode()]);
@@ -189,7 +189,7 @@ Route::middleware(['auth', 'role:admin,editor'])->prefix('admin')->group(functio
 
 ### Langkah 4: uji
 
-```php
+```php-inline
 public function test_author_cannot_open_admin_panel(): void
 {
     $author = User::factory()->create(['role' => UserRole::Author]);

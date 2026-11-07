@@ -128,7 +128,7 @@ Dokumentasi Artisan menjelaskan format signature (`{user}`, `{--queue}`, `{--que
 
 ### Menguji
 
-```php
+```php-inline
 public function test_dry_run_does_not_delete(): void
 {
     Article::factory()->create(['published_at' => null, 'updated_at' => now()->subDays(120)]);

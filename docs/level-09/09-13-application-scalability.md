@@ -118,7 +118,7 @@ Kamu mengaudit aplikasi `cms-artikel` terhadap daftar periksa stateless dan menu
 
 Contoh konfigurasi replika baca (`config/database.php`, koneksi `mysql`):
 
-```php
+```php-inline
 'mysql' => [
     'read' => [
         'host' => [env('DB_READ_HOST', '127.0.0.1')],

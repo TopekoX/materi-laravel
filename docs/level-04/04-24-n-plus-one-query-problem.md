@@ -29,7 +29,7 @@ Masalahnya bukan di server, melainkan di cara kode memuat relasi.
 
 ### Mengapa disebut N+1
 
-```php
+```php-inline
 $articles = Article::all();            // 1 query: ambil N artikel
 foreach ($articles as $article) {
     echo $article->category->name;     // N query: satu per artikel
@@ -68,7 +68,7 @@ DB::getQueryLog();   // lihat SQL tiap query
 
 Pencegahan di pengembangan (`AppServiceProvider::boot()`):
 
-```php
+```php-inline
 Model::preventLazyLoading(! $this->app->isProduction());
 ```
 
@@ -83,7 +83,7 @@ Model::preventLazyLoading(! $this->app->isProduction());
 
 Versi perbaikan dari contoh Blade di atas:
 
-```php
+```php-inline
 $articles = Article::with('category')->withCount('comments')->get();
 ```
 
@@ -110,7 +110,7 @@ accessor ikut dimuat, atau gunakan data yang sudah dihitung.
 
 Uji sederhana yang membuktikan jumlah query tidak bertambah seiring data:
 
-```php
+```php-inline
 public function test_daftar_artikel_tidak_n_plus_satu(): void
 {
     Article::factory()->count(20)->create();

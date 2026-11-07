@@ -70,7 +70,7 @@ Perintah ini memasang paket dari Packagist; pastikan kamu mempercayai sumber dan
 
 File: `app/Models/User.php`
 
-```php
+```php-inline
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail

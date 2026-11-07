@@ -81,7 +81,7 @@ Atribut `Tries`, `Backoff`, `Timeout` berasal dari `Illuminate\Queue\Attributes`
 
 ### Men-*dispatch*
 
-```php
+```php-inline
 NotifyArticleSubscribers::dispatch($article);                    // segera ke antrean
 NotifyArticleSubscribers::dispatch($article)->delay(now()->plus(minutes: 10));
 NotifyArticleSubscribers::dispatch($article)->onQueue('notifikasi');

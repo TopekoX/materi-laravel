@@ -49,7 +49,7 @@ Dokumentasi 13.x memakai atribut `Scope` pada method `protected` yang menerima `
 
 File: `app/Models/Article.php` (tambahkan)
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 

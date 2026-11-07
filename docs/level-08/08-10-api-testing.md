@@ -23,7 +23,7 @@ Aplikasi seluler bergantung pada kunci `data.title`. Jika seseorang menggantinya
 
 ### Permintaan JSON
 
-```php
+```php-inline
 $this->getJson('/api/v1/articles');
 $this->postJson('/api/v1/articles', ['title' => 'Halo', 'body' => 'Isi']);
 $this->patchJson("/api/v1/articles/{$slug}", ['title' => 'Baru']);
@@ -48,7 +48,7 @@ Metode `*Json` menambah `Accept: application/json` sehingga galat dirender sebag
 
 Menurut dokumentasi Sanctum, `Sanctum::actingAs` mengautentikasi pengguna dan menentukan abilities token:
 
-```php
+```php-inline
 use Laravel\Sanctum\Sanctum;
 
 Sanctum::actingAs(User::factory()->create(), ['articles:write']);
@@ -141,7 +141,7 @@ Kunci JSON (`message`, `code`) mengikuti format galat seragam sub bab 06.11; ses
 
 ### Uji ability dan laju
 
-```php
+```php-inline
 public function test_token_without_write_ability_is_forbidden(): void
 {
     Sanctum::actingAs(User::factory()->create(), ['articles:read']);

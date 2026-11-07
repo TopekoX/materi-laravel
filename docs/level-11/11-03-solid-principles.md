@@ -25,7 +25,7 @@ Menambah metode pembayaran baru memaksa menyunting `if/elseif` raksasa di `Check
 
 Satu class, satu alasan berubah.
 
-```php
+```php-inline
 // Melanggar: mengurus validasi, simpan, email, dan format
 class ArticleManager { public function publishAndEmailAndFormat(...) {} }
 
@@ -38,7 +38,7 @@ Gejala: nama berakhiran `Manager`/`Helper`, banyak `use` tak terkait, metode tak
 
 Terbuka untuk ekstensi, tertutup untuk modifikasi: tambah perilaku tanpa mengubah kode lama.
 
-```php
+```php-inline
 interface ExcerptStrategy { public function make(string $body): string; }
 
 class PlainExcerpt implements ExcerptStrategy { /* ... */ }
@@ -51,7 +51,7 @@ Menambah `HtmlExcerpt` cukup membuat class baru dan mengikatnya; pemakai tidak b
 
 Subtipe harus dapat menggantikan tipe induk tanpa merusak perilaku.
 
-```php
+```php-inline
 class ReadOnlyArticleRepository extends ArticleRepository
 {
     public function save(Article $a): void
@@ -67,7 +67,7 @@ Pemakai yang memanggil `save()` pada tipe induk kini meledak. Perbaiki dengan in
 
 Banyak interface kecil lebih baik daripada satu besar.
 
-```php
+```php-inline
 interface ReadsArticles { public function findBySlug(string $slug): ?Article; }
 interface WritesArticles { public function save(Article $article): void; }
 ```
@@ -78,7 +78,7 @@ Class pembaca hanya bergantung pada `ReadsArticles`. Gejala: implementasi dengan
 
 Modul tingkat tinggi tidak bergantung pada detail tingkat rendah; keduanya bergantung pada abstraksi.
 
-```php
+```php-inline
 class ArticlePublisher
 {
     public function __construct(private WritesArticles $articles, private PengirimPesan $notifier) {}
@@ -111,7 +111,7 @@ Kamu menemukan satu class yang melanggar SRP/OCP di proyek dan memecahnya dengan
 
 Pengikatan di provider:
 
-```php
+```php-inline
 $this->app->bind(WritesArticles::class, EloquentArticleRepository::class);
 $this->app->bind(ReadsArticles::class, EloquentArticleRepository::class);
 ```

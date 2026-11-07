@@ -37,7 +37,7 @@ Setiap baris yang diambil menjadi objek model: atribut di-*cast*, *accessor* ter
 
 ### Agregat relasi
 
-```php
+```php-inline
 $artikel = Article::query()
     ->published()
     ->withCount('comments')
@@ -50,7 +50,7 @@ Menghasilkan satu query dengan subquery untuk `comments_count`, tanpa memuat kom
 
 ### Memuat relasi dengan kolom terbatas
 
-```php
+```php-inline
 Article::with(['user:id,name', 'category:id,name'])->get();
 ```
 
@@ -62,7 +62,7 @@ Accessor yang menjalankan query atau perhitungan berat dipanggil setiap kali dia
 
 ### Operasi massal
 
-```php
+```php-inline
 // Buruk: hidrasi + N UPDATE
 Article::where('user_id', $id)->get()->each->update(['is_published' => false]);
 
@@ -78,7 +78,7 @@ Catatan: pembaruan massal **tidak** memicu event model (`updating`/`updated`) ma
 
 `Model::preventLazyLoading()` (Level 04/05) melempar pengecualian saat relasi diakses tanpa dimuat. Aktifkan di lingkungan non-produksi:
 
-```php
+```php-inline
 // AppServiceProvider::boot()
 \Illuminate\Database\Eloquent\Model::preventLazyLoading(! app()->isProduction());
 ```
@@ -110,7 +110,7 @@ Kamu memperbaiki dashboard penulis: memakai `withCount`, memilih kolom, dan meng
 
 ## Penjelasan Kode
 
-```php
+```php-inline
 $ringkasan = Article::query()
     ->where('user_id', $user->id)
     ->select(['id', 'title', 'slug', 'published_at'])

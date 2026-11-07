@@ -92,7 +92,7 @@ class ArticlePublishedMail extends Mailable implements ShouldQueue
 
 File: `resources/views/mail/article-published.blade.php`
 
-```blade
+```html
 <x-mail::message>
 # {{ $article->title }}
 
@@ -108,7 +108,7 @@ Blade `{{ }}` meng-*escape* keluaran, sehingga judul tidak dapat menyuntik HTML.
 
 ### Mengirim
 
-```php
+```php-inline
 use App\Mail\ArticlePublishedMail;
 use Illuminate\Support\Facades\Mail;
 

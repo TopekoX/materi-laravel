@@ -30,7 +30,7 @@ Hanya admin yang boleh mengelola kategori. Aturan itu dipakai di controller, di 
 
 File: `app/Providers/AppServiceProvider.php`
 
-```php
+```php-inline
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
@@ -48,7 +48,7 @@ Closure otomatis menerima pengguna yang sedang masuk sebagai argumen pertama. Ga
 
 Untuk sementara tambahkan di model `User` (peran sebenarnya dibuat pada sub bab 05.19):
 
-```php
+```php-inline
 public function isAdmin(): bool
 {
     return $this->email === 'admin@contoh.test';
@@ -108,7 +108,7 @@ Bila ditolak, pengguna mendapat 403.
 
 Kembalikan `Response` untuk pesan khusus:
 
-```php
+```php-inline
 use Illuminate\Auth\Access\Response;
 
 Gate::define('manage-categories', function (User $user): Response {
@@ -130,7 +130,7 @@ $response->message();    // pesan penolakan
 
 `Gate::before` dijalankan sebelum semua pemeriksaan lain; mengembalikan `true` memberi izin, `false` menolak, `null` melanjutkan:
 
-```php
+```php-inline
 Gate::before(function (User $user, string $ability) {
     if ($user->isAdmin()) {
         return true;   // admin boleh semuanya

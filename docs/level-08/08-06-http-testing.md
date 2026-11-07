@@ -23,7 +23,7 @@ Uji "setelah login, pengguna diarahkan ke dashboard" membutuhkan: kirim `POST`, 
 
 ### Metode permintaan
 
-```php
+```php-inline
 $this->get('/artikel');
 $this->post('/login', $data);
 $this->put('/profil', $data);
@@ -38,7 +38,7 @@ Menurut dokumentasi, metode ini tidak benar-benar membuat permintaan jaringan; a
 
 ### Header, cookie, sesi
 
-```php
+```php-inline
 $this->withHeaders(['X-Header' => 'nilai'])->get('/');
 $this->withCookie('warna', 'biru')->get('/');
 $this->withSession(['banned' => false])->get('/');
@@ -48,7 +48,7 @@ $this->withSession(['banned' => false])->get('/');
 
 ### Redirect
 
-```php
+```php-inline
 $this->post('/login', $data)->assertRedirect(route('dashboard'));
 
 $this->followingRedirects()->post('/login', $data)->assertSee('Dashboard');
@@ -73,7 +73,7 @@ $this->followingRedirects()->post('/login', $data)->assertSee('Dashboard');
 
 ### Menguji validasi
 
-```php
+```php-inline
 $this->post(route('admin.articles.store'), ['title' => ''])
     ->assertSessionHasErrors(['title']);
 ```
@@ -82,7 +82,7 @@ Untuk API (JSON) status 422 dengan `assertUnprocessable()` dan `assertJsonValida
 
 ### Debugging respons
 
-```php
+```php-inline
 $response->dump();          // cetak isi respons lalu lanjut
 $response->dumpHeaders();
 $response->dd();            // cetak lalu berhenti

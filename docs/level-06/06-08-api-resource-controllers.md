@@ -91,7 +91,7 @@ Konfigurasi: tambahkan pada `config/services.php` `'cms' => ['api_key' => env('C
 
 Tambahkan ke `Api\V1\ArticleController`:
 
-```php
+```php-inline
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;

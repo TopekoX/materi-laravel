@@ -54,7 +54,7 @@ Route::get('/ping', fn () => response()->json(['pong' => true, 'waktu' => now()-
 
 File: `bootstrap/app.php` (ubah `withRouting`)
 
-```php
+```php-inline
 ->withRouting(
     web: __DIR__.'/../routes/web.php',
     api: __DIR__.'/../routes/api.php',
@@ -69,7 +69,7 @@ Awalan `/api` otomatis ditambahkan; ubah dengan `apiPrefix: 'api/admin'` bila pe
 
 Pisahkan versi sejak awal agar perubahan yang merusak klien dapat dirilis sebagai versi baru:
 
-```php
+```php-inline
 Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('/ping', fn () => response()->json(['pong' => true]))->name('ping');
     // route sumber daya v1 di sini
@@ -82,7 +82,7 @@ URL akhirnya `/api/v1/ping` dan nama route `api.v1.ping`. Pembahasan strategi ve
 
 Seperti `Route::resource` tetapi tanpa rute `create` dan `edit` (form HTML tidak diperlukan):
 
-```php
+```php-inline
 use App\Http\Controllers\Api\V1\ArticleController;
 
 Route::apiResource('articles', ArticleController::class);

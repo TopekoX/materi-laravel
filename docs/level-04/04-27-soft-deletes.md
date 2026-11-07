@@ -42,7 +42,7 @@ Soft delete menambah kolom `deleted_at` (nullable timestamp). Saat model dihapus
 
 Migration baru:
 
-```php
+```php-inline
 public function up(): void
 {
     Schema::table('articles', function (Blueprint $table) {
@@ -60,7 +60,7 @@ public function down(): void
 
 Model:
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model

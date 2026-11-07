@@ -23,7 +23,7 @@ Fitur "terjemahan otomatis" memanggil API pihak ketiga dari lima tempat dengan f
 
 ### Adapter di belakang kontrak
 
-```php
+```php-inline
 interface Translator
 {
     public function translate(string $text, string $to): string;
@@ -70,7 +70,7 @@ Format respons penyedia hanya diketahui di sini (`data.translation`). Aplikasi l
 
 File: `config/services.php`
 
-```php
+```php-inline
 'translator' => [
     'url' => env('TRANSLATOR_URL'),
     'token' => env('TRANSLATOR_TOKEN'),
@@ -97,7 +97,7 @@ Layanan luar memanggil aplikasimu. Prinsip:
 4. Respons cepat (2xx), proses lewat antrean.
 5. Idempoten (penyedia dapat mengirim ulang).
 
-```php
+```php-inline
 public function handle(Request $request)
 {
     $payload = $request->getContent();
@@ -116,7 +116,7 @@ Route webhook dikecualikan dari verifikasi CSRF (permintaan server-ke-server) ha
 
 ### Pengujian
 
-```php
+```php-inline
 Http::fake([
     'translator.test/*' => Http::response(['data' => ['translation' => 'Hello']], 200),
 ]);

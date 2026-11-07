@@ -25,7 +25,7 @@ Regresi yang berbahaya: seseorang menghapus middleware `auth` dari satu route sa
 
 Menurut dokumentasi, `actingAs` menetapkan pengguna yang sedang masuk selama permintaan uji:
 
-```php
+```php-inline
 $user = User::factory()->create();
 
 $this->actingAs($user)->get('/dashboard')->assertOk();
@@ -37,7 +37,7 @@ Ini melewati proses login (cepat), jadi uji login sendiri tetap perlu terpisah.
 
 ### Uji halaman terproteksi
 
-```php
+```php-inline
 public function test_guest_is_redirected_to_login(): void
 {
     $this->get(route('dashboard'))->assertRedirect(route('login'));
@@ -63,7 +63,7 @@ Route `dashboard` memakai middleware `auth` dan `verified` (Level 05).
 
 ### Uji login dan batas laju
 
-```php
+```php-inline
 public function test_login_is_rate_limited(): void
 {
     $user = User::factory()->create();
@@ -81,7 +81,7 @@ Jumlah percobaan dan status bergantung implementasimu (Level 05, 05.24). Beberap
 
 ### Registrasi
 
-```php
+```php-inline
 public function test_registration_ignores_role_field(): void
 {
     $this->post(route('register.store'), [
@@ -102,7 +102,7 @@ Ini menguji perlindungan *mass assignment* (Level 05, 05.23): peran tidak boleh 
 
 Untuk email, gunakan *fake*:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
 

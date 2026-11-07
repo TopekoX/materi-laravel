@@ -33,7 +33,7 @@ Laravel menyediakan fake bawaan untuk banyak layanan, jauh lebih sederhana darip
 
 ### Fake bawaan
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Notification;
@@ -61,7 +61,7 @@ Menurut dokumentasi, setelah `Event::fake()` listener tidak dijalankan; jika kam
 
 ### Contoh: penerbitan artikel
 
-```php
+```php-inline
 public function test_publishing_dispatches_event_and_queues_notifications(): void
 {
     Event::fake([ArticlePublished::class]);
@@ -77,7 +77,7 @@ Closure kedua pada `assertDispatched` memeriksa isi event.
 
 ### HTTP keluar
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Http;
 
 Http::fake([
@@ -92,7 +92,7 @@ Dengan `Http::preventStrayRequests()` (di `setUp` uji), permintaan keluar yang t
 
 ### Mock objek
 
-```php
+```php-inline
 use Mockery\MockInterface;
 
 $this->mock(PengirimPesan::class, function (MockInterface $mock) {
@@ -104,7 +104,7 @@ $this->mock(PengirimPesan::class, function (MockInterface $mock) {
 
 ### Waktu
 
-```php
+```php-inline
 $this->freezeTime();                   // waktu berhenti
 $this->travel(5)->days();              // maju 5 hari
 $this->travelTo(now()->minus(hours: 6));

@@ -119,7 +119,7 @@ resources/views/admin/categories/index.blade.php
 
 File: `database/migrations/xxxx_add_author_name_to_comments_table.php`
 
-```php
+```php-inline
 public function up(): void
 {
     Schema::table('comments', function (Blueprint $table) {
@@ -137,13 +137,13 @@ public function down(): void
 
 File: `app/Models/Comment.php` (ubah atribut)
 
-```php
+```php-inline
 #[Fillable(['author_name', 'body'])]
 ```
 
 ### Factory
 
-```php
+```php-inline
 // CategoryFactory::definition()
 $name = fake()->unique()->words(2, true);
 return ['name' => ucfirst($name), 'slug' => Str::slug($name)];

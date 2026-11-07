@@ -31,7 +31,7 @@ Aplikasi seluler yang meminta `GET /api/v1/articles` dan menerima 5.000 artikel 
 
 Mengembalikan hasil `paginate()` melalui resource menghasilkan `data`, `links`, dan `meta`:
 
-```php
+```php-inline
 public function index(IndexArticleRequest $request): AnonymousResourceCollection
 {
     $perPage = (int) $request->integer('per_page', 15);
@@ -132,7 +132,7 @@ Kamu menerapkan paginasi pada daftar artikel, memvalidasi `per_page`, mengikuti 
 
 File: `app/Http/Requests/Api/V1/IndexArticleRequest.php` (aturan dari sub bab 06.10)
 
-```php
+```php-inline
 public function authorize(): bool
 {
     return true;

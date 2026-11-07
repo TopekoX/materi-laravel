@@ -99,7 +99,7 @@ Menurut dokumentasi, perintah ini membuat migrasi tabel `notifications`.
 
 ### Mengirim
 
-```php
+```php-inline
 $user->notify(new ArticlePublishedNotification($article));
 
 use Illuminate\Support\Facades\Notification;
@@ -110,7 +110,7 @@ Untuk banyak penerima, `Notification::send` dengan notification antre menghasilk
 
 ### Menampilkan dan menandai dibaca
 
-```php
+```php-inline
 $user->unreadNotifications;                    // belum dibaca
 $user->notifications;                          // semua
 $user->unreadNotifications->markAsRead();      // tandai dibaca

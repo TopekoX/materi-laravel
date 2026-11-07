@@ -41,7 +41,7 @@ Server mengirim `ETag: "abc"` (sidik jari isi). Klien berikutnya mengirim `If-No
 
 Menurut dokumentasi, Laravel menyediakan middleware `cache.headers` untuk mengatur `Cache-Control` per grup route, dengan opsi `etag`:
 
-```php
+```php-inline
 Route::middleware('cache.headers:public;max_age=60;etag')->group(function () {
     Route::get('/artikel', [ArticleController::class, 'index'])->name('articles.index');
     Route::get('/artikel/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');

@@ -109,13 +109,13 @@ Kamu membuktikan celah IDOR di area admin dengan dua pengguna, lalu menambah pem
 
 Pada `Admin\ArticleController::update` dan `destroy` tambahkan (sementara):
 
-```php
+```php-inline
 abort_unless($request->user()->id === $article->user_id, 403);
 ```
 
 Untuk `destroy` yang tidak menerima `Request`, gunakan `auth()->id()`:
 
-```php
+```php-inline
 abort_unless(auth()->id() === $article->user_id, 403);
 ```
 

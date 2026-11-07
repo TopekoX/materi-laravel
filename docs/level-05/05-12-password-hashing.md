@@ -68,7 +68,7 @@ yang wajar di servermu (kira-kira puluhan sampai ratusan milidetik) tanpa memper
 
 Model `User` bawaan:
 
-```php
+```php-inline
 protected function casts(): array
 {
     return [

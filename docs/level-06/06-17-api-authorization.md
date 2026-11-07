@@ -40,7 +40,7 @@ Hak efektif = irisan keduanya (aksi harus diizinkan token **dan** Policy).
 
 Daftarkan alias (dokumentasi Sanctum) di `bootstrap/app.php`:
 
-```php
+```php-inline
 use Laravel\Sanctum\Http\Middleware\CheckAbilities;
 use Laravel\Sanctum\Http\Middleware\CheckForAnyAbility;
 
@@ -65,7 +65,7 @@ dengan pemisah koma untuk beberapa ability.
 
 ### Policy di controller API
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Gate;
 
 public function update(UpdateArticleRequest $request, Article $article): ArticleResource
@@ -103,7 +103,7 @@ Menurut dokumentasi, `tokenCan` selalu `true` untuk permintaan SPA yang diautent
 
 Draf hanya boleh dilihat pemilik atau admin. Endpoint `show` publik namun dapat menerima token opsional:
 
-```php
+```php-inline
 public function show(Request $request, Article $article): ArticleResource
 {
     $user = $request->user('sanctum');   // null bila tidak ada token valid

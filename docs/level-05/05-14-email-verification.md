@@ -30,7 +30,7 @@ Kolom `email_verified_at` bernilai `NULL` sampai pengguna mengeklik tautan di em
 
 File: `app/Models/User.php`
 
-```php
+```php-inline
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail

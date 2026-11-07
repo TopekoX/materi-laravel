@@ -53,7 +53,7 @@ Gateway terpisah per jenis klien (web, seluler) yang membentuk respons sesuai ke
 
 Laravel dapat menjadi BFF kecil dengan klien HTTP paralel:
 
-```php
+```php-inline
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
 

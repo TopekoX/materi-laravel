@@ -34,7 +34,7 @@ Atur dengan `CACHE_STORE` di `.env`.
 
 ### Operasi dasar
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Cache;
 
 Cache::put('kunci', 'nilai', now()->plus(minutes: 10)); // simpan
@@ -67,7 +67,7 @@ Cache yang tidak pernah dihapus menampilkan data basi. Dua strategi:
 
 ### Atomic lock
 
-```php
+```php-inline
 Cache::lock('buat-laporan', 120)->get(function () {
     // hanya satu proses yang masuk
 });

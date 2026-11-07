@@ -87,7 +87,7 @@ Article::withSum('comments', 'id');                        // contoh agregat lai
 
 Aktifkan pengecualian saat relasi di-lazy-load (cocok untuk pengembangan) di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Model;
 
 public function boot(): void

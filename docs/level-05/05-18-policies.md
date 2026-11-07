@@ -94,7 +94,7 @@ Parameter pertama selalu `User`; parameter kedua adalah model (kecuali `viewAny`
 
 Laravel menemukan Policy secara otomatis bila mengikuti konvensi: `App\Policies\ArticlePolicy` untuk `App\Models\Article`. Cara eksplisit di 13.x memakai atribut pada model:
 
-```php
+```php-inline
 use App\Policies\ArticlePolicy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 
@@ -155,7 +155,7 @@ Secara bawaan, Gate dan Policy menolak tamu tanpa menjalankan metode. Untuk meng
 
 ### Metode `before`
 
-```php
+```php-inline
 public function before(User $user, string $ability): ?bool
 {
     return $user->isAdmin() ? true : null;
@@ -192,7 +192,7 @@ Kamu membuat `ArticlePolicy`, menerapkannya di `Admin\ArticleController` (mengga
 
 Perubahan di `Admin\ArticleController`:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Gate;
 
 public function create(): View

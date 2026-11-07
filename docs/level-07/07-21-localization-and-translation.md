@@ -74,7 +74,7 @@ return [
 
 ### Memakai terjemahan
 
-```php
+```php-inline
 __('messages.welcome', ['name' => 'Ani']);
 trans_choice('messages.comments', 5);
 ```

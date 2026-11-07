@@ -41,7 +41,7 @@ $data = $request->validate([
 
 Atur kebijakan kata sandi sekali di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Validation\Rules\Password;
 
 Password::defaults(fn () => Password::min(8)->letters()->numbers());

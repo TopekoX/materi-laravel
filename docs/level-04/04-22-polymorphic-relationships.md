@@ -43,7 +43,7 @@ erDiagram
 php artisan make:model Image -mf
 ```
 
-```php
+```php-inline
 Schema::create('images', function (Blueprint $table) {
     $table->id();
     $table->string('url');
@@ -59,7 +59,7 @@ Tidak ada constraint kunci asing karena kolom tidak menunjuk satu tabel saja, se
 
 File: `app/Models/Image.php`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 #[Fillable(['url'])]
@@ -76,7 +76,7 @@ class Image extends Model
 
 File: `app/Models/Article.php` (tambahkan)
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 public function images(): MorphMany
@@ -87,7 +87,7 @@ public function images(): MorphMany
 
 File: `app/Models/User.php` (tambahkan)
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 public function avatar(): MorphOne
@@ -120,7 +120,7 @@ $image->imageable_type;                 // nama kelas atau alias
 Secara bawaan `imageable_type` menyimpan **nama kelas lengkap** (`App\Models\Article`). Itu menjadikan nama kelas bagian dari data: mengganti namespace merusak data lama. Dokumentasi menyarankan
 *morph map* dengan alias, dipasang di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 public function boot(): void

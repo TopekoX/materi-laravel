@@ -25,7 +25,7 @@ Halaman daftar menampilkan judul dan nama penulis untuk 15 artikel. Jika `user` 
 
 Relasi dimuat saat pertama kali diakses:
 
-```php
+```php-inline
 $artikel = Article::published()->take(15)->get();       // 1 query
 
 foreach ($artikel as $a) {
@@ -37,7 +37,7 @@ Total 16 query. Ini nyaman untuk satu model, berbahaya dalam perulangan.
 
 ### Eager loading
 
-```php
+```php-inline
 $artikel = Article::published()->with('user')->take(15)->get();   // 2 query total
 ```
 
@@ -45,7 +45,7 @@ Query kedua: `SELECT * FROM users WHERE id IN (...)`. Jumlah query tetap, tidak 
 
 Menurut dokumentasi, beberapa relasi dan relasi bersarang:
 
-```php
+```php-inline
 Article::with(['user:id,name', 'category:id,name', 'comments.user'])->get();
 ```
 
@@ -53,7 +53,7 @@ Article::with(['user:id,name', 'category:id,name', 'comments.user'])->get();
 
 ### Kondisi dan kolom
 
-```php
+```php-inline
 Article::with(['comments' => function ($query) {
     $query->where('is_approved', true)->latest()->limit(5);
 }])->get();
@@ -63,7 +63,7 @@ Awas: `limit` di dalam eager loading berlaku global, bukan per induk, pada banya
 
 ### Memuat setelah fakta
 
-```php
+```php-inline
 $artikel->load('comments');          // muat relasi pada model/koleksi yang sudah ada
 $artikel->loadMissing('user');       // hanya jika belum dimuat
 $artikel->loadCount('comments');
@@ -76,7 +76,7 @@ Berguna di controller yang menerima model dari route binding.
 1. **Log query** (09.03): jumlah query tumbuh dengan jumlah baris.
 2. **`preventLazyLoading`**: menurut dokumentasi,
 
-```php
+```php-inline
 Model::preventLazyLoading(! app()->isProduction());
 ```
 
@@ -84,7 +84,7 @@ Mengakses relasi yang belum dimuat melempar `LazyLoadingViolationException`. Di 
 
 3. **Uji**: hitung query dalam uji.
 
-```php
+```php-inline
 public function test_index_runs_constant_number_of_queries(): void
 {
     Article::factory()->count(20)->published()->create();

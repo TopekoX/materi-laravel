@@ -75,7 +75,7 @@ use Illuminate\Validation\Rule;
 
 ### Aturan dinamis di `rules()`
 
-```php
+```php-inline
 public function rules(): array
 {
     $perusahaan = $this->input('tipe') === 'perusahaan';
@@ -119,7 +119,7 @@ Kamu menambah kolom `tipe`, `nama_perusahaan`, `npwp`, `portfolio_url`, dan `por
 
 Tambahkan ke `rules()` pada `RegisterAuthorRequest`:
 
-```php
+```php-inline
 $perusahaan = $this->input('tipe') === 'perusahaan';
 $individu = $this->input('tipe') === 'individu';
 

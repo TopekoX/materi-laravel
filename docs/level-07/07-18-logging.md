@@ -57,7 +57,7 @@ LOG_LEVEL=info
 
 ### Menulis log
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Log;
 
 Log::info('Artikel terbit', ['article_id' => $article->id, 'user_id' => $article->user_id]);
@@ -67,7 +67,7 @@ Log::error('Email gagal dikirim', ['article_id' => $article->id, 'galat' => $e->
 
 Argumen kedua adalah *konteks* terstruktur. Untuk menambah konteks ke semua log berikutnya dalam satu permintaan, gunakan `Log::withContext([...])` (mis. di middleware):
 
-```php
+```php-inline
 Log::withContext(['request_id' => $request->header('X-Request-Id') ?? (string) \Illuminate\Support\Str::uuid()]);
 ```
 

@@ -99,7 +99,7 @@ Perhatikan empat kasus: pendek, tag, panjang, dan **batas** tepat. Kasus batas s
 
 ### Menguji galat
 
-```php
+```php-inline
 public function test_negative_limit_is_rejected(): void
 {
     $this->expectException(\InvalidArgumentException::class);
@@ -114,7 +114,7 @@ Agar lulus, tambahkan pemeriksaan di constructor yang melempar `InvalidArgumentE
 
 Class yang menerima ketergantungan lewat constructor mudah diuji dengan objek palsu buatan tangan:
 
-```php
+```php-inline
 class PengirimPalsu implements \App\Contracts\PengirimPesan
 {
     public array $terkirim = [];

@@ -115,7 +115,7 @@ Kamu memeriksa model `User`, tabel `users`, `sessions`, dan `password_reset_toke
 
 Tidak ada kode aplikasi baru. Bagian penting `config/auth.php` (isi persis dapat berbeda antar versi):
 
-```php
+```php-inline
 'defaults' => ['guard' => 'web', 'passwords' => 'users'],
 
 'guards' => [

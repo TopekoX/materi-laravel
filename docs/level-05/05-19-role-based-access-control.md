@@ -47,7 +47,7 @@ Matriks seperti ini adalah spesifikasi: tulis dulu, baru kodekan.
 php artisan make:migration add_role_to_users_table --table=users
 ```
 
-```php
+```php-inline
 public function up(): void
 {
     Schema::table('users', function (Blueprint $table) {
@@ -91,7 +91,7 @@ enum UserRole: string
 
 ### Model `User`
 
-```php
+```php-inline
 use App\Enums\UserRole;
 
 protected function casts(): array
@@ -123,7 +123,7 @@ public function isEditor(): bool
 
 ### Gate dan Policy berbasis peran
 
-```php
+```php-inline
 // AppServiceProvider::boot()
 Gate::define('manage-categories', fn (User $user) => $user->hasRole(UserRole::Admin, UserRole::Editor));
 Gate::define('manage-users', fn (User $user) => $user->isAdmin());
@@ -131,7 +131,7 @@ Gate::define('manage-users', fn (User $user) => $user->isAdmin());
 
 Perbarui `ArticlePolicy`:
 
-```php
+```php-inline
 public function view(User $user, Article $article): bool
 {
     return $article->is_published || $this->owns($user, $article) || $user->hasRole(UserRole::Admin, UserRole::Editor);
@@ -218,7 +218,7 @@ Route (dalam grup admin): `Route::get('/pengguna', ...)->name('users.index');` d
 
 Tambahkan state di `UserFactory`:
 
-```php
+```php-inline
 public function admin(): static
 {
     return $this->state(fn () => ['role' => UserRole::Admin]);

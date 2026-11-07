@@ -131,7 +131,7 @@ Kamu menambah kolom `avatar` (foto profil) dan `cv` (PDF) pada form calon penuli
 
 Tambahkan ke `rules()`:
 
-```php
+```php-inline
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 

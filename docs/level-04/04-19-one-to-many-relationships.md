@@ -43,7 +43,7 @@ Kunci asing berada di sisi **banyak**: `articles.category_id`, `articles.user_id
 
 File: `app/Models/Category.php`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 public function articles(): HasMany
@@ -54,7 +54,7 @@ public function articles(): HasMany
 
 File: `app/Models/Article.php`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -76,7 +76,7 @@ public function comments(): HasMany
 
 File: `app/Models/User.php` (tambahkan)
 
-```php
+```php-inline
 public function articles(): HasMany
 {
     return $this->hasMany(Article::class);
@@ -99,7 +99,7 @@ php artisan make:model Comment -mf
 
 File: `database/migrations/xxxx_create_comments_table.php`
 
-```php
+```php-inline
 Schema::create('comments', function (Blueprint $table) {
     $table->id();
     $table->foreignId('article_id')->constrained()->cascadeOnDelete();
@@ -111,7 +111,7 @@ Schema::create('comments', function (Blueprint $table) {
 
 File: `app/Models/Comment.php`
 
-```php
+```php-inline
 #[Fillable(['body'])]
 class Comment extends Model
 {
@@ -165,7 +165,7 @@ $article->save();
 
 Perbarui `ArticleFactory::definition()` agar menghasilkan kunci asing:
 
-```php
+```php-inline
 use App\Models\Category;
 use App\Models\User;
 
@@ -186,7 +186,7 @@ Article::factory()->count(10)->recycle($user)->recycle($category)->create();   /
 
 Factory `CommentFactory`:
 
-```php
+```php-inline
 'article_id' => Article::factory(),
 'user_id' => User::factory(),
 'body' => fake()->sentence(),

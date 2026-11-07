@@ -22,7 +22,7 @@ Pola adalah kosakata bersama: menyebut "ini Strategy" mengomunikasikan struktur 
 
 ### Strategy: perilaku yang dapat ditukar
 
-```php
+```php-inline
 interface SlugGenerator { public function make(string $title): string; }
 
 class AsciiSlug implements SlugGenerator {
@@ -34,7 +34,7 @@ Dipilih lewat konfigurasi/binding. Laravel: driver cache, mail, queue.
 
 ### Factory: membuat objek dengan aturan
 
-```php
+```php-inline
 class ExporterFactory
 {
     public function make(string $format): Exporter
@@ -52,7 +52,7 @@ Validasi di sini mencegah input liar membuat objek sembarang. (Bukan factory Elo
 
 ### Decorator: menambah perilaku tanpa mengubah class
 
-```php
+```php-inline
 class CachedArticleReader implements ReadsArticles
 {
     public function __construct(private ReadsArticles $inner, private \Illuminate\Contracts\Cache\Repository $cache) {}
@@ -74,7 +74,7 @@ Event dan listener (07.08), serta observer model. Cocok untuk efek samping terpi
 
 Laravel memakai `Illuminate\Pipeline\Pipeline` untuk middleware; kamu dapat memakainya untuk rangkaian transformasi:
 
-```php
+```php-inline
 use Illuminate\Pipeline\Pipeline;
 
 $hasil = app(Pipeline::class)->send($artikel)
@@ -130,7 +130,7 @@ Kamu menerapkan Decorator cache pada pembaca artikel dan Pipeline untuk memprose
 
 Binding decorator:
 
-```php
+```php-inline
 $this->app->bind(ReadsArticles::class, fn ($app) => new CachedArticleReader(
     $app->make(EloquentArticleReader::class),
     $app->make(\Illuminate\Contracts\Cache\Repository::class),

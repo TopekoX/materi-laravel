@@ -42,7 +42,7 @@ php artisan config:publish cors
 
 File: `config/cors.php`
 
-```php
+```php-inline
 return [
     'paths' => ['api/*'],
     'allowed_methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],

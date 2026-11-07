@@ -44,14 +44,14 @@ Untuk memakai UUID/ULID pada model gunakan trait `HasUuids` atau `HasUlids`. Keb
 
 Kunci asing menyimpan kunci utama tabel lain. Cara ringkas di Laravel:
 
-```php
+```php-inline
 $table->foreignId('category_id')->constrained();
 ```
 
 `foreignId` membuat kolom `UNSIGNED BIGINT`; `constrained()` memakai konvensi untuk menebak tabel dan kolom rujukan: `category_id` → tabel `categories`, kolom `id`. Bentuk
 panjangnya:
 
-```php
+```php-inline
 $table->unsignedBigInteger('category_id');
 $table->foreign('category_id')->references('id')->on('categories');
 ```
@@ -89,7 +89,7 @@ SQLite memerlukan pembuatan ulang tabel; Laravel melakukannya otomatis saat `Sch
 
 Baris lama belum punya nilai untuk kolom baru. Karena itu kunci asing baru pada tabel berisi data sebaiknya `nullable()`:
 
-```php
+```php-inline
 $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
 ```
 
@@ -173,7 +173,7 @@ php artisan make:model Category -mf
 
 File: `database/migrations/xxxx_create_categories_table.php` (isi `up()`; pastikan stempel waktunya **lebih awal** daripada migration `add_user_and_category...`)
 
-```php
+```php-inline
 Schema::create('categories', function (Blueprint $table) {
     $table->id();
     $table->string('name')->unique();

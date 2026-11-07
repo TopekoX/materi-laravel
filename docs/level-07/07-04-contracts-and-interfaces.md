@@ -46,7 +46,7 @@ File: `app/Contracts/PengirimPesan.php` (sudah dibuat di 07.02)
 
 ### Memilih implementasi lewat konfigurasi
 
-```php
+```php-inline
 // app/Providers/PengirimServiceProvider.php, di register()
 $this->app->bind(PengirimPesan::class, function ($app) {
     return match (config('pengirim.driver')) {

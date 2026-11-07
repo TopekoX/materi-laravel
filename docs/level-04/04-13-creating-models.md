@@ -90,7 +90,7 @@ secara bawaan. Skema yang disarankan adalah **allow-list**: sebutkan hanya kolom
 
 Untuk membuat kolom yang diabaikan ketahuan saat pengembangan, tambahkan di `AppServiceProvider::boot()`:
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Model;
 
 public function boot(): void
@@ -118,7 +118,7 @@ Method `casts()` mengembalikan peta kolom ke tipe. Cast yang sering dipakai:
 
 ### Menyesuaikan konvensi: `#[Table]`
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Attributes\Table;
 
 #[Table('my_flights')]                          // nama tabel
@@ -137,7 +137,7 @@ Gunakan hanya bila tabel warisan tidak mengikuti konvensi. Untuk proyek baru, ik
 
 Atribut yang disembunyikan tidak muncul pada `toArray()`/`toJson()`. Model `User` bawaan memakainya:
 
-```php
+```php-inline
 #[Hidden(['password', 'remember_token'])]
 ```
 

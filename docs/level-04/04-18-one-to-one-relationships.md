@@ -46,7 +46,7 @@ php artisan make:model Profile -mf
 
 File: `database/migrations/xxxx_create_profiles_table.php`
 
-```php
+```php-inline
 Schema::create('profiles', function (Blueprint $table) {
     $table->id();
     $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
@@ -89,7 +89,7 @@ class Profile extends Model
 
 File: `app/Models/User.php` (tambahkan method relasi)
 
-```php
+```php-inline
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 public function profile(): HasOne
@@ -136,7 +136,7 @@ $profile->user->name;     // pengguna pemilik profil
 
 Bila pengguna belum punya profil, `$user->profile` bernilai `null`, sehingga `$user->profile->bio` melempar galat. Gunakan nilai bawaan:
 
-```php
+```php-inline
 public function profile(): HasOne
 {
     return $this->hasOne(Profile::class)->withDefault(['bio' => 'Belum ada bio']);
@@ -190,7 +190,7 @@ php artisan make:model Profile -mf
 
 Isi `up()` seperti di atas. Isi `ProfileFactory`:
 
-```php
+```php-inline
 public function definition(): array
 {
     return [

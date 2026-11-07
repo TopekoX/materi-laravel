@@ -33,7 +33,7 @@ terbit atau draf". Satu baris kode lalu cukup untuk membuat ratusan data realist
 
 Proyek baru memuat `database/factories/UserFactory.php`:
 
-```php
+```php-inline
 class UserFactory extends Factory
 {
     protected static ?string $password;

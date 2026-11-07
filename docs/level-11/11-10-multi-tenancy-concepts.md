@@ -43,7 +43,7 @@ Pilih berdasarkan kebutuhan isolasi, jumlah tenant, dan kapasitas operasi. Paket
 
 ### Konteks tenant
 
-```php
+```php-inline
 final class TenantContext
 {
     private ?int $id = null;
@@ -61,7 +61,7 @@ Daftarkan sebagai `scoped` (bukan `singleton`) agar tidak bocor lintas permintaa
 
 ### Middleware penentu tenant
 
-```php
+```php-inline
 public function handle(Request $request, Closure $next, TenantContext $ctx): Response
 {
     $tenant = Tenant::where('subdomain', explode('.', $request->getHost())[0])->first();
@@ -79,7 +79,7 @@ public function handle(Request $request, Closure $next, TenantContext $ctx): Res
 
 ### Global scope + trait
 
-```php
+```php-inline
 trait BelongsToTenant
 {
     protected static function bootBelongsToTenant(): void
@@ -115,7 +115,7 @@ Tambahkan `use BelongsToTenant;` pada model tenant-scoped (Artikel, Komentar, Ka
 
 ### Uji isolasi
 
-```php
+```php-inline
 public function test_tenant_cannot_see_other_tenants_articles(): void
 {
     [$a, $b] = Tenant::factory()->count(2)->create();

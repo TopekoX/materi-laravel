@@ -96,7 +96,7 @@ Catatan: `DB::listen` yang didaftarkan di middleware menumpuk pada tiap perminta
 
 Menurut dokumentasi, `DB::whenQueryingForLongerThan(500, fn ...)` memanggil callback saat total waktu query dalam satu permintaan melebihi ambang (ms):
 
-```php
+```php-inline
 DB::whenQueryingForLongerThan(500, function ($connection, $event) {
     Log::warning('Total waktu query tinggi', ['koneksi' => $connection->getName()]);
 });

@@ -49,7 +49,7 @@ Urutan saat membuat: `saving` → `creating` → (INSERT) → `created` → `sav
 
 Dokumentasi menyarankan mendaftarkan closure di method `booted` model:
 
-```php
+```php-inline
 protected static function booted(): void
 {
     static::creating(function (Article $article) {
@@ -129,7 +129,7 @@ class ArticleObserver
 
 Dokumentasi 13.x memakai atribut `ObservedBy` pada model:
 
-```php
+```php-inline
 use App\Observers\ArticleObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 

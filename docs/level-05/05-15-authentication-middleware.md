@@ -61,7 +61,7 @@ Route publik (`/artikel`, `/artikel/{slug}`, komentar) tetap terbuka.
 
 Secara bawaan tamu diarahkan ke route bernama `login` dan pengguna masuk dari halaman tamu ke `dashboard`. Ubah di `bootstrap/app.php`:
 
-```php
+```php-inline
 use Illuminate\Http\Request;
 
 ->withMiddleware(function (Middleware $middleware): void {
@@ -122,7 +122,7 @@ class LogAdminAccess
 
 Daftarkan alias di `bootstrap/app.php` dan pakai setelah `auth` agar `user()` tersedia:
 
-```php
+```php-inline
 ->withMiddleware(function (Middleware $middleware): void {
     $middleware->alias(['log.admin' => \App\Http\Middleware\LogAdminAccess::class]);
 })

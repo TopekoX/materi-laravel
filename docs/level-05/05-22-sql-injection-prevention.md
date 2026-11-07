@@ -30,7 +30,7 @@ penyerang dapat membaca tabel `users` atau menghapus data.
 
 ### Bagaimana injeksi terjadi
 
-```php
+```php-inline
 // RENTAN: nilai disambung langsung ke string SQL
 $q = $_GET['q'];
 $hasil = DB::select("select * from articles where title = '$q' and is_published = 1");
@@ -140,7 +140,7 @@ App\Models\Article::where('title', $payload)->where('is_published', true)->pluck
 
 Pengurutan aman:
 
-```php
+```php-inline
 // ArticleController::index
 $kolom = in_array($request->query('urut'), ['title', 'published_at'], true) ? $request->query('urut') : 'published_at';
 $arah = $request->query('arah') === 'asc' ? 'asc' : 'desc';

@@ -33,7 +33,7 @@ Penamaan: event bentuk lampau; command imperatif.
 
 ### Merancang event
 
-```php
+```php-inline
 final class ArticlePublished
 {
     public function __construct(
@@ -70,7 +70,7 @@ Modul Articles men-*dispatch* `ArticlePublished` (kontrak publik). Modul Notific
 
 ### Idempotensi
 
-```php
+```php-inline
 public function handle(ArticlePublished $e): void
 {
     $key = "notified:article:{$e->articleId}";
@@ -128,7 +128,7 @@ Kamu mendefinisikan `ArticlePublished` sebagai kontrak publik, menambah dua list
 
 Uji:
 
-```php
+```php-inline
 Event::fake([ArticlePublished::class]);
 
 app(PublishArticle::class)($article->id);

@@ -41,7 +41,7 @@ php artisan storage:link
 
 ### Menyimpan
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Storage;
 
 Storage::disk('local')->put('laporan/2026-11.csv', $isiCsv);       // privat
@@ -59,7 +59,7 @@ $path = $request->file('gambar')->store('gambar', 'public');        // publik, n
 
 ### Penyajian privat
 
-```php
+```php-inline
 public function unduh(string $nama)
 {
     $this->authorize('unduh-laporan');   // Gate/Policy

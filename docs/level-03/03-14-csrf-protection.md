@@ -112,7 +112,7 @@ mengecualikan URI di `bootstrap/app.php`:
 
 File: `bootstrap/app.php`
 
-```php
+```php-inline
 ->withMiddleware(function (Middleware $middleware): void {
     $middleware->preventRequestForgery(except: [
         'webhook/pembayaran',

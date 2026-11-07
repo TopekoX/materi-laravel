@@ -24,7 +24,7 @@ Kamu sudah memakai Facade sejak awal: `Route::get(...)`, `Cache::get(...)`, `Log
 
 Menurut dokumentasi, Facade adalah class yang menyediakan antarmuka statis ke objek di container. Class dasar `Illuminate\Support\Facades\Facade` memakai *magic method* `__callStatic()` untuk meneruskan panggilan ke objek yang dikembalikan oleh `getFacadeAccessor()`.
 
-```php
+```php-inline
 class Cache extends Facade
 {
     protected static function getFacadeAccessor(): string

@@ -23,7 +23,7 @@ Job "kirim email massal 10.000 penerima" memenuhi satu antrean selama dua jam; s
 
 ### Pisahkan antrean
 
-```php
+```php-inline
 SendPasswordReset::dispatch($user)->onQueue('critical');
 SendNewsletter::dispatch($user)->onQueue('bulk');
 ProcessImage::dispatch($path)->onQueue('media');
@@ -55,7 +55,7 @@ Perkiraan kasar: `worker ≈ laju kedatangan job/detik × waktu proses rata-rata
 
 Menurut dokumentasi queues:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Bus;
 
 Bus::chain([
@@ -78,7 +78,7 @@ Batch membutuhkan tabel `job_batches` (`php artisan make:queue-batches-table`, l
 
 Layanan eksternal sering punya batas (mis. 10 email/detik). Gunakan job middleware:
 
-```php
+```php-inline
 use Illuminate\Queue\Middleware\RateLimited;
 
 public function middleware(): array
@@ -135,7 +135,7 @@ Kamu memisahkan job email penting dan massal, menjalankan worker dengan priorita
 
 Atur antrean pada job:
 
-```php
+```php-inline
 class SendNewsletter implements ShouldQueue
 {
     use Queueable;

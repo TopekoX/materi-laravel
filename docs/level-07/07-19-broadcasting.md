@@ -99,7 +99,7 @@ class ArticlePublishedBroadcast implements ShouldBroadcast, ShouldDispatchAfterC
 
 ### Channel privat
 
-```php
+```php-inline
 public function broadcastOn(): PrivateChannel
 {
     return new PrivateChannel('users.'.$this->article->user_id);

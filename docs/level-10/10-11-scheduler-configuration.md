@@ -111,7 +111,7 @@ Kamu memasang cron, membuktikan penjadwal berjalan dengan tugas uji, lalu mengha
 
 Tugas uji sementara di `routes/console.php`:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schedule;
 

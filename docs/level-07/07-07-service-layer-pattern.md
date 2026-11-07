@@ -67,7 +67,7 @@ class ArticlePublisher
 
 ### Pemakaian
 
-```php
+```php-inline
 public function store(StoreArticleRequest $request, ArticlePublisher $publisher)
 {
     $article = $publisher->create($request->user(), $request->validated());

@@ -63,7 +63,7 @@ Karena aplikasi dibuat sekali, objek **singleton** bertahan lintas permintaan.
 
 **Jangan menyuntik container, request, atau repository config ke singleton** lewat constructor. Dokumentasi memberi pola yang aman:
 
-```php
+```php-inline
 // Bermasalah: $app dari boot pertama dipakai selamanya
 $this->app->singleton(Service::class, function (Application $app) {
     return new Service($app);

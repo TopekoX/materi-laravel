@@ -28,7 +28,7 @@ Menurut dokumentasi, driver `local` menulis relatif terhadap `root` yang secara 
 
 ### Operasi dasar
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Storage;
 
 Storage::put('ekspor/a.txt', 'isi');                 // tulis (disk bawaan)
@@ -44,7 +44,7 @@ Storage::delete('arsip/a2.txt');
 
 ### Daftar isi
 
-```php
+```php-inline
 Storage::files('ekspor');           // berkas langsung di folder
 Storage::allFiles('ekspor');        // rekursif
 Storage::directories('ekspor');
@@ -54,7 +54,7 @@ Storage::deleteDirectory('baru');   // hati-hati: menghapus rekursif
 
 ### Metadata dan URL
 
-```php
+```php-inline
 Storage::size('ekspor/a.txt');
 Storage::lastModified('ekspor/a.txt');
 Storage::mimeType('ekspor/a.txt');
@@ -66,7 +66,7 @@ Storage::temporaryUrl('berkas.pdf', now()->plus(minutes: 5)); // disk yang mendu
 
 ### Unggahan
 
-```php
+```php-inline
 $path = $request->file('gambar')->store('gambar', 'public');            // nama acak
 $path = $request->file('gambar')->storeAs('gambar', 'sampul-1.jpg', 'public');
 $path = Storage::putFile('gambar', $request->file('gambar'));

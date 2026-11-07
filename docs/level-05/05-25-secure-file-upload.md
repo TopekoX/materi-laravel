@@ -88,7 +88,7 @@ Berkas yatim memboroskan ruang dan dapat menyimpan data yang seharusnya hilang. 
 
 ### Berkas privat dengan otorisasi
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -149,7 +149,7 @@ Migration:
 php artisan make:migration add_cover_path_to_articles_table --table=articles
 ```
 
-```php
+```php-inline
 Schema::table('articles', function (Blueprint $table) {
     $table->string('cover_path')->nullable();
 });
@@ -157,7 +157,7 @@ Schema::table('articles', function (Blueprint $table) {
 
 Aturan (di request/controller):
 
-```php
+```php-inline
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 
@@ -166,7 +166,7 @@ use Illuminate\Validation\Rules\File;
 
 Di `Admin\ArticleController` (`store`/`update`), setelah menyimpan artikel:
 
-```php
+```php-inline
 use Illuminate\Support\Facades\Storage;
 
 if ($request->hasFile('cover')) {
@@ -180,7 +180,7 @@ if ($request->hasFile('cover')) {
 
 Pada `ArticleObserver::forceDeleted`:
 
-```php
+```php-inline
 if ($article->cover_path) {
     Storage::disk('public')->delete($article->cover_path);
 }

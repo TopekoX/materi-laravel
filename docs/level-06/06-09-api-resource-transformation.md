@@ -79,7 +79,7 @@ class ArticleResource extends JsonResource
 
 File: `app/Http/Resources/CategoryResource.php`
 
-```php
+```php-inline
 public function toArray(Request $request): array
 {
     return [
@@ -93,7 +93,7 @@ public function toArray(Request $request): array
 
 File: `app/Http/Resources/CommentResource.php`
 
-```php
+```php-inline
 public function toArray(Request $request): array
 {
     return [
@@ -125,7 +125,7 @@ Hasilnya otomatis dibungkus kunci `data`.
 
 ### Controller dengan resource
 
-```php
+```php-inline
 public function index(): AnonymousResourceCollection
 {
     $articles = Article::published()
