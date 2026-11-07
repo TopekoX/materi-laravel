@@ -7,7 +7,7 @@
 site_name: Belajar Laravel
 site_description: Materi belajar Laravel untuk pemula dalam bahasa Indonesia.
 # Canonical URL. For GitHub Pages: https://<user>.github.io/<repo>/
-site_url: https://topekox.github.io/mkdocs-template/
+site_url: https://topekox.github.io/materi-laravel/
 
 # --- Theme (shared) --------------------------------------------------------
 theme:
