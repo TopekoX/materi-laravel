@@ -9548,12 +9548,12 @@ Untuk SPA dengan Laravel sebagai API, dokumentasi mengarahkan ke Laravel Sanctum
 <p>Ada kasus sah, misalnya <em>webhook</em> dari layanan pembayaran yang tidak bisa mengirim token. Dokumentasi menyarankan menaruh route semacam itu di luar grup <code>web</code>; alternatifnya
 mengecualikan URI di <code>bootstrap/app.php</code>:</p>
 <p>File: <code>bootstrap/app.php</code></p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">-&gt;withMiddleware(function (Middleware $middleware): void {</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">    $middleware-&gt;preventRequestForgery(except: [</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="x">        'webhook/pembayaran',</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="x">        'webhook/*',</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="x">    ]);</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="x">})</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">-&gt;</span><span class="na">withMiddleware</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">Middleware</span> <span class="nv">$middleware</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nv">$middleware</span><span class="o">-&gt;</span><span class="na">preventRequestForgery</span><span class="p">(</span><span class="nx">except</span><span class="o">:</span> <span class="p">[</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="s1">'webhook/pembayaran'</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="s1">'webhook/*'</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="p">]);</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">})</span>
 </span></code></pre></div>
 <p>Middleware CSRF dinonaktifkan otomatis saat menjalankan tes.</p>
 <h3 id="mode-hanya-asal-opsional">Mode hanya-asal (opsional)<a class="headerlink" href="#mode-hanya-asal-opsional" title="Permanent link">&para;</a></h3>

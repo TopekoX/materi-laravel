@@ -9407,31 +9407,31 @@
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="lazy-loading">Lazy loading<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
 <p>Relasi dimuat saat pertama kali diakses:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">$artikel = Article::published()-&gt;take(15)-&gt;get();       // 1 query</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$artikel</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">published</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">take</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>       <span class="c1">// 1 query</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">foreach ($artikel as $a) {</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">    echo $a-&gt;user-&gt;name;                                 // +1 query setiap iterasi</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">}</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$artikel</span> <span class="k">as</span> <span class="nv">$a</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">echo</span> <span class="nv">$a</span><span class="o">-&gt;</span><span class="na">user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>                                 <span class="c1">// +1 query setiap iterasi</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Total 16 query. Ini nyaman untuk satu model, berbahaya dalam perulangan.</p>
 <h3 id="eager-loading">Eager loading<a class="headerlink" href="#eager-loading" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">$artikel = Article::published()-&gt;with('user')-&gt;take(15)-&gt;get();   // 2 query total</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$artikel</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">published</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">'user'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">take</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>   <span class="c1">// 2 query total</span>
 </span></code></pre></div>
 <p>Query kedua: <code>SELECT * FROM users WHERE id IN (...)</code>. Jumlah query tetap, tidak tumbuh seiring baris.</p>
 <p>Menurut dokumentasi, beberapa relasi dan relasi bersarang:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">Article::with(['user:id,name', 'category:id,name', 'comments.user'])-&gt;get();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">Article</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">'user:id,name'</span><span class="p">,</span> <span class="s1">'category:id,name'</span><span class="p">,</span> <span class="s1">'comments.user'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span></code></pre></div>
 <p><code>comments.user</code> memuat komentar lalu pengguna tiap komentar. Pilih hanya relasi yang dipakai halaman.</p>
 <h3 id="kondisi-dan-kolom">Kondisi dan kolom<a class="headerlink" href="#kondisi-dan-kolom" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">Article::with(['comments' =&gt; function ($query) {</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">    $query-&gt;where('is_approved', true)-&gt;latest()-&gt;limit(5);</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">}])-&gt;get();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Article</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">'comments'</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'is_approved'</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">latest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}])</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Awas: <code>limit</code> di dalam eager loading berlaku global, bukan per induk, pada banyak versi; untuk "N komentar terbaru per artikel" gunakan pendekatan khusus (mis. relasi <code>latestOfMany</code>, atau fitur limit eager load per-induk bila tersedia di versi Laravel yang dipakai; periksa dokumentasi relasi). Jangan mengandalkan asumsi.</p>
 <h3 id="memuat-setelah-fakta">Memuat setelah fakta<a class="headerlink" href="#memuat-setelah-fakta" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">$artikel-&gt;load('comments');          // muat relasi pada model/koleksi yang sudah ada</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">$artikel-&gt;loadMissing('user');       // hanya jika belum dimuat</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">$artikel-&gt;loadCount('comments');</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$artikel</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">);</span>          <span class="c1">// muat relasi pada model/koleksi yang sudah ada</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$artikel</span><span class="o">-&gt;</span><span class="na">loadMissing</span><span class="p">(</span><span class="s1">'user'</span><span class="p">);</span>       <span class="c1">// hanya jika belum dimuat</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">$artikel</span><span class="o">-&gt;</span><span class="na">loadCount</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Berguna di controller yang menerima model dari route binding.</p>
 <h3 id="mendeteksi">Mendeteksi<a class="headerlink" href="#mendeteksi" title="Permanent link">&para;</a></h3>
@@ -9439,22 +9439,22 @@
 <li><strong>Log query</strong> (09.03): jumlah query tumbuh dengan jumlah baris.</li>
 <li><strong><code>preventLazyLoading</code></strong>: menurut dokumentasi,</li>
 </ol>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">Model::preventLazyLoading(! app()-&gt;isProduction());</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">Model</span><span class="o">::</span><span class="na">preventLazyLoading</span><span class="p">(</span><span class="o">!</span> <span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">isProduction</span><span class="p">());</span>
 </span></code></pre></div>
 <p>Mengakses relasi yang belum dimuat melempar <code>LazyLoadingViolationException</code>. Di produksi biarkan nonaktif agar aplikasi tidak error (atau gunakan <code>handleLazyLoadingViolationUsing</code> untuk hanya mencatat log).</p>
 <ol>
 <li><strong>Uji</strong>: hitung query dalam uji.</li>
 </ol>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">public function test_index_runs_constant_number_of_queries(): void</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="x">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">    Article::factory()-&gt;count(20)-&gt;published()-&gt;create();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_index_runs_constant_number_of_queries</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">Article</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">published</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">    DB::enableQueryLog();</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">    $this-&gt;get(route('articles.index'))-&gt;assertOk();</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="x">    $jumlah = count(DB::getQueryLog());</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nx">DB</span><span class="o">::</span><span class="na">enableQueryLog</span><span class="p">();</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'articles.index'</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">assertOk</span><span class="p">();</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nv">$jumlah</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">getQueryLog</span><span class="p">());</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="x">    $this-&gt;assertLessThanOrEqual(6, $jumlah);</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="x">}</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertLessThanOrEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nv">$jumlah</span><span class="p">);</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Batas (6) contoh; tentukan dari baselinemu. Uji ini mencegah regresi.</p>
 <h3 id="eager-loading-berlebihan">Eager loading berlebihan<a class="headerlink" href="#eager-loading-berlebihan" title="Permanent link">&para;</a></h3>

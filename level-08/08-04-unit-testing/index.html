@@ -9465,25 +9465,25 @@
 </span></code></pre></div>
 <p>Perhatikan empat kasus: pendek, tag, panjang, dan <strong>batas</strong> tepat. Kasus batas sering memuat bug <em>off-by-one</em>.</p>
 <h3 id="menguji-galat">Menguji galat<a class="headerlink" href="#menguji-galat" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">public function test_negative_limit_is_rejected(): void</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    $this-&gt;expectException(\InvalidArgumentException::class);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_negative_limit_is_rejected</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectException</span><span class="p">(</span><span class="nx">\InvalidArgumentException</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    new \App\Support\ArticleExcerpt(-1);</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">new</span> <span class="nx">\App\Support\ArticleExcerpt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Agar lulus, tambahkan pemeriksaan di constructor yang melempar <code>InvalidArgumentException</code> bila <code>$limit &lt; 1</code>.</p>
 <h3 id="rancang-agar-mudah-diuji">Rancang agar mudah diuji<a class="headerlink" href="#rancang-agar-mudah-diuji" title="Permanent link">&para;</a></h3>
 <p>Class yang menerima ketergantungan lewat constructor mudah diuji dengan objek palsu buatan tangan:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">class PengirimPalsu implements \App\Contracts\PengirimPesan</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    public array $terkirim = [];</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span> <span class="nc">PengirimPalsu</span> <span class="k">implements</span> <span class="nx">\App\Contracts\PengirimPesan</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">public</span> <span class="k">array</span> <span class="nv">$terkirim</span> <span class="o">=</span> <span class="p">[];</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    public function kirim(string $tujuan, string $isi): void</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">    {</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">        $this-&gt;terkirim[] = [$tujuan, $isi];</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">    }</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">kirim</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$tujuan</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$isi</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">terkirim</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="nv">$tujuan</span><span class="p">,</span> <span class="nv">$isi</span><span class="p">];</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Pada uji, suntikkan <code>PengirimPalsu</code> lalu periksa <code>terkirim</code>. Teknik lebih lanjut (mock) ada di sub bab Mocking.</p>
 <h3 id="keamanan">Keamanan<a class="headerlink" href="#keamanan" title="Permanent link">&para;</a></h3>

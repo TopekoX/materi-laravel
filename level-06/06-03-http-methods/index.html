@@ -9481,9 +9481,9 @@ kebetulan; ia ditentukan oleh semantik metode.</p>
 </ul>
 <h2 id="cara-kerja">Cara Kerja<a class="headerlink" href="#cara-kerja" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
-    C["curl -X PATCH /articles/5 -d '{\"title\":\"Baru\"}'"] --&gt; R["Route PATCH → update()"]
+    C["curl -X PATCH /articles/5 dengan body JSON title Baru"] --&gt; R["Route PATCH ke update"]
     R --&gt; V["Validasi: sometimes"]
-    V --&gt; U["Model::update(['title'=&gt;'Baru'])"]
+    V --&gt; U["Model update title menjadi Baru"]
     U --&gt; S["200 + JSON artikel"]</code></pre>
 <h2 id="contoh-praktik">Contoh Praktik<a class="headerlink" href="#contoh-praktik" title="Permanent link">&para;</a></h2>
 <p>Kamu membuat route sementara yang menjawab semua metode dengan mencerminkan metode dan body yang diterima, lalu menjalankan <code>curl</code> untuk tiap metode, termasuk body JSON dan <code>HEAD</code>.</p>

@@ -9483,33 +9483,33 @@
 </tbody>
 </table>
 <h3 id="agregat-relasi">Agregat relasi<a class="headerlink" href="#agregat-relasi" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">$artikel = Article::query()</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">    -&gt;published()</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    -&gt;withCount('comments')</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">    -&gt;withExists(['comments as has_comments'])</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">    -&gt;latest('published_at')</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">    -&gt;paginate(15);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$artikel</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="o">-&gt;</span><span class="na">published</span><span class="p">()</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">-&gt;</span><span class="na">withCount</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="o">-&gt;</span><span class="na">withExists</span><span class="p">([</span><span class="s1">'comments as has_comments'</span><span class="p">])</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="o">-&gt;</span><span class="na">latest</span><span class="p">(</span><span class="s1">'published_at'</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">-&gt;</span><span class="na">paginate</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Menghasilkan satu query dengan subquery untuk <code>comments_count</code>, tanpa memuat komentar. Tersedia pula <code>withSum</code>, <code>withAvg</code>, <code>withMin</code>, <code>withMax</code>.</p>
 <h3 id="memuat-relasi-dengan-kolom-terbatas">Memuat relasi dengan kolom terbatas<a class="headerlink" href="#memuat-relasi-dengan-kolom-terbatas" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">Article::with(['user:id,name', 'category:id,name'])-&gt;get();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">Article</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">'user:id,name'</span><span class="p">,</span> <span class="s1">'category:id,name'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Sertakan kolom kunci (<code>id</code>) agar relasi dapat dicocokkan.</p>
 <h3 id="accessor-dan-cast-yang-mahal">Accessor dan cast yang mahal<a class="headerlink" href="#accessor-dan-cast-yang-mahal" title="Permanent link">&para;</a></h3>
 <p>Accessor yang menjalankan query atau perhitungan berat dipanggil setiap kali diakses. Hindari akses ke relasi di dalam accessor yang dipakai di daftar (memicu N+1). Cache hasil bila perlu (<code>Attribute::make(...)-&gt;shouldCache()</code> memoizes dalam satu instance).</p>
 <h3 id="operasi-massal">Operasi massal<a class="headerlink" href="#operasi-massal" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">// Buruk: hidrasi + N UPDATE</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">Article::where('user_id', $id)-&gt;get()-&gt;each-&gt;update(['is_published' =&gt; false]);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Buruk: hidrasi + N UPDATE</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">Article</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">each</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">'is_published'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">// Baik: satu UPDATE</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">Article::where('user_id', $id)-&gt;update(['is_published' =&gt; false]);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Baik: satu UPDATE</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">Article</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">'is_published'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
 </span></code></pre></div>
 <p>Catatan: pembaruan massal <strong>tidak</strong> memicu event model (<code>updating</code>/<code>updated</code>) maupun observer. Bila event dibutuhkan (mis. invalidasi cache lewat observer), pertimbangkan kompromi atau jalankan invalidasi manual.</p>
 <p><code>insert([...])</code> dan <code>upsert([...], ['slug'], ['title'])</code> memasukkan banyak baris dalam satu query, juga tanpa event dan tanpa mengisi timestamp otomatis bila tidak disertakan.</p>
 <h3 id="pencegahan-lazy-loading">Pencegahan lazy loading<a class="headerlink" href="#pencegahan-lazy-loading" title="Permanent link">&para;</a></h3>
 <p><code>Model::preventLazyLoading()</code> (Level 04/05) melempar pengecualian saat relasi diakses tanpa dimuat. Aktifkan di lingkungan non-produksi:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">// AppServiceProvider::boot()</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">\Illuminate\Database\Eloquent\Model::preventLazyLoading(! app()-&gt;isProduction());</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// AppServiceProvider::boot()</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">\Illuminate\Database\Eloquent\Model</span><span class="o">::</span><span class="na">preventLazyLoading</span><span class="p">(</span><span class="o">!</span> <span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">isProduction</span><span class="p">());</span>
 </span></code></pre></div>
 <p>Menurut dokumentasi, ini membantu menemukan N+1 saat pengembangan. Sub bab berikutnya mendalaminya.</p>
 <h3 id="kapan-keluar-dari-eloquent">Kapan keluar dari Eloquent?<a class="headerlink" href="#kapan-keluar-dari-eloquent" title="Permanent link">&para;</a></h3>
@@ -9528,13 +9528,13 @@
 <h2 id="contoh-praktik">Contoh Praktik<a class="headerlink" href="#contoh-praktik" title="Permanent link">&para;</a></h2>
 <p>Kamu memperbaiki dashboard penulis: memakai <code>withCount</code>, memilih kolom, dan mengganti pembaruan perulangan dengan pembaruan massal.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">$ringkasan = Article::query()</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">    -&gt;where('user_id', $user-&gt;id)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">    -&gt;select(['id', 'title', 'slug', 'published_at'])</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">    -&gt;withCount('comments')</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="x">    -&gt;latest('id')</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">    -&gt;limit(20)</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="x">    -&gt;get();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$ringkasan</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">'id'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'slug'</span><span class="p">,</span> <span class="s1">'published_at'</span><span class="p">])</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="o">-&gt;</span><span class="na">withCount</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="o">-&gt;</span><span class="na">latest</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span></code></pre></div>
 <p><code>select</code> + <code>withCount</code> + <code>limit</code> memberi satu query kecil. <code>comments_count</code> tersedia sebagai atribut.</p>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>

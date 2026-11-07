@@ -9507,22 +9507,22 @@
 </table>
 <p>Pilih <code>assertSame</code> secara bawaan agar perbedaan tipe (<code>"1"</code> vs <code>1</code>) tidak lolos.</p>
 <h3 id="banyak-kasus-data-provider">Banyak kasus: data provider<a class="headerlink" href="#banyak-kasus-data-provider" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">use PHPUnit\Framework\Attributes\DataProvider;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">use</span> <span class="nx">PHPUnit\Framework\Attributes\DataProvider</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">#[DataProvider('contohJudul')]</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">public function test_slug(string $judul, string $diharapkan): void</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">{</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    $this-&gt;assertSame($diharapkan, \Illuminate\Support\Str::slug($judul));</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">#[</span><span class="nd">DataProvider</span><span class="p">(</span><span class="s1">'contohJudul'</span><span class="p">)]</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_slug</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$judul</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$diharapkan</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="nv">$diharapkan</span><span class="p">,</span> <span class="nx">\Illuminate\Support\Str</span><span class="o">::</span><span class="na">slug</span><span class="p">(</span><span class="nv">$judul</span><span class="p">));</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="x">public static function contohJudul(): array</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="x">{</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="x">    return [</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="x">        'spasi'  =&gt; ['Belajar Laravel', 'belajar-laravel'],</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="x">        'besar'  =&gt; ['PHP 8 Hebat', 'php-8-hebat'],</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="x">        'simbol' =&gt; ['Halo, Dunia!', 'halo-dunia'],</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="x">    ];</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="x">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">contohJudul</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">return</span> <span class="p">[</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="s1">'spasi'</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Belajar Laravel'</span><span class="p">,</span> <span class="s1">'belajar-laravel'</span><span class="p">],</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="s1">'besar'</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP 8 Hebat'</span><span class="p">,</span> <span class="s1">'php-8-hebat'</span><span class="p">],</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="s1">'simbol'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Halo, Dunia!'</span><span class="p">,</span> <span class="s1">'halo-dunia'</span><span class="p">],</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="p">];</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Pest: <code>it('membuat slug', fn ($j, $d) =&gt; expect(Str::slug($j))-&gt;toBe($d))-&gt;with([['Belajar Laravel','belajar-laravel'], ...]);</code>.</p>
 <h3 id="persiapan-bersama">Persiapan bersama<a class="headerlink" href="#persiapan-bersama" title="Permanent link">&para;</a></h3>

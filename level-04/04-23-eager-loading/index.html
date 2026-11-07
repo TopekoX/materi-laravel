@@ -9554,12 +9554,12 @@ gabungan, bukan per induk; untuk "N komentar terbaru per artikel" butuh pendekat
 </span></code></pre></div>
 <h3 id="mencegah-lazy-loading-yang-tak-sengaja">Mencegah lazy loading yang tak sengaja<a class="headerlink" href="#mencegah-lazy-loading-yang-tak-sengaja" title="Permanent link">&para;</a></h3>
 <p>Aktifkan pengecualian saat relasi di-lazy-load (cocok untuk pengembangan) di <code>AppServiceProvider::boot()</code>:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">use Illuminate\Database\Eloquent\Model;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">public function boot(): void</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">{</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="x">    Model::preventLazyLoading(! $this-&gt;app-&gt;isProduction());</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">}</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nx">Model</span><span class="o">::</span><span class="na">preventLazyLoading</span><span class="p">(</span><span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">isProduction</span><span class="p">());</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Dengan ini, memakai relasi yang belum dimuat dalam perulangan melempar <code>LazyLoadingViolationException</code>, sehingga kamu dipaksa memakai eager loading. Dokumentasi menyarankan hanya mengaktifkannya di non-produksi.</p>
 <h3 id="menghitung-query">Menghitung query<a class="headerlink" href="#menghitung-query" title="Permanent link">&para;</a></h3>

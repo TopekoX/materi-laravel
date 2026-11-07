@@ -9450,9 +9450,9 @@
 <p>Job "kirim email massal 10.000 penerima" memenuhi satu antrean selama dua jam; selama itu, email reset sandi (penting) mengantre di belakangnya. Pemisahan antrean dan prioritas menyelesaikannya.</p>
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="pisahkan-antrean">Pisahkan antrean<a class="headerlink" href="#pisahkan-antrean" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">SendPasswordReset::dispatch($user)-&gt;onQueue('critical');</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">SendNewsletter::dispatch($user)-&gt;onQueue('bulk');</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">ProcessImage::dispatch($path)-&gt;onQueue('media');</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">SendPasswordReset</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">onQueue</span><span class="p">(</span><span class="s1">'critical'</span><span class="p">);</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">SendNewsletter</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">onQueue</span><span class="p">(</span><span class="s1">'bulk'</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">ProcessImage</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$path</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">onQueue</span><span class="p">(</span><span class="s1">'media'</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Worker dapat diberi urutan prioritas:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>queue:work<span class="w"> </span>--queue<span class="o">=</span>critical,default,bulk
@@ -9493,30 +9493,30 @@
 </table>
 <h3 id="chain-dan-batch">Chain dan batch<a class="headerlink" href="#chain-dan-batch" title="Permanent link">&para;</a></h3>
 <p>Menurut dokumentasi queues:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">use Illuminate\Support\Facades\Bus;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Bus</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">Bus::chain([</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">    new GenerateReport($laporan),</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    new CompressReport($laporan),</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    new NotifyReportReady($laporan),</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">])-&gt;dispatch();   // berurutan; berhenti bila satu gagal</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nx">Bus</span><span class="o">::</span><span class="na">chain</span><span class="p">([</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">new</span> <span class="nx">GenerateReport</span><span class="p">(</span><span class="nv">$laporan</span><span class="p">),</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">new</span> <span class="nx">CompressReport</span><span class="p">(</span><span class="nv">$laporan</span><span class="p">),</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">new</span> <span class="nx">NotifyReportReady</span><span class="p">(</span><span class="nv">$laporan</span><span class="p">),</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">])</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">();</span>   <span class="c1">// berurutan; berhenti bila satu gagal</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="x">Bus::batch([</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="x">    new SendNewsletterChunk($idRentang1),</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="x">    new SendNewsletterChunk($idRentang2),</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="x">])-&gt;then(fn ($batch) =&gt; logger()-&gt;info('Batch selesai'))</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="x">  -&gt;catch(fn ($batch, $e) =&gt; logger()-&gt;error('Batch gagal', ['galat' =&gt; $e-&gt;getMessage()]))</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="x">  -&gt;dispatch();</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nx">Bus</span><span class="o">::</span><span class="na">batch</span><span class="p">([</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">new</span> <span class="nx">SendNewsletterChunk</span><span class="p">(</span><span class="nv">$idRentang1</span><span class="p">),</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">new</span> <span class="nx">SendNewsletterChunk</span><span class="p">(</span><span class="nv">$idRentang2</span><span class="p">),</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">])</span><span class="o">-&gt;</span><span class="na">then</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nv">$batch</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">logger</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Batch selesai'</span><span class="p">))</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  <span class="o">-&gt;</span><span class="na">catch</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nv">$batch</span><span class="p">,</span> <span class="nv">$e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">logger</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Batch gagal'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'galat'</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]))</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>  <span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Batch membutuhkan tabel <code>job_batches</code> (<code>php artisan make:queue-batches-table</code>, lalu <code>migrate</code>). Pecah pekerjaan besar menjadi banyak job kecil yang berjalan paralel pada beberapa worker.</p>
 <h3 id="membatasi-laju">Membatasi laju<a class="headerlink" href="#membatasi-laju" title="Permanent link">&para;</a></h3>
 <p>Layanan eksternal sering punya batas (mis. 10 email/detik). Gunakan job middleware:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">use Illuminate\Queue\Middleware\RateLimited;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">use</span> <span class="nx">Illuminate\Queue\Middleware\RateLimited</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">public function middleware(): array</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">{</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    return [new RateLimited('email-provider')];</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">middleware</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="k">return</span> <span class="p">[</span><span class="k">new</span> <span class="nx">RateLimited</span><span class="p">(</span><span class="s1">'email-provider'</span><span class="p">)];</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Dengan <code>RateLimiter::for('email-provider', fn () =&gt; Limit::perSecond(10));</code> di <code>AppServiceProvider</code>. Job yang melebihi batas dilepas kembali ke antrean. Ada pula <code>WithoutOverlapping</code> untuk mencegah dua job sejenis berjalan bersamaan. (Sesuaikan dengan API versi Laravel 13; lihat dokumentasi job middleware.)</p>
 <h3 id="driver">Driver<a class="headerlink" href="#driver" title="Permanent link">&para;</a></h3>
@@ -9570,15 +9570,15 @@
 <p>Kamu memisahkan job email penting dan massal, menjalankan worker dengan prioritas, dan membuktikan job penting selesai lebih dulu.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Atur antrean pada job:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">class SendNewsletter implements ShouldQueue</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">    use Queueable;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">SendNewsletter</span> <span class="k">implements</span> <span class="nx">ShouldQueue</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">use</span> <span class="nx">Queueable</span><span class="p">;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="x">    public function __construct(public int $userId)</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">    {</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="x">        $this-&gt;onQueue('bulk');</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="x">    }</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="x">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">public</span> <span class="nx">int</span> <span class="nv">$userId</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="p">{</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">onQueue</span><span class="p">(</span><span class="s1">'bulk'</span><span class="p">);</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="p">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><code>onQueue</code> di constructor menetapkan antrean bawaan job; pemanggil tetap bisa menimpanya.</p>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>

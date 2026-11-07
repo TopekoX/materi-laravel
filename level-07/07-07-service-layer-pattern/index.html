@@ -9379,12 +9379,12 @@
 </span></code></pre></div>
 <p><code>DB::transaction</code> membuat semua langkah berhasil atau dibatalkan bersama. <code>associate</code> mengisi pemilik dari argumen (bukan dari input). <code>withTrashed()</code> mencegah slug bentrok dengan artikel yang di-soft-delete. Catatan: pemeriksaan-lalu-simpan tetap bisa balapan; kolom <code>slug</code> harus tetap <code>unique</code> di database.</p>
 <h3 id="pemakaian">Pemakaian<a class="headerlink" href="#pemakaian" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">public function store(StoreArticleRequest $request, ArticlePublisher $publisher)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    $article = $publisher-&gt;create($request-&gt;user(), $request-&gt;validated());</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">(</span><span class="nx">StoreArticleRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">ArticlePublisher</span> <span class="nv">$publisher</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nv">$article</span> <span class="o">=</span> <span class="nv">$publisher</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">(),</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">());</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">    return redirect()-&gt;route('articles.show', $article);</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">}</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'articles.show'</span><span class="p">,</span> <span class="nv">$article</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Controller API memakai service yang sama dan hanya berbeda pada respons (<code>201</code> + Resource).</p>
 <h3 id="service-repository-atau-action">Service, repository, atau Action?<a class="headerlink" href="#service-repository-atau-action" title="Permanent link">&para;</a></h3>

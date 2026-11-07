@@ -9592,16 +9592,16 @@
 <p>Kamu mengaudit aplikasi <code>cms-artikel</code> terhadap daftar periksa stateless dan menuliskan rencana skala tanpa membangun infrastruktur.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Contoh konfigurasi replika baca (<code>config/database.php</code>, koneksi <code>mysql</code>):</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">'mysql' =&gt; [</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">    'read' =&gt; [</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">        'host' =&gt; [env('DB_READ_HOST', '127.0.0.1')],</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">    ],</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">    'write' =&gt; [</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">        'host' =&gt; [env('DB_WRITE_HOST', '127.0.0.1')],</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="x">    ],</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="x">    'sticky' =&gt; true,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="x">    // driver, database, username, password, dst. tetap</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="x">],</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="s1">'mysql'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s1">'read'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">env</span><span class="p">(</span><span class="s1">'DB_READ_HOST'</span><span class="p">,</span> <span class="s1">'127.0.0.1'</span><span class="p">)],</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">],</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s1">'write'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">env</span><span class="p">(</span><span class="s1">'DB_WRITE_HOST'</span><span class="p">,</span> <span class="s1">'127.0.0.1'</span><span class="p">)],</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="p">],</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="s1">'sticky'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="c1">// driver, database, username, password, dst. tetap</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">],</span>
 </span></code></pre></div>
 <p><code>sticky =&gt; true</code> membuat pembacaan setelah penulisan dalam permintaan yang sama memakai koneksi tulis. Kredensial tetap dari <code>.env</code>.</p>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>

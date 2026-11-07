@@ -9385,43 +9385,43 @@
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="s-single-responsibility">S: Single Responsibility<a class="headerlink" href="#s-single-responsibility" title="Permanent link">&para;</a></h3>
 <p>Satu class, satu alasan berubah.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">// Melanggar: mengurus validasi, simpan, email, dan format</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">class ArticleManager { public function publishAndEmailAndFormat(...) {} }</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Melanggar: mengurus validasi, simpan, email, dan format</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">class</span> <span class="nc">ArticleManager</span> <span class="p">{</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">publishAndEmailAndFormat</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{}</span> <span class="p">}</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">// Memisahkan: ArticlePublisher (aturan), ArticleMailer (email), ArticleFormatter (tampilan)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// Memisahkan: ArticlePublisher (aturan), ArticleMailer (email), ArticleFormatter (tampilan)</span>
 </span></code></pre></div>
 <p>Gejala: nama berakhiran <code>Manager</code>/<code>Helper</code>, banyak <code>use</code> tak terkait, metode tak saling memakai properti.</p>
 <h3 id="o-openclosed">O: Open/Closed<a class="headerlink" href="#o-openclosed" title="Permanent link">&para;</a></h3>
 <p>Terbuka untuk ekstensi, tertutup untuk modifikasi: tambah perilaku tanpa mengubah kode lama.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">interface ExcerptStrategy { public function make(string $body): string; }</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">interface</span> <span class="nx">ExcerptStrategy</span> <span class="p">{</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$body</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span> <span class="p">}</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">class PlainExcerpt implements ExcerptStrategy { /* ... */ }</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="x">class MarkdownExcerpt implements ExcerptStrategy { /* ... */ }</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span> <span class="nc">PlainExcerpt</span> <span class="k">implements</span> <span class="nx">ExcerptStrategy</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span> <span class="nc">MarkdownExcerpt</span> <span class="k">implements</span> <span class="nx">ExcerptStrategy</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 </span></code></pre></div>
 <p>Menambah <code>HtmlExcerpt</code> cukup membuat class baru dan mengikatnya; pemakai tidak berubah. Gejala pelanggaran: <code>switch/if</code> berdasarkan tipe yang bertambah tiap fitur.</p>
 <h3 id="l-liskov-substitution">L: Liskov Substitution<a class="headerlink" href="#l-liskov-substitution" title="Permanent link">&para;</a></h3>
 <p>Subtipe harus dapat menggantikan tipe induk tanpa merusak perilaku.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">class ReadOnlyArticleRepository extends ArticleRepository</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    public function save(Article $a): void</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">    {</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">        throw new LogicException('read-only'); // melanggar kontrak induk</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    }</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span> <span class="nc">ReadOnlyArticleRepository</span> <span class="k">extends</span> <span class="nx">ArticleRepository</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">Article</span> <span class="nv">$a</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="k">throw</span> <span class="k">new</span> <span class="nx">LogicException</span><span class="p">(</span><span class="s1">'read-only'</span><span class="p">);</span> <span class="c1">// melanggar kontrak induk</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Pemakai yang memanggil <code>save()</code> pada tipe induk kini meledak. Perbaiki dengan interface terpisah (<code>ReadsArticles</code>, <code>WritesArticles</code>). Gejala: subclass melempar "tidak didukung" atau mengosongkan metode.</p>
 <h3 id="i-interface-segregation">I: Interface Segregation<a class="headerlink" href="#i-interface-segregation" title="Permanent link">&para;</a></h3>
 <p>Banyak interface kecil lebih baik daripada satu besar.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">interface ReadsArticles { public function findBySlug(string $slug): ?Article; }</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">interface WritesArticles { public function save(Article $article): void; }</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">interface</span> <span class="nx">ReadsArticles</span> <span class="p">{</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">findBySlug</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$slug</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">Article</span><span class="p">;</span> <span class="p">}</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">interface</span> <span class="nx">WritesArticles</span> <span class="p">{</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">Article</span> <span class="nv">$article</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></div>
 <p>Class pembaca hanya bergantung pada <code>ReadsArticles</code>. Gejala: implementasi dengan metode kosong.</p>
 <h3 id="d-dependency-inversion">D: Dependency Inversion<a class="headerlink" href="#d-dependency-inversion" title="Permanent link">&para;</a></h3>
 <p>Modul tingkat tinggi tidak bergantung pada detail tingkat rendah; keduanya bergantung pada abstraksi.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">class ArticlePublisher</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">    public function __construct(private WritesArticles $articles, private PengirimPesan $notifier) {}</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">ArticlePublisher</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">WritesArticles</span> <span class="nv">$articles</span><span class="p">,</span> <span class="k">private</span> <span class="nx">PengirimPesan</span> <span class="nv">$notifier</span><span class="p">)</span> <span class="p">{}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Container Laravel mengikat abstraksi ke implementasi (07.01–07.04). Gejala: <code>new</code> konkret atau Facade infrastruktur di dalam logika bisnis.</p>
 <h3 id="kapan-berlebihan">Kapan berlebihan?<a class="headerlink" href="#kapan-berlebihan" title="Permanent link">&para;</a></h3>
@@ -9436,8 +9436,8 @@
 <p>Kamu menemukan satu class yang melanggar SRP/OCP di proyek dan memecahnya dengan interface, lalu memverifikasi lewat uji.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Pengikatan di provider:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">$this-&gt;app-&gt;bind(WritesArticles::class, EloquentArticleRepository::class);</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">$this-&gt;app-&gt;bind(ReadsArticles::class, EloquentArticleRepository::class);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">WritesArticles</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">EloquentArticleRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">ReadsArticles</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">EloquentArticleRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Satu implementasi memenuhi dua interface kecil.</p>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>

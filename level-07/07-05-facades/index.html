@@ -9362,13 +9362,13 @@
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="cara-kerja">Cara kerja<a class="headerlink" href="#cara-kerja" title="Permanent link">&para;</a></h3>
 <p>Menurut dokumentasi, Facade adalah class yang menyediakan antarmuka statis ke objek di container. Class dasar <code>Illuminate\Support\Facades\Facade</code> memakai <em>magic method</em> <code>__callStatic()</code> untuk meneruskan panggilan ke objek yang dikembalikan oleh <code>getFacadeAccessor()</code>.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">class Cache extends Facade</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    protected static function getFacadeAccessor(): string</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">    {</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">        return 'cache';</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">    }</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">Cache</span> <span class="k">extends</span> <span class="nx">Facade</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getFacadeAccessor</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="k">return</span> <span class="s1">'cache'</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Pemanggilan <code>Cache::get('kunci')</code> → mengambil binding <code>cache</code> dari container → memanggil <code>-&gt;get('kunci')</code> pada objeknya.</p>
 <h3 id="kelebihan-dan-kekurangan">Kelebihan dan kekurangan<a class="headerlink" href="#kelebihan-dan-kekurangan" title="Permanent link">&para;</a></h3>

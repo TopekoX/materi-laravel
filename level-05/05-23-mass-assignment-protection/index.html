@@ -9445,8 +9445,8 @@ diam-diam (kecuali kamu mengaktifkan pengecualian).</p>
 </tbody>
 </table>
 <h3 id="allow-list-sempit">Allow-list sempit<a class="headerlink" href="#allow-list-sempit" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">#[Fillable(['name', 'email', 'password'])]</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">class User extends Authenticatable { /* ... */ }</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">#[</span><span class="nd">Fillable</span><span class="p">([</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="s1">'password'</span><span class="p">])]</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 </span></code></pre></div>
 <p><code>role</code>, <code>email_verified_at</code>, <code>is_admin</code>, dan kunci asing sensitif tidak masuk daftar.</p>
 <h3 id="pola-serangan">Pola serangan<a class="headerlink" href="#pola-serangan" title="Permanent link">&para;</a></h3>
@@ -9473,9 +9473,9 @@ diam-diam (kecuali kamu mengaktifkan pengecualian).</p>
 <ol>
 <li><strong>Deteksi dini</strong>: di <code>AppServiceProvider::boot()</code></li>
 </ol>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">use Illuminate\Database\Eloquent\Model;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">Model::preventSilentlyDiscardingAttributes(! $this-&gt;app-&gt;isProduction());</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nx">Model</span><span class="o">::</span><span class="na">preventSilentlyDiscardingAttributes</span><span class="p">(</span><span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">isProduction</span><span class="p">());</span>
 </span></code></pre></div>
 <p>Dengan ini, mengisi kolom di luar <code>Fillable</code> melempar pengecualian saat pengembangan sehingga celah ketahuan cepat. Di produksi dibiarkan diam agar request liar tidak menjatuhkan halaman.</p>
 <h3 id="forcefill-dan-unguard"><code>forceFill</code> dan <code>unguard</code><a class="headerlink" href="#forcefill-dan-unguard" title="Permanent link">&para;</a></h3>

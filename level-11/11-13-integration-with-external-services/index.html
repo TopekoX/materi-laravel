@@ -9450,10 +9450,10 @@
 <p>Fitur "terjemahan otomatis" memanggil API pihak ketiga dari lima tempat dengan format respons mereka. Saat penyedia mengubah format, lima tempat rusak. Adapter memusatkan ketergantungan itu.</p>
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="adapter-di-belakang-kontrak">Adapter di belakang kontrak<a class="headerlink" href="#adapter-di-belakang-kontrak" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">interface Translator</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    public function translate(string $text, string $to): string;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">interface</span> <span class="nx">Translator</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">translate</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$to</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>File: <code>app/Integrations/Translation/HttpTranslator.php</code></p>
 <div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
@@ -9489,10 +9489,10 @@
 <p>Format respons penyedia hanya diketahui di sini (<code>data.translation</code>). Aplikasi lain hanya mengenal <code>Translator</code> dan <code>TranslationUnavailable</code>.</p>
 <h3 id="kredensial">Kredensial<a class="headerlink" href="#kredensial" title="Permanent link">&para;</a></h3>
 <p>File: <code>config/services.php</code></p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">'translator' =&gt; [</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">    'url' =&gt; env('TRANSLATOR_URL'),</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    'token' =&gt; env('TRANSLATOR_TOKEN'),</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">],</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="s1">'translator'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">'TRANSLATOR_URL'</span><span class="p">),</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s1">'token'</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">'TRANSLATOR_TOKEN'</span><span class="p">),</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">],</span>
 </span></code></pre></div>
 <p>Nilai di <code>.env</code> (tidak di Git). Gunakan <code>config()</code> di kode (10.07). Pisahkan kunci per lingkungan (sandbox vs produksi) dan hak terkecil.</p>
 <h3 id="ketahanan">Ketahanan<a class="headerlink" href="#ketahanan" title="Permanent link">&para;</a></h3>
@@ -9508,29 +9508,29 @@
 <li>Respons cepat (2xx), proses lewat antrean.</li>
 <li>Idempoten (penyedia dapat mengirim ulang).</li>
 </ol>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">public function handle(Request $request)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    $payload = $request-&gt;getContent();</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">    $signature = $request-&gt;header('X-Signature', '');</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    $expected = hash_hmac('sha256', $payload, config('services.translator.webhook_secret'));</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nv">$payload</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nv">$signature</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">(</span><span class="s1">'X-Signature'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nv">$expected</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="nv">$payload</span><span class="p">,</span> <span class="nx">config</span><span class="p">(</span><span class="s1">'services.translator.webhook_secret'</span><span class="p">));</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">    abort_unless(hash_equals($expected, $signature), 403);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nx">abort_unless</span><span class="p">(</span><span class="nb">hash_equals</span><span class="p">(</span><span class="nv">$expected</span><span class="p">,</span> <span class="nv">$signature</span><span class="p">),</span> <span class="mi">403</span><span class="p">);</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">    ProcessTranslationWebhook::dispatch($request-&gt;json()-&gt;all());</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="nx">ProcessTranslationWebhook</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">());</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="x">    return response()-&gt;noContent();</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="x">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">noContent</span><span class="p">();</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Route webhook dikecualikan dari verifikasi CSRF (permintaan server-ke-server) hanya setelah memastikan tanda tangan diverifikasi; jangan mengecualikan route lain.</p>
 <h3 id="pengujian">Pengujian<a class="headerlink" href="#pengujian" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">Http::fake([</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">    'translator.test/*' =&gt; Http::response(['data' =&gt; ['translation' =&gt; 'Hello']], 200),</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">]);</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">Http::preventStrayRequests();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">Http</span><span class="o">::</span><span class="na">fake</span><span class="p">([</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s1">'translator.test/*'</span> <span class="o">=&gt;</span> <span class="nx">Http</span><span class="o">::</span><span class="na">response</span><span class="p">([</span><span class="s1">'data'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'translation'</span> <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">]],</span> <span class="mi">200</span><span class="p">),</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">]);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nx">Http</span><span class="o">::</span><span class="na">preventStrayRequests</span><span class="p">();</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">$this-&gt;assertSame('Hello', app(Translator::class)-&gt;translate('Halo', 'en'));</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">,</span> <span class="nx">app</span><span class="p">(</span><span class="nx">Translator</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">translate</span><span class="p">(</span><span class="s1">'Halo'</span><span class="p">,</span> <span class="s1">'en'</span><span class="p">));</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="x">Http::assertSent(fn ($r) =&gt; $r['target'] === 'en');</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nx">Http</span><span class="o">::</span><span class="na">assertSent</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nv">$r</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$r</span><span class="p">[</span><span class="s1">'target'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'en'</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Uji juga 500, 429, dan timeout (<code>Http::fake</code> dengan respons gagal / <code>Http::failedConnection()</code> bila tersedia di versimu; periksa dokumentasi HTTP Client) untuk memastikan fallback bekerja. Jangan menguji layanan nyata di suite otomatis.</p>
 <h3 id="perubahan-dan-kontrak">Perubahan dan kontrak<a class="headerlink" href="#perubahan-dan-kontrak" title="Permanent link">&para;</a></h3>

@@ -9512,10 +9512,10 @@
 </table>
 <p><strong>Batasi <code>broadcastWith</code></strong> ke data yang aman dipublikasikan. Semua properti publik dikirim bila tidak didefinisikan, dan channel publik bisa didengar siapa pun.</p>
 <h3 id="channel-privat">Channel privat<a class="headerlink" href="#channel-privat" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">public function broadcastOn(): PrivateChannel</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    return new PrivateChannel('users.'.$this-&gt;article-&gt;user_id);</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">broadcastOn</span><span class="p">()</span><span class="o">:</span> <span class="nx">PrivateChannel</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">PrivateChannel</span><span class="p">(</span><span class="s1">'users.'</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">article</span><span class="o">-&gt;</span><span class="na">user_id</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>File: <code>routes/channels.php</code></p>
 <div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>

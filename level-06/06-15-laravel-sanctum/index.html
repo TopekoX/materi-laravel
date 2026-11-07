@@ -9503,13 +9503,13 @@ Sanctum pada proyek <code>cms-artikel</code>, memeriksa apa yang berubah, dan me
 <p>Perintah ini memasang paket dari Packagist; pastikan kamu mempercayai sumber dan lisensinya (paket resmi Laravel, MIT).</p>
 <h3 id="model-user">Model <code>User</code><a class="headerlink" href="#model-user" title="Permanent link">&para;</a></h3>
 <p>File: <code>app/Models/User.php</code></p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">use Laravel\Sanctum\HasApiTokens;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">use</span> <span class="nx">Laravel\Sanctum\HasApiTokens</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">class User extends Authenticatable implements MustVerifyEmail</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">{</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    use HasApiTokens, HasFactory, Notifiable;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    // ...</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span> <span class="k">implements</span> <span class="nx">MustVerifyEmail</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">use</span> <span class="nx">HasApiTokens</span><span class="p">,</span> <span class="nx">HasFactory</span><span class="p">,</span> <span class="nx">Notifiable</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1">// ...</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Trait menyediakan <code>createToken()</code>, relasi <code>tokens()</code>, <code>currentAccessToken()</code>, <code>tokenCan()</code>, dan <code>tokenCant()</code>.</p>
 <h3 id="melindungi-route">Melindungi route<a class="headerlink" href="#melindungi-route" title="Permanent link">&para;</a></h3>

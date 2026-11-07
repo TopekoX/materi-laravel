@@ -9451,12 +9451,12 @@
 <p>Menurut dokumentasi, Laravel secara otomatis menemukan listener dengan memindai direktori <code>Listeners</code>; method <code>handle</code> atau <code>__invoke</code> yang type-hint-nya sebuah event didaftarkan untuk event itu. Jika listener berada di direktori lain, gunakan <code>withEvents(discover: [...])</code> di <code>bootstrap/app.php</code>. Di produksi, cache dengan <code>php artisan event:cache</code> (atau <code>optimize</code>), dan <code>event:clear</code> untuk menghapusnya.</p>
 <h3 id="mengirim-event">Mengirim event<a class="headerlink" href="#mengirim-event" title="Permanent link">&para;</a></h3>
 <p>Di <code>ArticlePublisher</code>, setelah penyimpanan berhasil:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">ArticlePublished::dispatch($article);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">ArticlePublished</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$article</span><span class="p">);</span>
 </span></code></pre></div>
 <p><strong>Penting:</strong> bila <code>dispatch</code> terjadi di dalam transaksi, listener bisa berjalan sebelum data ter-<em>commit</em>. Letakkan <code>dispatch</code> setelah transaksi selesai, atau gunakan interface <code>ShouldDispatchAfterCommit</code> pada event.</p>
 <h3 id="listener-antre">Listener antre<a class="headerlink" href="#listener-antre" title="Permanent link">&para;</a></h3>
 <p>Menambahkan <code>implements ShouldQueue</code> pada listener membuatnya dijalankan oleh queue worker, bukan di request (dibahas di bab Jobs dan Queues):</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">class KirimNotifikasiArtikel implements ShouldQueue</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">KirimNotifikasiArtikel</span> <span class="k">implements</span> <span class="nx">ShouldQueue</span>
 </span></code></pre></div>
 <h3 id="peringatan-desain">Peringatan desain<a class="headerlink" href="#peringatan-desain" title="Permanent link">&para;</a></h3>
 <table>

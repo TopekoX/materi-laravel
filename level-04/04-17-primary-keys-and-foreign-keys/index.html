@@ -9486,12 +9486,12 @@ database sendiri yang menolak keadaan seperti itu.</p>
 <p>Untuk memakai UUID/ULID pada model gunakan trait <code>HasUuids</code> atau <code>HasUlids</code>. Kebanyakan tabel cukup dengan <code>id()</code>.</p>
 <h3 id="kunci-asing-foreign-key">Kunci asing (<em>foreign key</em>)<a class="headerlink" href="#kunci-asing-foreign-key" title="Permanent link">&para;</a></h3>
 <p>Kunci asing menyimpan kunci utama tabel lain. Cara ringkas di Laravel:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">$table-&gt;foreignId('category_id')-&gt;constrained();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">foreignId</span><span class="p">(</span><span class="s1">'category_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">constrained</span><span class="p">();</span>
 </span></code></pre></div>
 <p><code>foreignId</code> membuat kolom <code>UNSIGNED BIGINT</code>; <code>constrained()</code> memakai konvensi untuk menebak tabel dan kolom rujukan: <code>category_id</code> → tabel <code>categories</code>, kolom <code>id</code>. Bentuk
 panjangnya:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">$table-&gt;unsignedBigInteger('category_id');</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">$table-&gt;foreign('category_id')-&gt;references('id')-&gt;on('categories');</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">unsignedBigInteger</span><span class="p">(</span><span class="s1">'category_id'</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">foreign</span><span class="p">(</span><span class="s1">'category_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">references</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'categories'</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Bila nama tabel tidak mengikuti konvensi: <code>constrained('nama_tabel')</code>.</p>
 <h3 id="perilaku-saat-induk-dihapus-atau-diubah">Perilaku saat induk dihapus atau diubah<a class="headerlink" href="#perilaku-saat-induk-dihapus-atau-diubah" title="Permanent link">&para;</a></h3>
@@ -9540,7 +9540,7 @@ panjangnya:</p>
 SQLite memerlukan pembuatan ulang tabel; Laravel melakukannya otomatis saat <code>Schema::table</code> dengan <code>constrained()</code>, tetapi pada MySQL operasinya berupa <code>ALTER TABLE</code>.</p>
 <h3 id="menambah-kunci-asing-ke-tabel-berisi-data">Menambah kunci asing ke tabel berisi data<a class="headerlink" href="#menambah-kunci-asing-ke-tabel-berisi-data" title="Permanent link">&para;</a></h3>
 <p>Baris lama belum punya nilai untuk kolom baru. Karena itu kunci asing baru pada tabel berisi data sebaiknya <code>nullable()</code>:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">$table-&gt;foreignId('category_id')-&gt;nullable()-&gt;constrained()-&gt;nullOnDelete();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">foreignId</span><span class="p">(</span><span class="s1">'category_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">nullable</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">constrained</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">nullOnDelete</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Setelah data lama diisi, kolom dapat dijadikan wajib lewat migration berikutnya bila perlu.</p>
 <h3 id="indeks-pada-kunci-asing">Indeks pada kunci asing<a class="headerlink" href="#indeks-pada-kunci-asing" title="Permanent link">&para;</a></h3>
@@ -9641,12 +9641,12 @@ SQLite memerlukan pembuatan ulang tabel; Laravel melakukannya otomatis saat <cod
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Category<span class="w"> </span>-mf
 </span></code></pre></div>
 <p>File: <code>database/migrations/xxxx_create_categories_table.php</code> (isi <code>up()</code>; pastikan stempel waktunya <strong>lebih awal</strong> daripada migration <code>add_user_and_category...</code>)</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">Schema::create('categories', function (Blueprint $table) {</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">    $table-&gt;id();</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="x">    $table-&gt;string('name')-&gt;unique();</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="x">    $table-&gt;string('slug')-&gt;unique();</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="x">    $table-&gt;timestamps();</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="x">});</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'categories'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">unique</span><span class="p">();</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'slug'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">unique</span><span class="p">();</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamps</span><span class="p">();</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">});</span>
 </span></code></pre></div>
 <p>Model <code>Category</code> diberi <code>#[Fillable(['name', 'slug'])]</code>.</p>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>

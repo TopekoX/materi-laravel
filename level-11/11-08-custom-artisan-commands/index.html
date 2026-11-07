@@ -9554,16 +9554,16 @@
 </tbody>
 </table>
 <h3 id="menguji">Menguji<a class="headerlink" href="#menguji" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">public function test_dry_run_does_not_delete(): void</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    Article::factory()-&gt;create(['published_at' =&gt; null, 'updated_at' =&gt; now()-&gt;subDays(120)]);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_dry_run_does_not_delete</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">Article</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span><span class="s1">'published_at'</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'updated_at'</span> <span class="o">=&gt;</span> <span class="nx">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">subDays</span><span class="p">(</span><span class="mi">120</span><span class="p">)]);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    $this-&gt;artisan('articles:archive-stale', ['--dry-run' =&gt; true])</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">        -&gt;expectsOutputToContain('Ditemukan 1 draf usang')</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">        -&gt;assertExitCode(0);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">artisan</span><span class="p">(</span><span class="s1">'articles:archive-stale'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'--dry-run'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">])</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="o">-&gt;</span><span class="na">expectsOutputToContain</span><span class="p">(</span><span class="s1">'Ditemukan 1 draf usang'</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="o">-&gt;</span><span class="na">assertExitCode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="x">    $this-&gt;assertDatabaseCount('articles', 1);</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="x">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertDatabaseCount</span><span class="p">(</span><span class="s1">'articles'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><code>$this-&gt;artisan()</code> dan <code>expectsOutputToContain</code>, <code>expectsConfirmation</code>, <code>assertExitCode</code> tersedia di dokumentasi Console Tests.</p>
 <h3 id="menjadwalkan">Menjadwalkan<a class="headerlink" href="#menjadwalkan" title="Permanent link">&para;</a></h3>

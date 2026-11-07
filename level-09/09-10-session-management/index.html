@@ -9456,11 +9456,11 @@
 <li>Pada driver berkas/DB tertentu, permintaan bersamaan dari satu pengguna dapat berurutan karena penguncian; Redis dan penguncian atomik mengurangi masalah ini (lihat <code>Route::...-&gt;block()</code> dan dokumentasi).</li>
 </ul>
 <h3 id="simpan-seperlunya">Simpan seperlunya<a class="headerlink" href="#simpan-seperlunya" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">// Buruk</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">session(['keranjang' =&gt; $semuaProdukLengkap]);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Buruk</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">session</span><span class="p">([</span><span class="s1">'keranjang'</span> <span class="o">=&gt;</span> <span class="nv">$semuaProdukLengkap</span><span class="p">]);</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">// Baik</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">session(['keranjang' =&gt; [101 =&gt; 2, 205 =&gt; 1]]);   // hanya id dan jumlah</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// Baik</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nx">session</span><span class="p">([</span><span class="s1">'keranjang'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">101</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">205</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">]]);</span>   <span class="c1">// hanya id dan jumlah</span>
 </span></code></pre></div>
 <p>Simpan ID dan data kecil, ambil detail dari database/cache saat dibutuhkan. Jangan simpan model Eloquent penuh di sesi.</p>
 <h3 id="route-tanpa-sesi">Route tanpa sesi<a class="headerlink" href="#route-tanpa-sesi" title="Permanent link">&para;</a></h3>

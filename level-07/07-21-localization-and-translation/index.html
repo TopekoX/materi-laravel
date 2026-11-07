@@ -9418,8 +9418,8 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">];</span>
 </span></code></pre></div>
 <h3 id="memakai-terjemahan">Memakai terjemahan<a class="headerlink" href="#memakai-terjemahan" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">__('messages.welcome', ['name' =&gt; 'Ani']);</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">trans_choice('messages.comments', 5);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">__</span><span class="p">(</span><span class="s1">'messages.welcome'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Ani'</span><span class="p">]);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">trans_choice</span><span class="p">(</span><span class="s1">'messages.comments'</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Di Blade: <code>{{ __('messages.read_more') }}</code>. Kunci JSON memakai string asli sebagai kunci: <code>__('Baca selengkapnya')</code> dengan <code>lang/en.json</code> berisi <code>{"Baca selengkapnya": "Read more"}</code>. Hindari kunci pendek yang bentrok dengan nama berkas (mis. <code>__('messages')</code>).</p>
 <p>Placeholder memakai awalan <code>:</code>; huruf besar pada placeholder (<code>:NAME</code>) membuat nilai kapital. <code>trans_choice</code> memilih bentuk jamak berdasarkan angka; <code>:count</code> menampilkan angkanya.</p>

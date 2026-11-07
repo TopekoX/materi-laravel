@@ -9509,16 +9509,16 @@
 </span></code></pre></div>
 <p>Menurut dokumentasi, perintah ini membuat migrasi tabel <code>notifications</code>.</p>
 <h3 id="mengirim">Mengirim<a class="headerlink" href="#mengirim" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">$user-&gt;notify(new ArticlePublishedNotification($article));</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArticlePublishedNotification</span><span class="p">(</span><span class="nv">$article</span><span class="p">));</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">use Illuminate\Support\Facades\Notification;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">Notification::send($subscribers, new ArticlePublishedNotification($article));</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Notification</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nx">Notification</span><span class="o">::</span><span class="na">send</span><span class="p">(</span><span class="nv">$subscribers</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ArticlePublishedNotification</span><span class="p">(</span><span class="nv">$article</span><span class="p">));</span>
 </span></code></pre></div>
 <p>Untuk banyak penerima, <code>Notification::send</code> dengan notification antre menghasilkan satu job per penerima/kanal.</p>
 <h3 id="menampilkan-dan-menandai-dibaca">Menampilkan dan menandai dibaca<a class="headerlink" href="#menampilkan-dan-menandai-dibaca" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">$user-&gt;unreadNotifications;                    // belum dibaca</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">$user-&gt;notifications;                          // semua</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">$user-&gt;unreadNotifications-&gt;markAsRead();      // tandai dibaca</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="p">;</span>                    <span class="c1">// belum dibaca</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">notifications</span><span class="p">;</span>                          <span class="c1">// semua</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>      <span class="c1">// tandai dibaca</span>
 </span></code></pre></div>
 <p>Contoh controller <code>NotificationController@index</code> yang menampilkan <code>auth()-&gt;user()-&gt;notifications()-&gt;paginate(15)</code>. Selalu ambil dari relasi milik pengguna yang login agar pengguna tidak melihat notifikasi orang lain (IDOR).</p>
 <h3 id="keamanan">Keamanan<a class="headerlink" href="#keamanan" title="Permanent link">&para;</a></h3>

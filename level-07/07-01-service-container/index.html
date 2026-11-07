@@ -9343,10 +9343,10 @@
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
 <p>Container adalah "pabrik" objek yang tahu cara membuat class beserta ketergantungannya. Menurut dokumentasi, jika sebuah class tidak punya ketergantungan atau hanya bergantung pada class konkret lain, container dapat meresolusinya <strong>tanpa konfigurasi</strong> lewat refleksi type-hint di constructor.</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">class ArticleStatsService</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    public function __construct(private ArticleRepositoryContoh $repo) {}</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">ArticleStatsService</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">ArticleRepositoryContoh</span> <span class="nv">$repo</span><span class="p">)</span> <span class="p">{}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Saat controller meminta <code>ArticleStatsService</code> di parameter, container membuat <code>ArticleRepositoryContoh</code> lebih dulu, menyuntikkannya, lalu mengembalikan service.</p>
 <h3 id="binding">Binding<a class="headerlink" href="#binding" title="Permanent link">&para;</a></h3>
@@ -9378,10 +9378,10 @@
 </tbody>
 </table>
 <p>Binding biasanya didaftarkan di <code>register()</code> pada service provider (bab berikutnya):</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">$this-&gt;app-&gt;singleton(Penghitung::class, fn () =&gt; new Penghitung());</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="nx">Penghitung</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Penghitung</span><span class="p">());</span>
 </span></code></pre></div>
 <h3 id="mengikat-interface">Mengikat interface<a class="headerlink" href="#mengikat-interface" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">$this-&gt;app-&gt;bind(PengirimPesan::class, PengirimEmail::class);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">PengirimPesan</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">PengirimEmail</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Setiap class yang meminta <code>PengirimPesan</code> mendapat <code>PengirimEmail</code>. Untuk mengganti implementasi cukup ubah satu baris.</p>
 <h3 id="mengambil-dari-container-secara-manual">Mengambil dari container secara manual<a class="headerlink" href="#mengambil-dari-container-secara-manual" title="Permanent link">&para;</a></h3>
@@ -9439,7 +9439,7 @@
 <p>Tanpa binding, <code>$a</code> dan <code>$b</code> adalah dua objek berbeda.</p>
 <h3 id="langkah-4-jadikan-singleton">Langkah 4: jadikan singleton<a class="headerlink" href="#langkah-4-jadikan-singleton" title="Permanent link">&para;</a></h3>
 <p>Di <code>AppServiceProvider::register()</code>:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">$this-&gt;app-&gt;singleton(\App\Services\Penghitung::class);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="nx">\App\Services\Penghitung</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Ulangi <code>curl</code>.</p>
 <h3 id="langkah-5-hapus-percobaan">Langkah 5: hapus percobaan<a class="headerlink" href="#langkah-5-hapus-percobaan" title="Permanent link">&para;</a></h3>

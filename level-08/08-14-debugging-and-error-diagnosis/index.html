@@ -9499,9 +9499,9 @@
 </tbody>
 </table>
 <h3 id="alat-investigasi">Alat investigasi<a class="headerlink" href="#alat-investigasi" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">dump($variabel);          // cetak lalu lanjut</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">dd($variabel);            // cetak lalu berhenti</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">logger()-&gt;debug('titik A', ['id' =&gt; $id]);   // ke log</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">dump</span><span class="p">(</span><span class="nv">$variabel</span><span class="p">);</span>          <span class="c1">// cetak lalu lanjut</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">dd</span><span class="p">(</span><span class="nv">$variabel</span><span class="p">);</span>            <span class="c1">// cetak lalu berhenti</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nx">logger</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s1">'titik A'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>   <span class="c1">// ke log</span>
 </span></code></pre></div>
 <p>Tinker untuk mencoba cepat:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>tinker
@@ -9509,23 +9509,23 @@
 </span></code></pre></div>
 <p>Log (<code>storage/logs/laravel.log</code>) menyimpan jejak galat 500. Hapus semua <code>dump</code>/<code>dd</code> sebelum commit.</p>
 <h3 id="dalam-uji">Dalam uji<a class="headerlink" href="#dalam-uji" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">$this-&gt;withoutExceptionHandling();   // melihat pengecualian asli, bukan halaman 500</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">$response-&gt;dump();                    // isi respons</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">$response-&gt;dumpSession();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">withoutExceptionHandling</span><span class="p">();</span>   <span class="c1">// melihat pengecualian asli, bukan halaman 500</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">dump</span><span class="p">();</span>                    <span class="c1">// isi respons</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">dumpSession</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Jika uji gagal, pertanyaan pertama: <em>apakah uji salah atau kode salah?</em> Periksa asumsi data uji (factory), bukan hanya asersinya.</p>
 <h3 id="reproduksi-sebagai-uji">Reproduksi sebagai uji<a class="headerlink" href="#reproduksi-sebagai-uji" title="Permanent link">&para;</a></h3>
 <p>Bug "menerbitkan artikel tanpa kategori memicu 500":</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">public function test_can_publish_article_without_category(): void</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    $penulis = User::factory()-&gt;create();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_can_publish_article_without_category</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nv">$penulis</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    $this-&gt;withoutExceptionHandling();</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">withoutExceptionHandling</span><span class="p">();</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">    $this-&gt;actingAs($penulis)</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">        -&gt;post(route('admin.articles.store'), ['title' =&gt; 'Tanpa kategori', 'body' =&gt; 'x'])</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">        -&gt;assertRedirect();</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="x">}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">actingAs</span><span class="p">(</span><span class="nv">$penulis</span><span class="p">)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'admin.articles.store'</span><span class="p">),</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Tanpa kategori'</span><span class="p">,</span> <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'x'</span><span class="p">])</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="o">-&gt;</span><span class="na">assertRedirect</span><span class="p">();</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Uji gagal (merah) menunjukkan pengecualian; setelah perbaikan menjadi hijau dan tinggal sebagai penjaga regresi.</p>
 <h3 id="pembagian-debug-lingkungan">Pembagian "debug" lingkungan<a class="headerlink" href="#pembagian-debug-lingkungan" title="Permanent link">&para;</a></h3>
@@ -9572,12 +9572,12 @@
 <h3 id="langkah-3-baca-jejak">Langkah 3: baca jejak<a class="headerlink" href="#langkah-3-baca-jejak" title="Permanent link">&para;</a></h3>
 <p>Temukan frame pertama di <code>resources/views/...</code> dan baris tepatnya.</p>
 <h3 id="langkah-4-tulis-uji-regresi">Langkah 4: tulis uji regresi<a class="headerlink" href="#langkah-4-tulis-uji-regresi" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">public function test_article_without_category_renders(): void</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">    $artikel = Article::factory()-&gt;published()-&gt;create(['category_id' =&gt; null]);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_article_without_category_renders</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nv">$artikel</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">published</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span><span class="s1">'category_id'</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">]);</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="x">    $this-&gt;get(route('articles.show', $artikel))-&gt;assertOk();</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="x">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'articles.show'</span><span class="p">,</span> <span class="nv">$artikel</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">assertOk</span><span class="p">();</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Jalankan: gagal (merah).</p>
 <h3 id="langkah-5-perbaiki">Langkah 5: perbaiki<a class="headerlink" href="#langkah-5-perbaiki" title="Permanent link">&para;</a></h3>

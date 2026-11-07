@@ -9508,13 +9508,13 @@ yang baik sengaja dibuat lambat dan unik per pengguna.</p>
 yang wajar di servermu (kira-kira puluhan sampai ratusan milidetik) tanpa memperlambat login berlebihan.</p>
 <h3 id="cast-hashed">Cast <code>hashed</code><a class="headerlink" href="#cast-hashed" title="Permanent link">&para;</a></h3>
 <p>Model <code>User</code> bawaan:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">protected function casts(): array</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    return [</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="x">        'email_verified_at' =&gt; 'datetime',</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">        'password' =&gt; 'hashed',</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">    ];</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">casts</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">return</span> <span class="p">[</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="s1">'email_verified_at'</span> <span class="o">=&gt;</span> <span class="s1">'datetime'</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">'hashed'</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="p">];</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Saat atribut <code>password</code> diisi nilai polos, cast <code>hashed</code> meng-hash-nya sebelum disimpan. Karena itu <code>User::create(['password' =&gt; 'rahasia123'])</code> aman. Cast ini mengenali nilai yang sudah ter-hash
 sehingga tidak di-hash dua kali.</p>

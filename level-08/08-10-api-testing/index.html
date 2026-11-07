@@ -9406,10 +9406,10 @@
 <p>Aplikasi seluler bergantung pada kunci <code>data.title</code>. Jika seseorang menggantinya menjadi <code>data.headline</code> di <code>v1</code> tanpa sengaja, aplikasi rusak. Uji struktur JSON menangkapnya sebelum rilis.</p>
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="permintaan-json">Permintaan JSON<a class="headerlink" href="#permintaan-json" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">$this-&gt;getJson('/api/v1/articles');</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">$this-&gt;postJson('/api/v1/articles', ['title' =&gt; 'Halo', 'body' =&gt; 'Isi']);</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">$this-&gt;patchJson("/api/v1/articles/{$slug}", ['title' =&gt; 'Baru']);</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">$this-&gt;deleteJson("/api/v1/articles/{$slug}");</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJson</span><span class="p">(</span><span class="s1">'/api/v1/articles'</span><span class="p">);</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">postJson</span><span class="p">(</span><span class="s1">'/api/v1/articles'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Halo'</span><span class="p">,</span> <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'Isi'</span><span class="p">]);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">patchJson</span><span class="p">(</span><span class="s2">"/api/v1/articles/</span><span class="si">{</span><span class="nv">$slug</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Baru'</span><span class="p">]);</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deleteJson</span><span class="p">(</span><span class="s2">"/api/v1/articles/</span><span class="si">{</span><span class="nv">$slug</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
 </span></code></pre></div>
 <p>Metode <code>*Json</code> menambah <code>Accept: application/json</code> sehingga galat dirender sebagai JSON.</p>
 <h3 id="asersi-json">Asersi JSON<a class="headerlink" href="#asersi-json" title="Permanent link">&para;</a></h3>
@@ -9453,9 +9453,9 @@
 </table>
 <h3 id="autentikasi-token">Autentikasi token<a class="headerlink" href="#autentikasi-token" title="Permanent link">&para;</a></h3>
 <p>Menurut dokumentasi Sanctum, <code>Sanctum::actingAs</code> mengautentikasi pengguna dan menentukan abilities token:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">use Laravel\Sanctum\Sanctum;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">use</span> <span class="nx">Laravel\Sanctum\Sanctum</span><span class="p">;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">Sanctum::actingAs(User::factory()-&gt;create(), ['articles:write']);</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">Sanctum</span><span class="o">::</span><span class="na">actingAs</span><span class="p">(</span><span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(),</span> <span class="p">[</span><span class="s1">'articles:write'</span><span class="p">]);</span>
 </span></code></pre></div>
 <p>Hanya untuk pengujian; token sungguhan dibuat lewat <code>createToken</code>. Untuk menguji ability yang kurang, berikan array yang tidak memuatnya dan harapkan 403.</p>
 <h3 id="contoh-uji-api">Contoh uji API<a class="headerlink" href="#contoh-uji-api" title="Permanent link">&para;</a></h3>
@@ -9537,12 +9537,12 @@
 </span></code></pre></div>
 <p>Kunci JSON (<code>message</code>, <code>code</code>) mengikuti format galat seragam sub bab 06.11; sesuaikan dengan implementasimu. Uji <code>user_id</code> abaikan membuktikan perlindungan kepemilikan.</p>
 <h3 id="uji-ability-dan-laju">Uji ability dan laju<a class="headerlink" href="#uji-ability-dan-laju" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">public function test_token_without_write_ability_is_forbidden(): void</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    Sanctum::actingAs(User::factory()-&gt;create(), ['articles:read']);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_token_without_write_ability_is_forbidden</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">Sanctum</span><span class="o">::</span><span class="na">actingAs</span><span class="p">(</span><span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(),</span> <span class="p">[</span><span class="s1">'articles:read'</span><span class="p">]);</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    $this-&gt;postJson('/api/v1/articles', ['title' =&gt; 'x', 'body' =&gt; 'y'])-&gt;assertForbidden();</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">postJson</span><span class="p">(</span><span class="s1">'/api/v1/articles'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'x'</span><span class="p">,</span> <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'y'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">assertForbidden</span><span class="p">();</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Untuk 429, kirim permintaan melebihi batas dalam satu uji (atau turunkan batas lewat konfigurasi uji) dan periksa header <code>Retry-After</code>.</p>
 <h3 id="kontrak-sebagai-uji">Kontrak sebagai uji<a class="headerlink" href="#kontrak-sebagai-uji" title="Permanent link">&para;</a></h3>

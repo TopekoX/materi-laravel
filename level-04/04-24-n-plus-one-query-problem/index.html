@@ -9455,10 +9455,10 @@ di dalam perulangan. Sub bab ini menjelaskan mengapa N+1 terjadi, cara mendeteks
 Masalahnya bukan di server, melainkan di cara kode memuat relasi.</p>
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="mengapa-disebut-n1">Mengapa disebut N+1<a class="headerlink" href="#mengapa-disebut-n1" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">$articles = Article::all();            // 1 query: ambil N artikel</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">foreach ($articles as $article) {</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    echo $article-&gt;category-&gt;name;     // N query: satu per artikel</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$articles</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>            <span class="c1">// 1 query: ambil N artikel</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$articles</span> <span class="k">as</span> <span class="nv">$article</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">echo</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">category</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>     <span class="c1">// N query: satu per artikel</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Total <strong>1 + N</strong> query. Waktu bertambah linear mengikuti jumlah data, bukan konstan.</p>
 <h3 id="tersembunyi-di-view-blade">Tersembunyi di view Blade<a class="headerlink" href="#tersembunyi-di-view-blade" title="Permanent link">&para;</a></h3>
@@ -9501,7 +9501,7 @@ Masalahnya bukan di server, melainkan di cara kode memuat relasi.</p>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">DB</span><span class="o">::</span><span class="na">getQueryLog</span><span class="p">();</span>   <span class="c1">// lihat SQL tiap query</span>
 </span></code></pre></div>
 <p>Pencegahan di pengembangan (<code>AppServiceProvider::boot()</code>):</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">Model::preventLazyLoading(! $this-&gt;app-&gt;isProduction());</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Model</span><span class="o">::</span><span class="na">preventLazyLoading</span><span class="p">(</span><span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">isProduction</span><span class="p">());</span>
 </span></code></pre></div>
 <h3 id="memperbaiki">Memperbaiki<a class="headerlink" href="#memperbaiki" title="Permanent link">&para;</a></h3>
 <table>
@@ -9531,7 +9531,7 @@ Masalahnya bukan di server, melainkan di cara kode memuat relasi.</p>
 </tbody>
 </table>
 <p>Versi perbaikan dari contoh Blade di atas:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">$articles = Article::with('category')-&gt;withCount('comments')-&gt;get();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$articles</span> <span class="o">=</span> <span class="nx">Article</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">withCount</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span></code></pre></div>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>@foreach ($articles as $article)
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ $article-&gt;title }} — {{ $article-&gt;category-&gt;name }} ({{ $article-&gt;comments_count }} komentar)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -9549,16 +9549,16 @@ accessor ikut dimuat, atau gunakan data yang sudah dihitung.</p>
 </ul>
 <h3 id="menjaga-dengan-uji">Menjaga dengan uji<a class="headerlink" href="#menjaga-dengan-uji" title="Permanent link">&para;</a></h3>
 <p>Uji sederhana yang membuktikan jumlah query tidak bertambah seiring data:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">public function test_daftar_artikel_tidak_n_plus_satu(): void</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="x">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">    Article::factory()-&gt;count(20)-&gt;create();</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_daftar_artikel_tidak_n_plus_satu</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">Article</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">    DB::enableQueryLog();</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">    $this-&gt;get('/artikel');</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="x">    $jumlah = count(DB::getQueryLog());</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nx">DB</span><span class="o">::</span><span class="na">enableQueryLog</span><span class="p">();</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'/artikel'</span><span class="p">);</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nv">$jumlah</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">getQueryLog</span><span class="p">());</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="x">    $this-&gt;assertLessThanOrEqual(6, $jumlah);</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="x">}</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertLessThanOrEqual</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nv">$jumlah</span><span class="p">);</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Bab Testing membahas penulisan uji lebih lengkap; contoh ini hanya menunjukkan gagasannya.</p>
 <h3 id="keamanan-dan-keandalan">Keamanan dan keandalan<a class="headerlink" href="#keamanan-dan-keandalan" title="Permanent link">&para;</a></h3>

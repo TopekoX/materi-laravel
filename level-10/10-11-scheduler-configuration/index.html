@@ -9570,10 +9570,10 @@
 <p>Kamu memasang cron, membuktikan penjadwal berjalan dengan tugas uji, lalu menghapus tugas uji dan memastikan tugas nyata muncul di <code>schedule:list</code>.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Tugas uji sementara di <code>routes/console.php</code>:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">use Illuminate\Support\Facades\Log;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">use Illuminate\Support\Facades\Schedule;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Log</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schedule</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">Schedule::call(fn () =&gt; Log::info('Detak penjadwal'))-&gt;everyMinute();</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nx">Schedule</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="s1">'Detak penjadwal'</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">everyMinute</span><span class="p">();</span>
 </span></code></pre></div>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>
 <h3 id="langkah-1-daftar-tugas">Langkah 1: daftar tugas<a class="headerlink" href="#langkah-1-daftar-tugas" title="Permanent link">&para;</a></h3>

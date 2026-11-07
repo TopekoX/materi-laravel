@@ -9435,11 +9435,11 @@
 </span></code></pre></div>
 <p>Konfigurasi koneksi ada di <code>config/database.php</code> bagian <code>redis</code> (koneksi <code>default</code> dan <code>cache</code> memakai database Redis berbeda). Ubah satu per satu agar mudah mencari masalah.</p>
 <h3 id="facade-redis">Facade <code>Redis</code><a class="headerlink" href="#facade-redis" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">use Illuminate\Support\Facades\Redis;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Redis</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">Redis::set('nama', 'Ani');</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">$nama = Redis::get('nama');</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">Redis::incr('pengunjung');</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nx">Redis</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">'nama'</span><span class="p">,</span> <span class="s1">'Ani'</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">$nama</span> <span class="o">=</span> <span class="nx">Redis</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'nama'</span><span class="p">);</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nx">Redis</span><span class="o">::</span><span class="na">incr</span><span class="p">(</span><span class="s1">'pengunjung'</span><span class="p">);</span>
 </span></code></pre></div>
 <h3 id="redis-untuk-apa">Redis untuk apa?<a class="headerlink" href="#redis-untuk-apa" title="Permanent link">&para;</a></h3>
 <table>

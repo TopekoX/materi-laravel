@@ -9427,52 +9427,52 @@
 <p>Pola adalah kosakata bersama: menyebut "ini Strategy" mengomunikasikan struktur dalam satu kata. Bahayanya memakai pola karena ingin, bukan karena perlu.</p>
 <h2 id="penjelasan-konsep">Penjelasan Konsep<a class="headerlink" href="#penjelasan-konsep" title="Permanent link">&para;</a></h2>
 <h3 id="strategy-perilaku-yang-dapat-ditukar">Strategy: perilaku yang dapat ditukar<a class="headerlink" href="#strategy-perilaku-yang-dapat-ditukar" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">interface SlugGenerator { public function make(string $title): string; }</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">interface</span> <span class="nx">SlugGenerator</span> <span class="p">{</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span> <span class="p">}</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">class AsciiSlug implements SlugGenerator {</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">    public function make(string $title): string { return \Illuminate\Support\Str::slug($title); }</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">}</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span> <span class="nc">AsciiSlug</span> <span class="k">implements</span> <span class="nx">SlugGenerator</span> <span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">\Illuminate\Support\Str</span><span class="o">::</span><span class="na">slug</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span> <span class="p">}</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Dipilih lewat konfigurasi/binding. Laravel: driver cache, mail, queue.</p>
 <h3 id="factory-membuat-objek-dengan-aturan">Factory: membuat objek dengan aturan<a class="headerlink" href="#factory-membuat-objek-dengan-aturan" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">class ExporterFactory</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    public function make(string $format): Exporter</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="x">    {</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">        return match ($format) {</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">            'csv' =&gt; new CsvExporter(),</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="x">            'json' =&gt; new JsonExporter(),</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="x">            default =&gt; throw new \InvalidArgumentException("Format tidak didukung: $format"),</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="x">        };</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="x">    }</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span> <span class="nc">ExporterFactory</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">make</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$format</span><span class="p">)</span><span class="o">:</span> <span class="nx">Exporter</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="k">return</span> <span class="k">match</span> <span class="p">(</span><span class="nv">$format</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>            <span class="s1">'csv'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">CsvExporter</span><span class="p">(),</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">JsonExporter</span><span class="p">(),</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="k">default</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="k">new</span> <span class="nx">\InvalidArgumentException</span><span class="p">(</span><span class="s2">"Format tidak didukung: </span><span class="si">$format</span><span class="s2">"</span><span class="p">),</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="p">};</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Validasi di sini mencegah input liar membuat objek sembarang. (Bukan factory Eloquent untuk data uji, yang konsepnya serupa tetapi tujuannya berbeda.)</p>
 <h3 id="decorator-menambah-perilaku-tanpa-mengubah-class">Decorator: menambah perilaku tanpa mengubah class<a class="headerlink" href="#decorator-menambah-perilaku-tanpa-mengubah-class" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">class CachedArticleReader implements ReadsArticles</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="x">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">    public function __construct(private ReadsArticles $inner, private \Illuminate\Contracts\Cache\Repository $cache) {}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span> <span class="nc">CachedArticleReader</span> <span class="k">implements</span> <span class="nx">ReadsArticles</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">ReadsArticles</span> <span class="nv">$inner</span><span class="p">,</span> <span class="k">private</span> <span class="nx">\Illuminate\Contracts\Cache\Repository</span> <span class="nv">$cache</span><span class="p">)</span> <span class="p">{}</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    public function findBySlug(string $slug): ?Article</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    {</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">        return $this-&gt;cache-&gt;remember("article:$slug", 300, fn () =&gt; $this-&gt;inner-&gt;findBySlug($slug));</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="x">    }</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="x">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">findBySlug</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$slug</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">Article</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">{</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">remember</span><span class="p">(</span><span class="s2">"article:</span><span class="si">$slug</span><span class="s2">"</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inner</span><span class="o">-&gt;</span><span class="na">findBySlug</span><span class="p">(</span><span class="nv">$slug</span><span class="p">));</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Ikat <code>ReadsArticles</code> ke decorator yang membungkus implementasi Eloquent. Pemakai tidak berubah. Laravel: sebagian besar middleware pada dasarnya membungkus.</p>
 <h3 id="observer-reaksi-terhadap-kejadian">Observer: reaksi terhadap kejadian<a class="headerlink" href="#observer-reaksi-terhadap-kejadian" title="Permanent link">&para;</a></h3>
 <p>Event dan listener (07.08), serta observer model. Cocok untuk efek samping terpisah; hati-hati logika wajib yang tersembunyi.</p>
 <h3 id="pipeline-rangkaian-langkah">Pipeline: rangkaian langkah<a class="headerlink" href="#pipeline-rangkaian-langkah" title="Permanent link">&para;</a></h3>
 <p>Laravel memakai <code>Illuminate\Pipeline\Pipeline</code> untuk middleware; kamu dapat memakainya untuk rangkaian transformasi:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">use Illuminate\Pipeline\Pipeline;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">use</span> <span class="nx">Illuminate\Pipeline\Pipeline</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">$hasil = app(Pipeline::class)-&gt;send($artikel)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">    -&gt;through([</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">        \App\Pipes\StripDangerousHtml::class,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">        \App\Pipes\GenerateExcerpt::class,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">        \App\Pipes\ComputeReadingTime::class,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">    ])</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">    -&gt;thenReturn();</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$hasil</span> <span class="o">=</span> <span class="nx">app</span><span class="p">(</span><span class="nx">Pipeline</span><span class="o">::</span><span class="na">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$artikel</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="o">-&gt;</span><span class="na">through</span><span class="p">([</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="nx">\App\Pipes\StripDangerousHtml</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="nx">\App\Pipes\GenerateExcerpt</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nx">\App\Pipes\ComputeReadingTime</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">])</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">();</span>
 </span></code></pre></div>
 <p>Setiap pipe punya <code>handle($payload, Closure $next)</code>. Cocok untuk langkah berurutan yang bisa ditambah/diatur ulang.</p>
 <h3 id="pola-di-laravel">Pola di Laravel<a class="headerlink" href="#pola-di-laravel" title="Permanent link">&para;</a></h3>
@@ -9552,10 +9552,10 @@
 <p>Kamu menerapkan Decorator cache pada pembaca artikel dan Pipeline untuk memproses isi artikel sebelum disimpan.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Binding decorator:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">$this-&gt;app-&gt;bind(ReadsArticles::class, fn ($app) =&gt; new CachedArticleReader(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="x">    $app-&gt;make(EloquentArticleReader::class),</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="x">    $app-&gt;make(\Illuminate\Contracts\Cache\Repository::class),</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="x">));</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">ReadsArticles</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">CachedArticleReader</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nx">EloquentArticleReader</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="nx">\Illuminate\Contracts\Cache\Repository</span><span class="o">::</span><span class="na">class</span><span class="p">),</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">));</span>
 </span></code></pre></div>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>
 <h3 id="langkah-1-pilih-masalah">Langkah 1: pilih masalah<a class="headerlink" href="#langkah-1-pilih-masalah" title="Permanent link">&para;</a></h3>

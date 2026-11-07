@@ -9482,15 +9482,15 @@
 </table>
 <p>Penamaan: event bentuk lampau; command imperatif.</p>
 <h3 id="merancang-event">Merancang event<a class="headerlink" href="#merancang-event" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="x">final class ArticlePublished</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="x">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="x">    public function __construct(</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="x">        public readonly int $articleId,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">        public readonly int $authorId,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">        public readonly string $slug,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="x">        public readonly \DateTimeImmutable $occurredAt = new \DateTimeImmutable(),</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="x">    ) {}</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="x">}</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">ArticlePublished</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">int</span> <span class="nv">$articleId</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">int</span> <span class="nv">$authorId</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$slug</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">\DateTimeImmutable</span> <span class="nv">$occurredAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTimeImmutable</span><span class="p">(),</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="p">)</span> <span class="p">{}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <table>
 <thead>
@@ -9560,16 +9560,16 @@
 </tbody>
 </table>
 <h3 id="idempotensi">Idempotensi<a class="headerlink" href="#idempotensi" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">public function handle(ArticlePublished $e): void</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    $key = "notified:article:{$e-&gt;articleId}";</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">ArticlePublished</span> <span class="nv">$e</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nv">$key</span> <span class="o">=</span> <span class="s2">"notified:article:</span><span class="si">{</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">articleId</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="x">    if (! \Illuminate\Support\Facades\Cache::add($key, true, now()-&gt;plus(days: 7))) {</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">        return; // sudah diproses</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="x">    }</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">\Illuminate\Support\Facades\Cache</span><span class="o">::</span><span class="na">add</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">plus</span><span class="p">(</span><span class="nx">days</span><span class="o">:</span> <span class="mi">7</span><span class="p">)))</span> <span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="k">return</span><span class="p">;</span> <span class="c1">// sudah diproses</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">}</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="x">    // ... kirim notifikasi</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="x">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="c1">// ... kirim notifikasi</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><code>Cache::add</code> hanya menulis bila kunci belum ada (operasi atomik pada driver yang mendukung), sehingga percobaan ulang tidak menggandakan efek. Untuk jaminan lebih kuat pakai tabel dengan constraint unik.</p>
 <h3 id="outbox-pattern-konsep">Outbox pattern (konsep)<a class="headerlink" href="#outbox-pattern-konsep" title="Permanent link">&para;</a></h3>
@@ -9617,11 +9617,11 @@
 <p>Kamu mendefinisikan <code>ArticlePublished</code> sebagai kontrak publik, menambah dua listener di modul berbeda dengan idempotensi, dan menguji dengan <code>Event::fake</code>.</p>
 <h2 id="penjelasan-kode">Penjelasan Kode<a class="headerlink" href="#penjelasan-kode" title="Permanent link">&para;</a></h2>
 <p>Uji:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">Event::fake([ArticlePublished::class]);</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">Event</span><span class="o">::</span><span class="na">fake</span><span class="p">([</span><span class="nx">ArticlePublished</span><span class="o">::</span><span class="na">class</span><span class="p">]);</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">app(PublishArticle::class)($article-&gt;id);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nx">app</span><span class="p">(</span><span class="nx">PublishArticle</span><span class="o">::</span><span class="na">class</span><span class="p">)(</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">Event::assertDispatched(ArticlePublished::class, fn ($e) =&gt; $e-&gt;articleId === $article-&gt;id);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">Event</span><span class="o">::</span><span class="na">assertDispatched</span><span class="p">(</span><span class="nx">ArticlePublished</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">articleId</span> <span class="o">===</span> <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
 </span></code></pre></div>
 <h2 id="implementasi-langkah-demi-langkah">Implementasi Langkah demi Langkah<a class="headerlink" href="#implementasi-langkah-demi-langkah" title="Permanent link">&para;</a></h2>
 <h3 id="langkah-1-tentukan-event">Langkah 1: tentukan event<a class="headerlink" href="#langkah-1-tentukan-event" title="Permanent link">&para;</a></h3>

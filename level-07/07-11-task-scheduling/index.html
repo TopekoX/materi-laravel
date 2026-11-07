@@ -9429,10 +9429,10 @@
 </tbody>
 </table>
 <h3 id="pembatasan">Pembatasan<a class="headerlink" href="#pembatasan" title="Permanent link">&para;</a></h3>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="x">Schedule::command('laporan:buat')</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="x">    -&gt;daily()</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="x">    -&gt;withoutOverlapping()   // jangan jalan bila run sebelumnya belum selesai</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="x">    -&gt;onOneServer();          // hanya satu server (butuh cache terpusat)</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">Schedule</span><span class="o">::</span><span class="na">command</span><span class="p">(</span><span class="s1">'laporan:buat'</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="o">-&gt;</span><span class="na">daily</span><span class="p">()</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="o">-&gt;</span><span class="na">withoutOverlapping</span><span class="p">()</span>   <span class="c1">// jangan jalan bila run sebelumnya belum selesai</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="o">-&gt;</span><span class="na">onOneServer</span><span class="p">();</span>          <span class="c1">// hanya satu server (butuh cache terpusat)</span>
 </span></code></pre></div>
 <p><code>onOneServer</code> memerlukan driver cache bersama (<code>database</code>, <code>redis</code>, dsb.).</p>
 <h3 id="menjalankan">Menjalankan<a class="headerlink" href="#menjalankan" title="Permanent link">&para;</a></h3>

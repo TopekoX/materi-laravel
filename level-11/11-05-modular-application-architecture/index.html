@@ -9493,13 +9493,13 @@
 <p>Daftarkan di <code>bootstrap/providers.php</code>. <code>loadMigrationsFrom</code> membuat <code>php artisan migrate</code> ikut menjalankan migrasi modul.</p>
 <h3 id="antarmuka-publik">Antarmuka publik<a class="headerlink" href="#antarmuka-publik" title="Permanent link">&para;</a></h3>
 <p>Modul lain <strong>hanya</strong> boleh memakai isi <code>Contracts/</code> dan DTO publik:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">namespace App\Modules\Articles\Contracts;</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">namespace</span> <span class="nx">App\Modules\Articles\Contracts</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="x">interface ArticleLookup</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="x">{</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">    public function exists(int $articleId): bool;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    public function titleOf(int $articleId): ?string;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">interface</span> <span class="nx">ArticleLookup</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$articleId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">titleOf</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$articleId</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Modul Komentar bergantung pada <code>ArticleLookup</code>, bukan model <code>Article</code>. Relasi lintas modul lewat ID, bukan relasi Eloquent langsung, agar skema bisa berubah independen.</p>
 <h3 id="aturan-ketergantungan">Aturan ketergantungan<a class="headerlink" href="#aturan-ketergantungan" title="Permanent link">&para;</a></h3>
@@ -9531,18 +9531,18 @@
 </table>
 <h3 id="uji-arsitektur-sederhana">Uji arsitektur sederhana<a class="headerlink" href="#uji-arsitektur-sederhana" title="Permanent link">&para;</a></h3>
 <p>Uji yang memindai impor terlarang:</p>
-<div class="language-php highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">public function test_comments_module_does_not_import_article_internals(): void</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    $files = \Illuminate\Support\Facades\File::allFiles(app_path('Modules/Comments'));</span>
+<div class="language-php-inline highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">test_comments_module_does_not_import_article_internals</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nv">$files</span> <span class="o">=</span> <span class="nx">\Illuminate\Support\Facades\File</span><span class="o">::</span><span class="na">allFiles</span><span class="p">(</span><span class="nx">app_path</span><span class="p">(</span><span class="s1">'Modules/Comments'</span><span class="p">));</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">    foreach ($files as $file) {</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">        $this-&gt;assertDoesNotMatchRegularExpression(</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">            '/use App\\\\Modules\\\\Articles\\\\(Domain|Infrastructure|Http)\\\\/',</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">            $file-&gt;getContents(),</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">            "{$file-&gt;getPathname()} mengimpor internal modul Articles"</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="x">        );</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="x">    }</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="x">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertDoesNotMatchRegularExpression</span><span class="p">(</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            <span class="s1">'/use App\\\\Modules\\\\Articles\\\\(Domain|Infrastructure|Http)\\\\/'</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>            <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">(),</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            <span class="s2">"</span><span class="si">{</span><span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getPathname</span><span class="p">()</span><span class="si">}</span><span class="s2"> mengimpor internal modul Articles"</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="p">);</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">}</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Alat khusus (Pest Arch, Deptrac) lebih lengkap tetapi menambah dependensi dev; uji regex ini sederhana dan cukup untuk belajar.</p>
 <h3 id="migrasi-ke-modular-secara-bertahap">Migrasi ke modular secara bertahap<a class="headerlink" href="#migrasi-ke-modular-secara-bertahap" title="Permanent link">&para;</a></h3>
